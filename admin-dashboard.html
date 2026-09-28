@@ -42,9 +42,9 @@
 
     
     <!-- Sidebar -->
-    <aside class="w-64 bg-brand-dark h-screen fixed top-0 left-0 flex flex-col shadow-xl z-20 transition-transform transform -translate-x-full md:translate-x-0" id="sidebar">
-        <div class="h-16 flex items-center justify-between px-6 bg-brand-darker shadow-md">
-            <h1 class="text-white text-2xl font-bold tracking-wider">STackly<span class="text-brand-orange">Admin</span></h1>
+    <aside class="w-64 bg-brand-dark h-screen fixed top-0 left-0 flex flex-col shadow-xl z-50 transition-transform transform -translate-x-full md:translate-x-0" id="sidebar">
+        <div class="min-h-[64px] py-2 flex items-center justify-between px-6 bg-brand-darker shadow-md">
+            <a href="index.html" class="flex flex-col items-center justify-center gap-1 mt-2 mb-2"><img src="images/logo.webp" alt="STackly Logo" class="h-8 w-auto"><span class="text-white font-bold text-lg">Admin</span></a>
             <button id="closeSidebarBtn" class="md:hidden text-gray-300 hover:text-white focus:outline-none">
                 <i class="fas fa-times text-xl"></i>
             </button>
@@ -92,25 +92,26 @@
     </aside>
 
     <!-- Overlay -->
-    <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-10 hidden md:hidden transition-opacity"></div>
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden transition-opacity"></div>
     
     <!-- Topbar -->
-    <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6 fixed top-0 right-0 left-0 md:left-64 z-10 transition-all">
-        <div class="flex items-center">
-            <button id="mobileMenuBtn" class="md:hidden text-gray-500 hover:text-brand-orange focus:outline-none mr-4">
+    <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6 fixed top-0 right-0 left-0 md:left-64 z-30 transition-all">
+        <div class="flex items-center w-full md:w-auto justify-between md:justify-start">
+            <button id="mobileMenuBtn" class="md:hidden text-gray-500 hover:text-brand-orange focus:outline-none">
                 <i class="fas fa-bars text-xl"></i>
             </button>
-            <h2 class="text-xl font-semibold text-gray-800" id="pageTitle">Dashboard</h2>
+            <img src="images/logo.webp" alt="Logo" class="h-8 md:hidden mx-auto">
+            <h2 class="text-xl font-semibold text-gray-800 hidden md:block" id="pageTitle">Dashboard</h2>
         </div>
-        <div class="flex items-center space-x-4">
+        <div class="hidden md:flex items-center space-x-4">
             <div class="relative">
-                <button class="text-gray-400 hover:text-brand-orange transition">
+                <a href="404.html" class="block text-gray-400 hover:text-brand-orange transition">
                     <i class="fas fa-bell text-xl"></i>
                     <span class="absolute top-0 right-0 -mt-1 -mr-1 flex h-3 w-3">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-orange opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-3 w-3 bg-brand-orange"></span>
                     </span>
-                </button>
+                </a>
             </div>
             <div class="flex items-center border-l pl-4">
                 <div class="mr-3 text-right hidden sm:block">
@@ -374,5 +375,131 @@
         });
     </script>
 
+    <script id="dashboard-404-script">
+    document.addEventListener("DOMContentLoaded", () => {
+        const allButtons = document.querySelectorAll('button, a, .cursor-pointer');
+        allButtons.forEach(btn => {
+            if(btn.closest('aside')) return;
+            if(btn.id === 'mobileMenuBtn' || btn.id === 'closeSidebarBtn' || btn.id === 'addUserBtn') return;
+            if(btn.closest('footer')) return;
+            
+            const btnText = btn.innerText.toLowerCase().trim();
+            const isPagination = (btnText !== '' && !isNaN(btnText)) || btnText === 'prev' || btnText === 'next';
+            
+            if(isPagination) {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pBtns = btn.closest('div').querySelectorAll('button');
+                    pBtns.forEach(b => {
+                        b.classList.remove('bg-brand-blue', 'text-white');
+                        b.classList.add('hover:bg-gray-100');
+                    });
+                    if(!isNaN(btnText)) {
+                        btn.classList.add('bg-brand-blue', 'text-white');
+                        btn.classList.remove('hover:bg-gray-100');
+                    }
+                    const tableBody = document.querySelector('tbody');
+                    if (tableBody) {
+                        const rows = Array.from(tableBody.querySelectorAll('tr'));
+                        for (let i = rows.length - 1; i > 0; i--) {
+                            const j = Math.floor(Math.random() * (i + 1));
+                            tableBody.appendChild(rows[j]);
+                        }
+                    }
+                });
+                return;
+            }
+            
+            const isActionLink = btn.tagName === 'A';
+            const isButton = btn.tagName === 'BUTTON' || btn.classList.contains('cursor-pointer') || btn.tagName === 'I';
+            
+            if (isActionLink || isButton) {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    let container = btn.closest('form');
+                    let isFormAction = false;
+                    
+                    const actionKeywords = ['send', 'send reply', 'submit request', 'save changes', 'update password', 'save preferences', 'save general settings', 'save notification settings'];
+                    
+                    if (!container) {
+                        if (actionKeywords.includes(btnText) || btnText.includes('submit')) {
+                            container = btn.closest('div.p-4') || btn.closest('section') || btn.closest('div');
+                            isFormAction = true;
+                        }
+                    }
+                    
+                    if (container && (btn.type === 'submit' || container.tagName === 'FORM' || isFormAction)) {
+                        let isValid = true;
+                        const inputs = container.querySelectorAll('input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]), textarea');
+                        
+                        const oldErr = container.querySelector('.dynamic-err-msg');
+                        if(oldErr) oldErr.remove();
+                        
+                        if (inputs.length > 0) {
+                            inputs.forEach(input => {
+                                if (!input.value.trim()) {
+                                    isValid = false;
+                                    input.classList.add('border-red-500');
+                                } else {
+                                    input.classList.remove('border-red-500');
+                                }
+                            });
+                            
+                            if (!isValid) {
+                                const errMsg = document.createElement('p');
+                                errMsg.className = 'text-red-500 text-xs mt-2 font-bold dynamic-err-msg';
+                                errMsg.innerText = '* Please fill out all required details.';
+                                btn.parentNode.insertBefore(errMsg, btn.nextSibling);
+                                return;
+                            }
+                        }
+                    }
+                    
+                    window.location.href = '404.html';
+                });
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && e.target.tagName === 'INPUT') {
+                e.preventDefault();
+                if (e.target.value.trim() === '') {
+                    e.target.classList.add('border-red-500');
+                    const existingErr = e.target.parentNode.querySelector('.dynamic-err-msg');
+                    if (!existingErr) {
+                        const errMsg = document.createElement('p');
+                        errMsg.className = 'text-red-500 text-xs mt-1 font-bold dynamic-err-msg absolute';
+                        errMsg.innerText = 'Please enter search details.';
+                        e.target.parentNode.appendChild(errMsg);
+                    }
+                } else {
+                    window.location.href = '404.html';
+                }
+            }
+        });
+    });
+</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
