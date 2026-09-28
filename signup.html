@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Business Consulting</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#115b9c',
+                            dark: '#0c3e6a',
+                            darker: '#1f2937',
+                            orange: '#e87316',
+                            orangeHover: '#d16511',
+                            light: '#f4f7f6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { overflow-x: hidden; }
+        .hero-bg {
+            background-image: linear-gradient(to right, rgba(17, 91, 156, 0.9) 0%, rgba(12, 62, 106, 0.95) 100%), url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/signup.js" defer></script>
+</head>
+<body class="flex flex-col min-h-screen font-sans text-gray-600 antialiased bg-gray-50 overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="bg-brand-blue text-white sticky top-0 z-50 shadow-md relative">
+        <div class="container mx-auto px-4 md:px-8 py-4 flex justify-between items-center border-b border-brand-blue border-opacity-50">
+            <div class="text-2xl font-bold tracking-wider z-20 relative">
+                <a href="index.html" aria-label="Home">STackly</a>
+            </div>
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex space-x-8 items-center font-medium text-sm">
+                <a href="index.html" class="nav-link-index hover:text-brand-orange flex items-center transition">Home</a>
+                <a href="about.html" class="nav-link-about hover:text-brand-orange flex items-center transition">About</a>
+                <a href="services.html" class="nav-link-services hover:text-brand-orange flex items-center transition">Services</a>
+                <a href="projects.html" class="nav-link-projects hover:text-brand-orange flex items-center transition">Projects</a>
+                <a href="blog.html" class="nav-link-blog hover:text-brand-orange flex items-center transition">Blog</a>
+                <a href="contact.html" class="nav-link-contact hover:text-brand-orange flex items-center transition">Contact</a>
+            </div>
+            <!-- Desktop Login -->
+            <div class="hidden md:block">
+                <a href="login.html" class="bg-brand-orange hover:bg-white hover:text-brand-dark transition duration-300 px-6 py-2 rounded text-sm font-semibold shadow">Login</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none z-20 relative" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden opacity-0 transition-opacity duration-300"></div>
+        
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="fixed top-0 right-0 h-full w-3/4 max-w-sm bg-brand-dark shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col">
+            <div class="p-4 flex justify-end border-b border-gray-700">
+                <button id="mobile-close-btn" class="text-white focus:outline-none p-2" aria-label="Close navigation">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <div class="flex flex-col py-6 px-8 space-y-6 text-lg font-medium overflow-y-auto">
+                <a href="index.html" class="nav-link-index hover:text-brand-orange transition">Home</a>
+                <a href="about.html" class="nav-link-about hover:text-brand-orange transition">About</a>
+                <a href="services.html" class="nav-link-services hover:text-brand-orange transition">Services</a>
+                <a href="projects.html" class="nav-link-projects hover:text-brand-orange transition">Projects</a>
+                <a href="blog.html" class="nav-link-blog hover:text-brand-orange transition">Blog</a>
+                <a href="contact.html" class="nav-link-contact hover:text-brand-orange transition">Contact</a>
+                <hr class="border-gray-700">
+                <a href="login.html" class="bg-brand-orange text-center hover:bg-white hover:text-brand-dark transition duration-300 px-6 py-3 rounded font-semibold shadow">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Content -->
+    <section class="flex-grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 hero-bg">
+        <div class="max-w-md w-full bg-white p-8 md:p-10 shadow-2xl rounded-sm">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">Create an Account</h2>
+                <p class="text-gray-500 text-sm">Join us today</p>
+            </div>
+            <form id="signupForm" class="space-y-6" novalidate>
+                <div>
+                    <label for="fullName" class="block text-sm font-bold text-gray-700 mb-2">Full Name</label>
+                    <input id="fullName" name="fullName" type="text" required class="appearance-none block w-full px-4 py-3 border border-gray-300 rounded-sm placeholder-gray-400 focus:outline-none focus:ring-brand-blue focus:border-brand-blue sm:text-sm transition-colors" placeholder="John Doe">
+                    <p id="nameError" class="text-red-500 text-xs mt-1 hidden">Full Name is required.</p>
+                </div>
+                
+                <div>
+                    <label for="email" class="block text-sm font-bold text-gray-700 mb-2">Email Address</label>
+                    <input id="email" name="email" type="email" autocomplete="email" required class="appearance-none block w-full px-4 py-3 border border-gray-300 rounded-sm placeholder-gray-400 focus:outline-none focus:ring-brand-blue focus:border-brand-blue sm:text-sm transition-colors" placeholder="you@example.com">
+                    <p id="emailError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid email address.</p>
+                </div>
+                
+                <div>
+                    <label for="phone" class="block text-sm font-bold text-gray-700 mb-2">Phone Number</label>
+                    <input id="phone" name="phone" type="tel" required class="appearance-none block w-full px-4 py-3 border border-gray-300 rounded-sm placeholder-gray-400 focus:outline-none focus:ring-brand-blue focus:border-brand-blue sm:text-sm transition-colors" placeholder="+1 (555) 000-0000">
+                    <p id="phoneError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid phone number.</p>
+                </div>
+
+                <div>
+                    <label for="role" class="block text-sm font-bold text-gray-700 mb-2">Role</label>
+                    <select id="role" name="role" required class="appearance-none block w-full px-4 py-3 border border-gray-300 rounded-sm focus:outline-none focus:ring-brand-blue focus:border-brand-blue sm:text-sm transition-colors">
+                        <option value="">Select Role</option>
+                        <option value="User">User</option>
+                        <option value="Admin">Admin</option>
+                    </select>
+                    <p id="roleError" class="text-red-500 text-xs mt-1 hidden">Please select a role.</p>
+                </div>
+
+                <div>
+                    <label for="password" class="block text-sm font-bold text-gray-700 mb-2">Password</label>
+                    <div class="relative">
+                        <input id="password" name="password" type="password" required class="appearance-none block w-full px-4 py-3 border border-gray-300 rounded-sm placeholder-gray-400 focus:outline-none focus:ring-brand-blue focus:border-brand-blue sm:text-sm transition-colors" placeholder="••••••••">
+                    </div>
+                    <p id="passwordError" class="text-red-500 text-xs mt-1 hidden">Password must be at least 6 characters.</p>
+                </div>
+
+                <div>
+                    <label for="confirmPassword" class="block text-sm font-bold text-gray-700 mb-2">Confirm Password</label>
+                    <div class="relative">
+                        <input id="confirmPassword" name="confirmPassword" type="password" required class="appearance-none block w-full px-4 py-3 border border-gray-300 rounded-sm placeholder-gray-400 focus:outline-none focus:ring-brand-blue focus:border-brand-blue sm:text-sm transition-colors" placeholder="••••••••">
+                    </div>
+                    <p id="confirmPasswordError" class="text-red-500 text-xs mt-1 hidden">Passwords do not match.</p>
+                </div>
+
+                <div class="flex items-center mt-2">
+                    <input id="terms" name="terms" type="checkbox" required class="h-4 w-4 text-brand-orange focus:ring-brand-orange border-gray-300 rounded">
+                    <label for="terms" class="ml-2 block text-sm text-gray-700 cursor-pointer">
+                        I agree to the <a href="404.html" class="text-brand-blue hover:text-brand-orange">Terms & Conditions</a>
+                    </label>
+                </div>
+                <p id="termsError" class="text-red-500 text-xs mt-1 hidden">You must accept the terms and conditions.</p>
+
+                <div class="mt-6">
+                    <button type="submit" class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-bold rounded-sm text-white bg-brand-orange hover:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-orange transition-colors shadow-md">
+                        Create Account
+                    </button>
+                </div>
+</form>
+            
+            <div class="mt-6 text-center text-sm space-y-3">
+                <p class="text-gray-600">Already have an account? <a href="login.html" class="font-bold text-brand-blue hover:text-brand-orange transition-colors">Login</a></p>
+                <div><a href="index.html" class="text-gray-500 hover:text-brand-blue transition-colors font-medium"><i class="fas fa-arrow-left mr-2"></i>Back to home</a></div>
+            </div>
+        </div>
+    </section>
+
+    
+<!-- Footer -->
+        <!-- Footer -->
+    <footer class="bg-brand-blue pt-16 pb-6 border-t-4 border-brand-orange mt-auto">
+        <div class="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 text-white">
+            <div class="pr-4">
+                <h3 class="text-2xl font-bold tracking-wider mb-6">STackly</h3>
+                <p class="text-sm text-blue-200 leading-relaxed">Expert business consulting strategies designed to drive success, streamline operations, and build long-term growth.</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                <ul class="space-y-3 text-sm text-blue-200 font-medium">
+                    <li><a href="index.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Homepage</a></li>
+                    <li><a href="about.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> About Us</a></li>
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Our Services</a></li>
+                    <li><a href="projects.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Projects Work</a></li>
+                    <li><a href="blog.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Blog</a></li>
+                    <li><a href="contact.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Contact Us</a></li>
+                    
+                    
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6">Consulting Service</h4>
+                <ul class="space-y-3 text-sm text-blue-200 font-medium">
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Strategic Planning</a></li>
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Process Optimization</a></li>
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Market Research</a></li>
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Business Analysis</a></li>
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Change Management</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Head Office Address</h4>
+                <p class="text-sm text-blue-200 mb-6">MMR Complex, Chinna Thirupathi, Near Chinna Muniyappan Kovil, Salem 636003</p>
+                <h4 class="text-lg font-bold mb-2">Days Open</h4>
+                <p class="text-sm text-blue-200">Monday - Friday 09 AM - 10 PM</p>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 md:px-8 border-t border-blue-800 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-blue-300">
+            <p>All Rights Reserved - STackly Consulting</p>
+            <div class="flex space-x-4 mt-4 md:mt-0 text-white">
+                <a href="https://facebook.com" aria-label="Facebook" class="hover:text-brand-orange transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com" aria-label="Twitter" class="hover:text-brand-orange transition"><i class="fab fa-twitter"></i></a>
+                <a href="https://youtube.com" aria-label="YouTube" class="hover:text-brand-orange transition"><i class="fab fa-youtube"></i></a>
+                <a href="https://pinterest.com" aria-label="Pinterest" class="hover:text-brand-orange transition"><i class="fab fa-pinterest-p"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    </body>
+</html>
+
+
+

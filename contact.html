@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Business Consulting</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#115b9c',
+                            dark: '#0c3e6a',
+                            darker: '#1f2937',
+                            orange: '#e87316',
+                            orangeHover: '#d16511',
+                            light: '#f4f7f6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { overflow-x: hidden; }
+        .hero-bg {
+            background-image: linear-gradient(to right, rgba(17, 91, 156, 0.85) 0%, rgba(12, 62, 106, 0.9) 100%), url('https://images.unsplash.com/photo-1556761175-5973dc0f32d7?q=80&w=1932&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+    
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            [data-aos] {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+    </style>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/contact.js" defer></script>
+</head>
+<body class="flex flex-col min-h-screen font-sans text-gray-600 antialiased bg-gray-50 overflow-x-hidden">
+
+        <!-- Top Bar -->
+    <div class="bg-gray-900 text-gray-300 text-sm py-2 hidden lg:block">
+        <div class="container mx-auto px-4 md:px-8 flex justify-between items-center">
+            <div class="flex space-x-6">
+                <span><i class="fas fa-envelope text-brand-orange mr-2"></i> hello@STackly.co</span>
+                <span><i class="fas fa-phone-alt text-brand-orange mr-2"></i> +91 9000 9000 90</span>
+            </div>
+            <div class="flex space-x-4">
+                <a href="https://facebook.com" class="hover:text-brand-orange transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com" class="hover:text-brand-orange transition"><i class="fab fa-twitter"></i></a>
+                <a href="https://youtube.com" class="hover:text-brand-orange transition"><i class="fab fa-youtube"></i></a>
+                <a href="https://pinterest.com" class="hover:text-brand-orange transition"><i class="fab fa-pinterest-p"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-brand-blue text-white sticky top-0 z-50 shadow-md relative">
+        <div class="container mx-auto px-4 md:px-8 py-4 flex justify-between items-center border-b border-brand-blue border-opacity-50">
+            <div class="text-2xl font-bold tracking-wider z-20 relative">
+                <a href="index.html" aria-label="Home">STackly</a>
+            </div>
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex space-x-8 items-center font-medium text-sm">
+                <a href="index.html" class="nav-link-index hover:text-brand-orange border-b-2 border-transparent pb-1 transition">Home</a>
+                <a href="about.html" class="nav-link-about hover:text-brand-orange border-b-2 border-transparent pb-1 transition">About</a>
+                <a href="services.html" class="nav-link-services hover:text-brand-orange border-b-2 border-transparent pb-1 transition">Services</a>
+                <a href="projects.html" class="nav-link-projects hover:text-brand-orange border-b-2 border-transparent pb-1 transition">Projects</a>
+                <a href="blog.html" class="nav-link-blog hover:text-brand-orange border-b-2 border-transparent pb-1 transition">Blog</a>
+                <a href="contact.html" class="nav-link-contact hover:text-brand-orange border-b-2 border-transparent pb-1 transition">Contact</a>
+            </div>
+            <!-- Desktop Login & Signup -->
+            <div class="hidden md:flex space-x-4 items-center">
+                <a href="login.html" class="text-white hover:text-brand-orange transition duration-300 text-sm font-semibold">Login</a>
+                <a href="signup.html" class="bg-brand-dark hover:bg-brand-orange transition duration-300 px-6 py-2 rounded text-sm font-semibold shadow">Signup</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none z-20 relative" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden opacity-0 transition-opacity duration-300"></div>
+        
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="fixed top-0 right-0 h-full w-3/4 max-w-sm bg-brand-dark shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col">
+            <div class="p-4 flex justify-end border-b border-gray-700">
+                <button id="mobile-close-btn" class="text-white focus:outline-none p-2" aria-label="Close navigation">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <div class="flex flex-col py-6 px-8 space-y-6 text-lg font-medium overflow-y-auto">
+                <a href="index.html" class="nav-link-index hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Home</a>
+                <a href="about.html" class="nav-link-about hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">About</a>
+                <a href="services.html" class="nav-link-services hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Services</a>
+                <a href="projects.html" class="nav-link-projects hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Projects</a>
+                <a href="blog.html" class="nav-link-blog hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Blog</a>
+                <a href="contact.html" class="nav-link-contact hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Contact</a>
+                <hr class="border-gray-700">
+                <a href="login.html" class="text-white text-center hover:text-brand-orange transition duration-300 px-6 py-2 font-semibold">Login</a>
+                <a href="signup.html" class="bg-brand-orange text-center hover:bg-white hover:text-brand-dark transition duration-300 px-6 py-3 rounded font-semibold shadow">Signup</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header (Hero) -->
+    <section class="hero-bg py-32 text-center text-white relative">
+        <div class="relative z-10 max-w-3xl mx-auto px-4" data-aos="fade-up" data-aos-duration="1000">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4">Contact Us</h1>
+            <p class="text-xl text-gray-200 font-light">Passionate About Driving Success For Businesses</p>
+        </div>
+    </section>
+
+    <!-- Contact Form & Info Split -->
+    <section class="flex flex-col lg:flex-row w-full bg-white">
+        <!-- Left: Form -->
+        <div class="lg:w-1/2 bg-brand-blue text-white p-10 md:p-16 lg:p-24" data-aos="fade-right">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">Contact Form To Share Your Details And Message</h2>
+            <p class="text-blue-100 mb-10 leading-relaxed text-sm md:text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+            
+            <form id="contactForm" class="space-y-6" novalidate>
+                <div id="formSuccess" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+                    <strong class="font-bold">Success!</strong>
+                    <span class="block sm:inline">Your message has been sent successfully.</span>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="firstName" class="block text-sm font-bold mb-2">First Name</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="Eg. John" required class="w-full bg-transparent border border-blue-400 p-4 text-white placeholder-blue-300 focus:outline-none focus:border-brand-orange transition aria-required='true'">
+                        <p id="firstNameError" class="text-red-300 text-xs mt-1 hidden">First name is required.</p>
+                    </div>
+                    <div>
+                        <label for="lastName" class="block text-sm font-bold mb-2">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Eg. Cole" required class="w-full bg-transparent border border-blue-400 p-4 text-white placeholder-blue-300 focus:outline-none focus:border-brand-orange transition aria-required='true'">
+                        <p id="lastNameError" class="text-red-300 text-xs mt-1 hidden">Last name is required.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="email" class="block text-sm font-bold mb-2">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Email" required class="w-full bg-transparent border border-blue-400 p-4 text-white placeholder-blue-300 focus:outline-none focus:border-brand-orange transition aria-required='true'">
+                        <p id="emailError" class="text-red-300 text-xs mt-1 hidden">Please enter a valid email address.</p>
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-bold mb-2">Phone</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required class="w-full bg-transparent border border-blue-400 p-4 text-white placeholder-blue-300 focus:outline-none focus:border-brand-orange transition aria-required='true'">
+                        <p id="phoneError" class="text-red-300 text-xs mt-1 hidden">Please enter a valid phone number.</p>
+                    </div>
+                </div>
+                <div>
+                    <label for="subject" class="block text-sm font-bold mb-2">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="Eg. Service" required class="w-full bg-transparent border border-blue-400 p-4 text-white placeholder-blue-300 focus:outline-none focus:border-brand-orange transition aria-required='true'">
+                    <p id="subjectError" class="text-red-300 text-xs mt-1 hidden">Subject is required.</p>
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-bold mb-2">Your Message</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Your message..." required minlength="10" class="w-full bg-transparent border border-blue-400 p-4 text-white placeholder-blue-300 focus:outline-none focus:border-brand-orange transition aria-required='true'"></textarea>
+                    <p id="messageError" class="text-red-300 text-xs mt-1 hidden">Message must be at least 10 characters long.</p>
+                </div>
+                <button type="submit" id="submitBtn" class="w-full bg-brand-orange text-white font-bold py-4 hover:bg-brand-dark transition duration-300 shadow-lg text-lg flex justify-center items-center">
+                    <span>Send Message</span>
+                </button>
+            </form>
+        </div>
+        
+        <!-- Right: Info -->
+        <div class="lg:w-1/2 relative bg-[url('https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=2069&auto=format&fit=crop')] bg-cover bg-center p-10 md:p-16 lg:p-24 text-white" data-aos="fade-left">
+            <div class="absolute inset-0 bg-[#3b6b93]/90 mix-blend-multiply"></div>
+            <div class="relative z-10 h-full flex flex-col justify-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">We'd Love To Welcome You And Discuss With Us</h2>
+                <p class="text-blue-100 mb-12 leading-relaxed text-sm md:text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                
+                <ul class="space-y-8">
+                    <li class="flex items-start">
+                        <div class="w-10 flex justify-center">
+                            <i class="fas fa-map-marker-alt text-2xl mt-1 text-white"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-lg mb-1">Head Office Address</h4>
+                            <p class="text-blue-100 leading-relaxed text-sm">MMR Complex, Chinna Thirupathi,<br>Near Chinna Muniyappan Kovil, Salem 636003</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="w-10 flex justify-center">
+                            <i class="fas fa-envelope-open-text text-2xl mt-1 text-white"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-lg mb-1">Email Address</h4>
+                            <p class="text-blue-100 text-sm">Hello@Email.co</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="w-10 flex justify-center">
+                            <i class="fas fa-phone-alt text-2xl mt-1 text-white"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-lg mb-1">Telephone</h4>
+                            <p class="text-blue-100 text-sm">+62 123 456 789</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="w-10 flex justify-center">
+                            <i class="fas fa-clock text-2xl mt-1 text-white"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-lg mb-1">Office Hours</h4>
+                            <p class="text-blue-100 text-sm">Monday - Friday</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="w-full min-h-[300px] md:h-[500px] bg-gray-200" data-aos="fade-up">
+        <!-- Embedded Google Map targeting MMR Complex, Chinna Thirupathi, Salem -->
+        <iframe src="https://maps.google.com/maps?q=mmr%20complex,%20chinna%20thirupathi,%20near%20chinna%20muniyappan%20kovil,%20salem%20636003&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </section>
+
+    <!-- Our Knowledge / FAQ Block 1 -->
+    <section class="bg-brand-blue py-24 px-4 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            <!-- Left: Image with overlapping box -->
+            <div class="relative" data-aos="fade-right">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop" class="w-full min-h-[300px] md:h-[550px] object-cover shadow-2xl" alt="Professional consultant analyzing business data">
+                <div class="absolute bottom-10 left-0 md:-left-12 bg-[#3b6b93] p-10 shadow-2xl max-w-sm border-l-4 border-brand-orange text-white z-10">
+                    <h4 class="font-bold text-2xl mb-4">Our Business</h4>
+                    <p class="text-sm mb-8 text-blue-100 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
+                    <div class="space-y-4 text-sm font-medium">
+                        <p class="flex items-center"><i class="far fa-envelope mr-3 text-lg"></i> Hello@Email.co</p>
+                        <p class="flex items-center"><i class="fas fa-phone-alt mr-3 text-lg"></i> 123 456 789</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right: Accordion -->
+            <div data-aos="fade-left" class="text-white lg:pl-10">
+                <div class="flex items-center gap-3 mb-4">
+                    <h4 class="text-brand-orange font-bold uppercase tracking-widest text-sm">Our Knowledge</h4>
+                    <span class="w-10 h-0.5 bg-brand-orange"></span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">Stay Updated With Our Consulting Services</h2>
+                <p class="text-blue-100 mb-10 leading-relaxed text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                
+                <div class="space-y-4">
+                    <!-- Active FAQ -->
+                    <div class="faq-item">
+                        <div class="faq-header bg-white text-gray-900 p-6 shadow-md cursor-pointer flex justify-between items-center transition hover:bg-gray-50" data-active-classes="bg-white text-gray-900 hover:bg-gray-50" data-inactive-classes="bg-[#2c699f] text-white hover:bg-[#3273ab]">
+                            <h4 class="font-bold text-lg">How Long Work ?</h4>
+                            <i class="fas fa-chevron-up text-brand-blue faq-icon"></i>
+                        </div>
+                        <div class="faq-content px-6 py-6 text-blue-100 text-sm leading-relaxed border-t border-brand-blue border-opacity-20">
+                            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast.
+                        </div>
+                    </div>
+                    
+                    <!-- Inactive FAQs -->
+                    <div class="faq-item">
+                        <div class="faq-header bg-[#2c699f] p-6 shadow-sm cursor-pointer flex justify-between items-center transition hover:bg-[#3273ab]" data-active-classes="bg-white text-gray-900 hover:bg-gray-50" data-inactive-classes="bg-[#2c699f] text-white hover:bg-[#3273ab]">
+                            <h4 class="font-bold text-lg">How To Make Payment ?</h4>
+                            <i class="fas fa-chevron-down text-blue-200 faq-icon"></i>
+                        </div>
+                        <div class="faq-content hidden px-6 py-6 text-blue-100 text-sm leading-relaxed border-t border-brand-blue border-opacity-20">
+                            We accept various payment methods including credit cards, PayPal, and bank transfers. Please contact our billing department for more details.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-header bg-[#2c699f] p-6 shadow-sm cursor-pointer flex justify-between items-center transition hover:bg-[#3273ab]" data-active-classes="bg-white text-gray-900 hover:bg-gray-50" data-inactive-classes="bg-[#2c699f] text-white hover:bg-[#3273ab]">
+                            <h4 class="font-bold text-lg">How To Get Meetup ?</h4>
+                            <i class="fas fa-chevron-down text-blue-200 faq-icon"></i>
+                        </div>
+                        <div class="faq-content hidden px-6 py-6 text-blue-100 text-sm leading-relaxed border-t border-brand-blue border-opacity-20">
+                            You can schedule a meetup by filling out the contact form below or calling our office directly during business hours.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- General Questions / FAQ Block 2 -->
+    <section class="py-24 px-4 bg-white">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            <!-- Left: Accordion -->
+            <div data-aos="fade-right" class="lg:pr-10">
+                <div class="flex items-center gap-3 mb-4">
+                    <h4 class="text-brand-orange font-bold uppercase tracking-widest text-sm">General Questions</h4>
+                    <span class="w-10 h-0.5 bg-brand-orange"></span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">Discover Answers To General Questions About Our Business</h2>
+                <p class="text-gray-500 mb-10 leading-relaxed text-lg">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
+                
+                <div class="space-y-4">
+                    <!-- Active FAQ -->
+                    <div class="faq-item shadow-md">
+                        <div class="faq-header bg-brand-blue text-white p-6 cursor-pointer flex justify-between items-center border-l-4 border-brand-orange" data-active-classes="bg-brand-blue text-white border-l-4 border-brand-orange" data-inactive-classes="bg-white text-gray-900 border border-gray-200 hover:border-brand-blue hover:text-brand-blue">
+                            <h4 class="font-bold text-lg">How Long Work ?</h4>
+                            <i class="fas fa-chevron-up faq-icon"></i>
+                        </div>
+                        <div class="faq-content p-6 bg-white border border-t-0 border-gray-100 text-gray-500 text-sm leading-relaxed">
+                            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast.
+                        </div>
+                    </div>
+                    
+                    <!-- Inactive FAQs -->
+                    <div class="faq-item shadow-sm border border-gray-200">
+                        <div class="faq-header bg-white p-6 cursor-pointer flex justify-between items-center transition hover:border-brand-blue hover:text-brand-blue" data-active-classes="bg-brand-blue text-white border-l-4 border-brand-orange" data-inactive-classes="bg-white text-gray-900 border border-gray-200">
+                            <h4 class="font-bold text-lg">How To Make Payment ?</h4>
+                            <i class="fas fa-chevron-down text-gray-400 faq-icon"></i>
+                        </div>
+                        <div class="faq-content hidden p-6 bg-white border border-t-0 border-gray-100 text-gray-500 text-sm leading-relaxed">
+                            We accept various payment methods including credit cards, PayPal, and bank transfers. Please contact our billing department for more details.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item shadow-sm border border-gray-200">
+                        <div class="faq-header bg-white p-6 cursor-pointer flex justify-between items-center transition hover:border-brand-blue hover:text-brand-blue" data-active-classes="bg-brand-blue text-white border-l-4 border-brand-orange" data-inactive-classes="bg-white text-gray-900 border border-gray-200">
+                            <h4 class="font-bold text-lg">How To Get Meetup ?</h4>
+                            <i class="fas fa-chevron-down text-gray-400 faq-icon"></i>
+                        </div>
+                        <div class="faq-content hidden p-6 bg-white border border-t-0 border-gray-100 text-gray-500 text-sm leading-relaxed">
+                            You can schedule a meetup by filling out the contact form below or calling our office directly during business hours.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right: Form -->
+            <div class="relative w-full min-h-[350px] md:h-[650px] shadow-2xl" data-aos="fade-left">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-[#3b6b93]/90 mix-blend-multiply"></div>
+                <div class="absolute inset-0 bg-brand-dark/20"></div>
+                
+                <div class="absolute inset-0 p-10 md:p-14 flex flex-col justify-center text-white z-10">
+                    <h3 class="text-3xl md:text-4xl font-bold mb-4">Still Have Questions?</h3>
+                    <p class="text-blue-100 mb-10 text-sm md:text-base leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    
+                    <form id="contactForm" class="space-y-6" novalidate>
+                <div id="formSuccess" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+                    <strong class="font-bold">Success!</strong>
+                    <span class="block sm:inline">Your message has been sent successfully.</span>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="firstName" class="block text-sm font-bold mb-2">First Name</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="Eg. John" required class="w-full bg-transparent border border-blue-400 p-4 text-white placeholder-blue-300 focus:outline-none focus:border-brand-orange transition aria-required='true'">
+                        <p id="firstNameError" class="text-red-300 text-xs mt-1 hidden">First name is required.</p>
+                    </div>
+                    <div>
+                        <label for="lastName" class="block text-sm font-bold mb-2">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Eg. Cole" required class="w-full bg-transparent border border-blue-400 p-4 text-white placeholder-blue-300 focus:outline-none focus:border-brand-orange transition aria-required='true'">
+                        <p id="lastNameError" class="text-red-300 text-xs mt-1 hidden">Last name is required.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="email" class="block text-sm font-bold mb-2">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Email" required class="w-full bg-transparent border border-blue-400 p-4 text-white placeholder-blue-300 focus:outline-none focus:border-brand-orange transition aria-required='true'">
+                        <p id="emailError" class="text-red-300 text-xs mt-1 hidden">Please enter a valid email address.</p>
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-bold mb-2">Phone</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required class="w-full bg-transparent border border-blue-400 p-4 text-white placeholder-blue-300 focus:outline-none focus:border-brand-orange transition aria-required='true'">
+                        <p id="phoneError" class="text-red-300 text-xs mt-1 hidden">Please enter a valid phone number.</p>
+                    </div>
+                </div>
+                <div>
+                    <label for="subject" class="block text-sm font-bold mb-2">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="Eg. Service" required class="w-full bg-transparent border border-blue-400 p-4 text-white placeholder-blue-300 focus:outline-none focus:border-brand-orange transition aria-required='true'">
+                    <p id="subjectError" class="text-red-300 text-xs mt-1 hidden">Subject is required.</p>
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-bold mb-2">Your Message</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Your message..." required minlength="10" class="w-full bg-transparent border border-blue-400 p-4 text-white placeholder-blue-300 focus:outline-none focus:border-brand-orange transition aria-required='true'"></textarea>
+                    <p id="messageError" class="text-red-300 text-xs mt-1 hidden">Message must be at least 10 characters long.</p>
+                </div>
+                <button type="submit" id="submitBtn" class="w-full bg-brand-orange text-white font-bold py-4 hover:bg-brand-dark transition duration-300 shadow-lg text-lg flex justify-center items-center">
+                    <span>Send Message</span>
+                </button>
+            </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Footer -->
+        <!-- Footer -->
+    <footer class="bg-brand-blue pt-16 pb-6 border-t-4 border-brand-orange mt-auto">
+        <div class="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 text-white">
+            <div class="pr-4">
+                <h3 class="text-2xl font-bold tracking-wider mb-6">STackly</h3>
+                <p class="text-sm text-blue-200 leading-relaxed">Expert business consulting strategies designed to drive success, streamline operations, and build long-term growth.</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                <ul class="space-y-3 text-sm text-blue-200 font-medium">
+                    <li><a href="index.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Homepage</a></li>
+                    <li><a href="about.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> About Us</a></li>
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Our Services</a></li>
+                    <li><a href="projects.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Projects Work</a></li>
+                    <li><a href="blog.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Blog</a></li>
+                    <li><a href="contact.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Contact Us</a></li>
+                    
+                    
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6">Consulting Service</h4>
+                <ul class="space-y-3 text-sm text-blue-200 font-medium">
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Strategic Planning</a></li>
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Process Optimization</a></li>
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Market Research</a></li>
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Business Analysis</a></li>
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Change Management</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Head Office Address</h4>
+                <p class="text-sm text-blue-200 mb-6">MMR Complex, Chinna Thirupathi, Near Chinna Muniyappan Kovil, Salem 636003</p>
+                <h4 class="text-lg font-bold mb-2">Days Open</h4>
+                <p class="text-sm text-blue-200">Monday - Friday 09 AM - 10 PM</p>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 md:px-8 border-t border-blue-800 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-blue-300">
+            <p>All Rights Reserved - STackly Consulting</p>
+            <div class="flex space-x-4 mt-4 md:mt-0 text-white">
+                <a href="https://facebook.com" aria-label="Facebook" class="hover:text-brand-orange transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com" aria-label="Twitter" class="hover:text-brand-orange transition"><i class="fab fa-twitter"></i></a>
+                <a href="https://youtube.com" aria-label="YouTube" class="hover:text-brand-orange transition"><i class="fab fa-youtube"></i></a>
+                <a href="https://pinterest.com" aria-label="Pinterest" class="hover:text-brand-orange transition"><i class="fab fa-pinterest-p"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    
+    </body>
+</html>
+
+
+
+
+
+
+
+
+

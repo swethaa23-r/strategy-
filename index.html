@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STackly - Business Consulting & Strategy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#115b9c',
+                            dark: '#0c3e6a',
+                            darker: '#1f2937',
+                            orange: '#e87316',
+                            orangeHover: '#d16511',
+                            light: '#f4f7f6'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('images/image_22.webp');
+        
+        .hero-bg {
+            background-image: linear-gradient(to right, rgba(17, 91, 156, 0.9) 0%, rgba(17, 91, 156, 0.7) 100%), url('images/image_23.webp');
+            background-size: cover;
+            background-position: center;
+        }
+        .section-bg-half {
+            background: linear-gradient(to bottom, #115b9c 50%, #f9fafb 50%);
+        }
+    
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            [data-aos] {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+    </style>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js" defer></script>
+</head>
+<body class="flex flex-col min-h-screen font-sans text-gray-600 antialiased bg-gray-50 overflow-x-hidden">
+
+        <!-- Top Bar -->
+    <div class="bg-gray-900 text-gray-300 text-sm py-2 hidden lg:block">
+        <div class="container mx-auto px-4 md:px-8 flex justify-between items-center">
+            <div class="flex space-x-6">
+                <span><i class="fas fa-envelope text-brand-orange mr-2"></i> hello@STackly.co</span>
+                <span><i class="fas fa-phone-alt text-brand-orange mr-2"></i> +91 9000 9000 90</span>
+            </div>
+            <div class="flex space-x-4">
+                <a href="https://facebook.com" class="hover:text-brand-orange transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com" class="hover:text-brand-orange transition"><i class="fab fa-twitter"></i></a>
+                <a href="https://youtube.com" class="hover:text-brand-orange transition"><i class="fab fa-youtube"></i></a>
+                <a href="https://pinterest.com" class="hover:text-brand-orange transition"><i class="fab fa-pinterest-p"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-brand-blue text-white sticky top-0 z-50 shadow-md relative">
+        <div class="container mx-auto px-4 md:px-8 py-4 flex justify-between items-center border-b border-brand-blue border-opacity-50">
+            <div class="text-2xl font-bold tracking-wider z-20 relative">
+                <a href="index.html" aria-label="Home">STackly</a>
+            </div>
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex space-x-8 items-center font-medium text-sm">
+                <a href="index.html" class="nav-link-index hover:text-brand-orange border-b-2 border-transparent pb-1 transition">Home</a>
+                <a href="about.html" class="nav-link-about hover:text-brand-orange border-b-2 border-transparent pb-1 transition">About</a>
+                <a href="services.html" class="nav-link-services hover:text-brand-orange border-b-2 border-transparent pb-1 transition">Services</a>
+                <a href="projects.html" class="nav-link-projects hover:text-brand-orange border-b-2 border-transparent pb-1 transition">Projects</a>
+                <a href="blog.html" class="nav-link-blog hover:text-brand-orange border-b-2 border-transparent pb-1 transition">Blog</a>
+                <a href="contact.html" class="nav-link-contact hover:text-brand-orange border-b-2 border-transparent pb-1 transition">Contact</a>
+            </div>
+            <!-- Desktop Login & Signup -->
+            <div class="hidden md:flex space-x-4 items-center">
+                <a href="login.html" class="text-white hover:text-brand-orange transition duration-300 text-sm font-semibold">Login</a>
+                <a href="signup.html" class="bg-brand-dark hover:bg-brand-orange transition duration-300 px-6 py-2 rounded text-sm font-semibold shadow">Signup</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none z-20 relative" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden opacity-0 transition-opacity duration-300"></div>
+        
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="fixed top-0 right-0 h-full w-3/4 max-w-sm bg-brand-dark shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col">
+            <div class="p-4 flex justify-end border-b border-gray-700">
+                <button id="mobile-close-btn" class="text-white focus:outline-none p-2" aria-label="Close navigation">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <div class="flex flex-col py-6 px-8 space-y-6 text-lg font-medium overflow-y-auto">
+                <a href="index.html" class="nav-link-index hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Home</a>
+                <a href="about.html" class="nav-link-about hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">About</a>
+                <a href="services.html" class="nav-link-services hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Services</a>
+                <a href="projects.html" class="nav-link-projects hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Projects</a>
+                <a href="blog.html" class="nav-link-blog hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Blog</a>
+                <a href="contact.html" class="nav-link-contact hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Contact</a>
+                <hr class="border-gray-700">
+                <a href="login.html" class="text-white text-center hover:text-brand-orange transition duration-300 px-6 py-2 font-semibold">Login</a>
+                <a href="signup.html" class="bg-brand-orange text-center hover:bg-white hover:text-brand-dark transition duration-300 px-6 py-3 rounded font-semibold shadow">Signup</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg relative pt-20 pb-32 text-white">
+        <div class="container mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-8 items-center">
+            <div class="space-y-6">
+                <p class="text-brand-orange font-semibold tracking-widest text-sm uppercase flex items-center">
+                    <span class="w-8 h-0.5 bg-brand-orange mr-3"></span> Unlock Your Business Potential
+                </p>
+                <h1 data-aos="fade-up" class="text-5xl md:text-6xl font-bold leading-tight">
+                    Strategic Consulting<br>To Elevate Your<br>Business Heights
+                </h1>
+                <p class="text-gray-200 max-w-lg">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                </p>
+                <div class="flex items-center space-x-6 pt-4">
+                    <a href="about.html" class="bg-brand-orange hover:bg-brand-orangeHover transition transform hover:scale-105 px-8 py-3 rounded font-semibold flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <div class="flex items-center font-semibold">
+                        <i class="fas fa-phone-alt text-brand-orange mr-2 text-xl"></i> +91 9000 9000 90
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hidden md:block relative h-full w-full">
+                <div class="absolute right-0 bottom-0 bg-brand-blue bg-opacity-90 p-8 w-72 transform translate-y-1/4 translate-x-12 shadow-xl border-t-4 border-brand-orange">
+                    <div data-aos="fade-right" data-aos-delay="200" class="mb-6 border-b border-blue-400 pb-6">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-chart-pie text-2xl mr-4"></i>
+                            <h3 class="font-bold text-lg">Business Strategy</h3>
+                        </div>
+                        <p class="text-sm text-gray-300">Lorem ipsum dolor sit amet consectetur adipiscing.</p>
+                    </div>
+                    <div data-aos="fade-right" data-aos-delay="400">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-rocket text-2xl mr-4"></i>
+                            <h3 class="font-bold text-lg">Customers Booster</h3>
+                        </div>
+                        <p class="text-sm text-gray-300">Lorem ipsum dolor sit amet consectetur adipiscing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Marquee Row -->
+        <div class="container mx-auto px-4 md:px-8 mt-24">
+            <div class="bg-brand-dark bg-opacity-60 py-4 rounded overflow-hidden flex items-center">
+                <marquee scrollamount="10" class="text-white text-lg font-semibold tracking-widest uppercase">
+                    STRATEGIC PLANNING &nbsp; &bull; &nbsp; PROCESS OPTIMIZATION &nbsp; &bull; &nbsp; MARKET RESEARCH &nbsp; &bull; &nbsp; BUSINESS ANALYSIS &nbsp; &bull; &nbsp; CHANGE MANAGEMENT &nbsp; &bull; &nbsp; DEVELOPMENT &amp; TRAINING &nbsp; &bull; &nbsp; STRATEGIC PLANNING &nbsp; &bull; &nbsp; PROCESS OPTIMIZATION
+                </marquee>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative h-96 md:h-auto">
+                <img src="images/about_professional.webp" alt="Business Analysis" class="w-2/3 h-80 object-cover rounded-xl shadow-lg border-4 border-gray-100">
+                <img src="images/image_03.webp" alt="Business Meeting" class="w-2/5 absolute bottom-4 right-0 border-4 border-white shadow-xl rounded-lg">
+                <div class="absolute -bottom-10 left-1/2 transform -translate-x-1/2 z-20 bg-brand-blue text-white p-6 rounded shadow-xl w-48 text-center border-t-4 border-brand-orange">
+                    <div class="text-4xl font-bold mb-1">680<span class="text-brand-orange">+</span></div>
+                    <div class="text-sm font-semibold">Business Trust Us</div>
+                </div>
+            </div>
+            <div class="space-y-6 md:pl-8">
+                <p class="text-brand-orange font-semibold tracking-widest text-sm uppercase flex items-center">
+                    ABOUT US <span class="w-8 h-0.5 bg-brand-orange ml-3"></span>
+                </p>
+                <h2 data-aos="fade-up" class="text-4xl font-bold text-brand-darker leading-tight">
+                    We Are Business Consultants Dedicated To Driving Your Success
+                </h2>
+                <p data-aos="fade-up" data-aos-delay="100" class="text-gray-500">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                </p>
+                <blockquote data-aos="fade-left" data-aos-delay="200" class="border-l-4 border-brand-orange pl-6 italic text-gray-600 font-medium">
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."
+                </blockquote>
+                <div data-aos="fade-up" data-aos-delay="300" class="flex items-center space-x-4 pt-2">
+                    <i class="far fa-calendar-alt text-brand-blue text-3xl"></i>
+                    <div>
+                        <h4 class="font-bold text-brand-darker">15 Years Of Experience</h4>
+                        <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="400" class="pt-4">
+                    <a href="about.html" class="bg-brand-orange hover:bg-brand-orangeHover text-white transition transform hover:scale-105 px-8 py-3 rounded font-semibold inline-flex items-center">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-24 relative" style="background-image: url('images/image_24.webp'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 bg-brand-darker bg-opacity-90"></div>
+        <div class="container mx-auto px-4 md:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div class="text-white">
+                    <p class="text-brand-orange font-semibold tracking-widest text-sm uppercase mb-2">CONSULTING SOLUTIONS</p>
+                    <h2 data-aos="fade-up" class="text-4xl font-bold">We've Got Your Business Covered</h2>
+                </div>
+                <a href="services.html" class="bg-brand-orange hover:bg-brand-orangeHover text-white transition transform hover:scale-105 px-8 py-3 rounded font-semibold inline-flex items-center mt-6 md:mt-0">
+                    Discover All <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div data-aos="flip-up" data-aos-duration="1000" class="bg-white text-gray-600 p-10 shadow-xl border-b-4 border-transparent hover:border-brand-orange hover:bg-brand-blue group hover:-translate-y-2 transition duration-300">
+                    <i class="fas fa-lightbulb text-4xl text-brand-orange group-hover:text-white mb-6 transition"></i>
+                    <h3 class="text-2xl font-bold text-brand-darker group-hover:text-white mb-4 transition">Strategic Planning</h3>
+                    <p class="text-gray-500 group-hover:text-blue-100 mb-6 transition">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <a href="services.html" class="text-brand-orange font-semibold flex items-center group-hover:text-white transition">Learn more <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                <!-- Card 2 -->
+                <div data-aos="flip-up" data-aos-delay="150" data-aos-duration="1000" class="bg-white text-gray-600 p-10 shadow-xl border-b-4 border-transparent hover:border-brand-orange hover:bg-brand-blue group hover:-translate-y-2 transition duration-300">
+                    <i class="fas fa-handshake text-4xl text-brand-orange group-hover:text-white mb-6 transition"></i>
+                    <h3 class="text-2xl font-bold text-brand-darker group-hover:text-white mb-4 transition">Process Optimization</h3>
+                    <p class="text-gray-500 group-hover:text-blue-100 mb-6 transition">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <a href="services.html" class="text-brand-orange font-semibold flex items-center group-hover:text-white transition">Learn more <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                <!-- Card 3 -->
+                <div data-aos="flip-up" data-aos-delay="300" data-aos-duration="1000" class="bg-white text-gray-600 p-10 shadow-xl border-b-4 border-transparent hover:border-brand-orange hover:bg-brand-blue group hover:-translate-y-2 transition duration-300">
+                    <i class="fas fa-search-chart text-4xl text-brand-orange group-hover:text-white mb-6 transition"></i>
+                    <h3 class="text-2xl font-bold text-brand-darker group-hover:text-white mb-4 transition">Market Research</h3>
+                    <p class="text-gray-500 group-hover:text-blue-100 mb-6 transition">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <a href="services.html" class="text-brand-orange font-semibold flex items-center group-hover:text-white transition">Learn more <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                <!-- Card 4 -->
+                <div data-aos="flip-up" data-aos-duration="1000" class="bg-white text-gray-600 p-10 shadow-xl border-b-4 border-transparent hover:border-brand-orange hover:bg-brand-blue group hover:-translate-y-2 transition duration-300">
+                    <i class="fas fa-search-dollar text-4xl text-brand-orange group-hover:text-white mb-6 transition"></i>
+                    <h3 class="text-2xl font-bold text-brand-darker group-hover:text-white mb-4 transition">Business Analysis</h3>
+                    <p class="text-gray-500 group-hover:text-blue-100 mb-6 transition">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <a href="services.html" class="text-brand-orange font-semibold flex items-center group-hover:text-white transition">Learn more <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                <!-- Card 5 -->
+                <div data-aos="flip-up" data-aos-delay="150" data-aos-duration="1000" class="bg-white text-gray-600 p-10 shadow-xl border-b-4 border-transparent hover:border-brand-orange hover:bg-brand-blue group hover:-translate-y-2 transition duration-300">
+                    <i class="fas fa-sync-alt text-4xl text-brand-orange group-hover:text-white mb-6 transition"></i>
+                    <h3 class="text-2xl font-bold text-brand-darker group-hover:text-white mb-4 transition">Change Management</h3>
+                    <p class="text-gray-500 group-hover:text-blue-100 mb-6 transition">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <a href="services.html" class="text-brand-orange font-semibold flex items-center group-hover:text-white transition">Learn more <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                <!-- Card 6 -->
+                <div data-aos="flip-up" data-aos-delay="300" data-aos-duration="1000" class="bg-white text-gray-600 p-10 shadow-xl border-b-4 border-transparent hover:border-brand-orange hover:bg-brand-blue group hover:-translate-y-2 transition duration-300">
+                    <i class="fas fa-cogs text-4xl text-brand-orange group-hover:text-white mb-6 transition"></i>
+                    <h3 class="text-2xl font-bold text-brand-darker group-hover:text-white mb-4 transition">Development & Training</h3>
+                    <p class="text-gray-500 group-hover:text-blue-100 mb-6 transition">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <a href="services.html" class="text-brand-orange font-semibold flex items-center group-hover:text-white transition">Learn more <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section class="bg-brand-blue text-white py-24 relative overflow-hidden">
+        <div class="absolute right-0 top-0 w-1/2 h-full opacity-10 pointer-events-none">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full transform translate-x-1/4 -translate-y-1/4">
+                <path fill="#F07C00" d="M45,-76.3C58.3,-69.1,69.1,-55.8,76.3,-41.5C83.5,-27.2,87.2,-11.9,85.6,3.1C84,18.1,77.1,32.7,67.8,45.2C58.5,57.7,46.8,68.1,32.8,74.5C18.8,80.9,2.5,83.3,-13.2,81.1C-28.9,78.9,-44,72.1,-56.3,61.4C-68.6,50.7,-78.1,36.1,-82.7,20.4C-87.3,4.7,-87,-12.1,-81,-27.2C-75,-42.3,-63.3,-55.7,-49.4,-62.7C-35.5,-69.7,-19.4,-70.3,-2.3,-67.2C14.8,-64.1,29.6,-57.3,45,-76.3Z" transform="translate(100 100)" />
+            </svg>
+        </div>
+        <div class="container mx-auto px-4 md:px-8 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                <div>
+                    <p class="text-brand-orange font-semibold tracking-widest text-sm uppercase mb-2">OUR METHODOLOGY</p>
+                    <h2 class="text-4xl font-bold mb-6">Strategic Excellence.<br>Proven Results.</h2>
+                    <p class="text-blue-100 max-w-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                </div>
+                <div class="relative">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-2xl relative">
+                        <!-- We need a specific image here, I'll just use a placeholder that will be replaced by the existing image in index.html if we don't know it. Wait, previously it was image_23.webp. Let's use image_23.webp -->
+                        <img src="images/image_23.webp" alt="Video Placeholder" class="w-full h-80 object-cover opacity-80">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <a href="404.html" class="w-20 h-20 bg-white rounded-full inline-flex items-center justify-center text-brand-blue text-2xl hover:bg-brand-orange hover:text-white transition shadow-lg">
+                                <i class="fas fa-play ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div data-aos="fade-up" class="group flex items-start p-6 bg-white hover:bg-brand-blue border border-gray-100 shadow-sm rounded hover:-translate-y-2 transition duration-300 cursor-pointer text-gray-600 hover:text-white">
+                    <i class="fas fa-building text-3xl mr-4 text-brand-orange group-hover:text-white transition"></i>
+                    <div>
+                        <h4 class="font-bold text-xl mb-2 text-brand-darker group-hover:text-white transition">Industry Insights</h4>
+                        <p class="text-gray-500 group-hover:text-blue-100 text-sm transition">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="100" class="group flex items-start p-6 bg-white hover:bg-brand-blue border border-gray-100 shadow-sm rounded hover:-translate-y-2 transition duration-300 cursor-pointer text-gray-600 hover:text-white">
+                    <i class="fas fa-chart-line text-3xl mr-4 text-brand-orange group-hover:text-white transition"></i>
+                    <div>
+                        <h4 class="font-bold text-xl mb-2 text-brand-darker group-hover:text-white transition">Innovative Strategies</h4>
+                        <p class="text-gray-500 group-hover:text-blue-100 text-sm transition">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200" class="group flex items-start p-6 bg-white hover:bg-brand-blue border border-gray-100 shadow-sm rounded hover:-translate-y-2 transition duration-300 cursor-pointer text-gray-600 hover:text-white">
+                    <i class="fas fa-gem text-3xl mr-4 text-brand-orange group-hover:text-white transition"></i>
+                    <div>
+                        <h4 class="font-bold text-xl mb-2 text-brand-darker group-hover:text-white transition">Drive Sustainable Success</h4>
+                        <p class="text-gray-500 group-hover:text-blue-100 text-sm transition">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us / CTA Section -->
+    <section class="bg-brand-blue text-white py-24 relative overflow-hidden">
+        <!-- Background decorative shape -->
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-brand-dark transform origin-bottom-left -skew-x-12 hidden md:block"></div>
+        
+        <div class="container mx-auto px-4 md:px-8 relative z-10 grid md:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8">
+                <h2 data-aos="fade-up" class="text-4xl md:text-5xl font-bold leading-tight">
+                    We Offer A Unique Business Analysis To Growth Strategies Designed To Meets Specific Need
+                </h2>
+                <a href="about.html" class="bg-brand-orange hover:bg-brand-orangeHover text-white transition transform hover:scale-105 px-8 py-3 rounded font-semibold inline-flex items-center">
+                    Learn More <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+            
+            <div class="relative">
+                <img src="images/image_03.webp" alt="Business Meeting" class="w-full h-96 object-cover rounded shadow-2xl">
+                <div class="absolute inset-0 flex items-center justify-center">
+                     <a href="404.html" class="w-16 h-16 bg-white rounded-full inline-flex items-center justify-center text-brand-blue text-xl hover:bg-brand-orange hover:text-white transition shadow-lg">
+                        <i class="fas fa-play ml-1"></i></a>
+                </div>
+                <div class="absolute -right-8 -bottom-8 bg-brand-blue border-l-4 border-brand-orange p-8 shadow-xl w-72 hidden md:block">
+                    <div data-aos="fade-right" data-aos-delay="200" class="mb-6 border-b border-blue-400 pb-6">
+                        <div class="flex items-center mb-2">
+                            <i class="far fa-check-circle text-xl mr-3 text-white"></i>
+                            <h4 class="font-bold">Strategic Services</h4>
+                        </div>
+                        <p class="text-sm text-blue-200">Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div data-aos="fade-right" data-aos-delay="400">
+                        <div class="flex items-center mb-2">
+                            <i class="far fa-check-circle text-xl mr-3 text-white"></i>
+                            <h4 class="font-bold">Custom Needs</h4>
+                        </div>
+                        <p class="text-sm text-blue-200">Lorem ipsum dolor sit amet.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Stats Banner -->
+    <div class="bg-brand-dark text-white">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gray-600 py-12" id="stats-section">
+                <div>
+                    <div class="text-4xl font-bold mb-2"><span class="counter" data-target="680">0</span><span class="text-brand-orange">+</span></div>
+                    <div class="text-sm text-gray-300 font-semibold uppercase tracking-wider">Business Trust Us</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2"><span class="counter" data-target="1354">0</span><span class="text-brand-orange">+</span></div>
+                    <div class="text-sm text-gray-300 font-semibold uppercase tracking-wider">Projects Done</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2"><span class="counter" data-target="97">0</span><span class="text-brand-orange">%</span></div>
+                    <div class="text-sm text-gray-300 font-semibold uppercase tracking-wider">Success Rate</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2"><span class="counter" data-target="15">0</span><span class="text-brand-orange">Y+</span></div>
+                    <div class="text-sm text-gray-300 font-semibold uppercase tracking-wider">Years Of Experience</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Case Studies Section -->
+    <section class="pt-24 pb-32 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-8 text-center mb-16">
+            <h2 data-aos="fade-up" class="text-3xl md:text-4xl font-bold text-brand-darker leading-tight">
+                Explore In-Depth Case Studies<br>Highlighting The Tangible<br>Results Our Consulting Services
+            </h2>
+        </div>
+        <div class="container mx-auto px-4 md:px-8 grid md:grid-cols-3 gap-x-8 gap-y-24">
+            <!-- Card 1 -->
+            <div data-aos="zoom-in-up" data-aos-duration="1000" class="relative bg-white group shadow-sm hover:shadow-xl transition">
+                <div class="relative">
+                    <img src="images/image_05.webp" alt="Case study showing strategic business growth graph" class="w-full h-72 object-cover">
+                    <div class="absolute top-0 left-0 bg-brand-orange w-12 h-12 flex items-center justify-center text-white text-xl font-bold">
+                        1
+                    </div>
+                </div>
+                <div class="bg-white p-6 absolute bottom-0 left-8 right-8 transform translate-y-1/2 shadow-lg border-b-2 border-transparent group-hover:border-brand-orange text-center transition duration-300">
+                    <h3 class="font-bold text-brand-darker mb-2">Strategic Growth Initiative</h3>
+                    <p class="text-sm text-gray-500 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <a href="projects.html" class="text-brand-orange text-sm font-semibold">Learn more <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div data-aos="zoom-in-up" data-aos-duration="1000" class="relative bg-white group shadow-sm hover:shadow-xl transition">
+                <div class="relative">
+                    <img src="images/image_06.webp" alt="Case study illustrating operational efficiency improvements" class="w-full h-72 object-cover">
+                    <div class="absolute top-0 left-0 bg-brand-orange w-12 h-12 flex items-center justify-center text-white text-xl font-bold">
+                        2
+                    </div>
+                </div>
+                <div class="bg-white p-6 absolute bottom-0 left-8 right-8 transform translate-y-1/2 shadow-lg border-b-2 border-transparent group-hover:border-brand-orange text-center transition duration-300">
+                    <h3 class="font-bold text-brand-darker mb-2">Operational Efficiency</h3>
+                    <p class="text-sm text-gray-500 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <a href="projects.html" class="text-brand-orange text-sm font-semibold">Learn more <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div data-aos="zoom-in-up" data-aos-duration="1000" class="relative bg-white group shadow-sm hover:shadow-xl transition">
+                <div class="relative">
+                    <img src="images/image_07.webp" alt="Case study depicting team collaboration and productivity" class="w-full h-72 object-cover">
+                    <div class="absolute top-0 left-0 bg-brand-orange w-12 h-12 flex items-center justify-center text-white text-xl font-bold">
+                        3
+                    </div>
+                </div>
+                <div class="bg-white p-6 absolute bottom-0 left-8 right-8 transform translate-y-1/2 shadow-lg border-b-2 border-transparent group-hover:border-brand-orange text-center transition duration-300">
+                    <h3 class="font-bold text-brand-darker mb-2">Expansion Strategy</h3>
+                    <p class="text-sm text-gray-500 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <a href="projects.html" class="text-brand-orange text-sm font-semibold">Learn more <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div data-aos="zoom-in-up" data-aos-duration="1000" class="relative bg-white group shadow-sm hover:shadow-xl transition mt-8 md:mt-0">
+                <div class="relative">
+                    <img src="images/image_08.webp" alt="Case Study 4" class="w-full h-72 object-cover">
+                    <div class="absolute top-0 left-0 bg-brand-orange w-12 h-12 flex items-center justify-center text-white text-xl font-bold">
+                        4
+                    </div>
+                </div>
+                <div class="bg-white p-6 absolute bottom-0 left-8 right-8 transform translate-y-1/2 shadow-lg border-b-2 border-transparent group-hover:border-brand-orange text-center transition duration-300">
+                    <h3 class="font-bold text-brand-darker mb-2">Change Management</h3>
+                    <p class="text-sm text-gray-500 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <a href="projects.html" class="text-brand-orange text-sm font-semibold">Learn more <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+            <!-- Card 5 -->
+            <div data-aos="zoom-in-up" data-aos-duration="1000" class="relative bg-white group shadow-sm hover:shadow-xl transition mt-8 md:mt-0">
+                <div class="relative">
+                    <img src="images/image_09.webp" alt="Case Study 5" class="w-full h-72 object-cover">
+                    <div class="absolute top-0 left-0 bg-brand-orange w-12 h-12 flex items-center justify-center text-white text-xl font-bold">
+                        5
+                    </div>
+                </div>
+                <div class="bg-white p-6 absolute bottom-0 left-8 right-8 transform translate-y-1/2 shadow-lg border-b-2 border-transparent group-hover:border-brand-orange text-center transition duration-300">
+                    <h3 class="font-bold text-brand-darker mb-2">Development Program</h3>
+                    <p class="text-sm text-gray-500 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <a href="projects.html" class="text-brand-orange text-sm font-semibold">Learn more <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+            <!-- Card 6 -->
+            <div data-aos="zoom-in-up" data-aos-duration="1000" class="relative bg-white group shadow-sm hover:shadow-xl transition mt-8 md:mt-0">
+                <div class="relative">
+                    <img src="images/image_10.webp" alt="Case Study 6" class="w-full h-72 object-cover">
+                    <div class="absolute top-0 left-0 bg-brand-orange w-12 h-12 flex items-center justify-center text-white text-xl font-bold">
+                        6
+                    </div>
+                </div>
+                <div class="bg-white p-6 absolute bottom-0 left-8 right-8 transform translate-y-1/2 shadow-lg border-b-2 border-transparent group-hover:border-brand-orange text-center transition duration-300">
+                    <h3 class="font-bold text-brand-darker mb-2">Customer Experience</h3>
+                    <p class="text-sm text-gray-500 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <a href="projects.html" class="text-brand-orange text-sm font-semibold">Learn more <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consultation CTA -->
+    <section class="relative py-24 bg-brand-blue text-white overflow-hidden" style="background-image: url('images/image_102.webp'); background-blend-mode: multiply; background-size: cover; background-position: center;">
+        <div class="container mx-auto px-4 md:px-8 relative z-10 grid md:grid-cols-2">
+            <div>
+                <h2 data-aos="fade-up" class="text-4xl md:text-5xl font-bold mb-6 leading-tight">Let's Discuss Your Business Goals & Schedule A Free Consultation Today</h2>
+                <p class="text-blue-100 mb-8 max-w-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                <a href="services.html#pricing" class="bg-brand-orange hover:bg-brand-orangeHover transition transform hover:scale-105 px-8 py-3 rounded font-semibold inline-flex items-center">
+                    Get a Quotation <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stay Updated / FAQ Section -->
+    <section class="py-24 bg-brand-blue text-white">
+        <div class="container mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative pr-8 pb-8">
+                <img src="images/image_11.webp" alt="Consulting" class="w-full shadow-lg rounded">
+                <div class="absolute bottom-0 left-8 bg-brand-dark p-8 border-b-4 border-brand-orange shadow-2xl w-72">
+                    <h4 class="font-bold text-2xl mb-4">Our Business</h4>
+                    <p class="text-sm text-blue-200 mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, luctus nec ullamcorper mattis.</p>
+                    <div class="flex items-center text-sm mb-3">
+                        <i class="fas fa-envelope text-brand-orange mr-3"></i> hello@STackly.co
+                    </div>
+                    <div class="flex items-center text-sm">
+                        <i class="fas fa-phone-alt text-brand-orange mr-3"></i> +91 9000 9000 90
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p class="text-brand-orange font-semibold tracking-widest text-sm uppercase mb-2 flex items-center">
+                    OUR KNOWLEDGE <span class="w-8 h-0.5 bg-brand-orange ml-3"></span>
+                </p>
+                <h2 data-aos="fade-up" class="text-4xl font-bold mb-6">Stay Updated With Our Consulting Services</h2>
+                <p class="text-blue-100 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                <div class="space-y-4">
+                    <!-- Accordion Item 1 -->
+                    <div class="faq-item rounded overflow-hidden transition-all duration-300">
+                        <div class="faq-header bg-white p-4 flex justify-between items-center font-bold text-brand-darker cursor-pointer transition-colors" data-active-classes="bg-white text-brand-darker" data-inactive-classes="bg-brand-dark text-white hover:bg-brand-darker">
+                            <span>How Long Work ?</span>
+                            <i class="fas fa-chevron-up text-brand-orange faq-icon"></i>
+                        </div>
+                        <div class="faq-content p-4 pt-0 text-sm border-t border-gray-100 bg-white text-gray-600">
+                            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast
+                        </div>
+                    </div>
+                    <!-- Accordion Item 2 -->
+                    <div class="faq-item rounded overflow-hidden transition-all duration-300">
+                        <div class="faq-header bg-brand-dark text-white p-4 flex justify-between items-center font-bold cursor-pointer transition-colors" data-active-classes="bg-white text-brand-darker" data-inactive-classes="bg-brand-dark text-white hover:bg-brand-darker">
+                            <span>How To Make Payment ?</span>
+                            <i class="fas fa-chevron-down text-brand-orange faq-icon"></i>
+                        </div>
+                        <div class="faq-content hidden p-4 pt-0 text-sm border-t border-gray-100 bg-white text-gray-600">
+                            We accept various payment methods including credit cards, PayPal, and bank transfers. Please contact our billing department for more details.
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Our Team Section -->
+    <section class="py-24 bg-gray-50 overflow-hidden">
+        <div class="container mx-auto px-4 md:px-8 text-center mb-16">
+            <p data-aos="fade-down" class="text-brand-orange font-semibold tracking-widest text-sm uppercase flex items-center justify-center mb-4">
+                MEET THE EXPERTS <span class="w-8 h-0.5 bg-brand-orange ml-3"></span>
+            </p>
+            <h2 data-aos="zoom-in" data-aos-delay="100" class="text-4xl font-bold text-brand-darker leading-tight">Our Dedicated Team Of<br>Professional Consultants</h2>
+        </div>
+        <div class="container mx-auto px-4 md:px-8 grid md:grid-cols-4 gap-8">
+            <!-- Team Member 1 -->
+            <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000" class="bg-white rounded shadow-xl overflow-hidden group">
+                <div class="relative overflow-hidden">
+                    <img src="images/team_robert.webp" alt="Team 1" class="w-full h-72 object-cover transform group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-brand-blue bg-opacity-80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="flex space-x-4">
+                            <a href="https://linkedin.com" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-brand-blue hover:bg-brand-orange hover:text-white transition transform hover:-translate-y-1"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://twitter.com" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-brand-blue hover:bg-brand-orange hover:text-white transition transform hover:-translate-y-1"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 text-center border-b-4 border-transparent group-hover:border-brand-orange transition">
+                    <h3 class="text-xl font-bold text-brand-darker mb-1">Robert Richards</h3>
+                    <p class="text-brand-orange text-sm font-semibold">Senior Strategist</p>
+                </div>
+            </div>
+            <!-- Team Member 2 -->
+            <div data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000" class="bg-white rounded shadow-xl overflow-hidden group">
+                <div class="relative overflow-hidden">
+                    <img src="images/team_emily.webp" alt="Team 2" class="w-full h-72 object-cover transform group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-brand-blue bg-opacity-80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="flex space-x-4">
+                            <a href="https://linkedin.com" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-brand-blue hover:bg-brand-orange hover:text-white transition transform hover:-translate-y-1"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://twitter.com" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-brand-blue hover:bg-brand-orange hover:text-white transition transform hover:-translate-y-1"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 text-center border-b-4 border-transparent group-hover:border-brand-orange transition">
+                    <h3 class="text-xl font-bold text-brand-darker mb-1">Emily Chen</h3>
+                    <p class="text-brand-orange text-sm font-semibold">Financial Analyst</p>
+                </div>
+            </div>
+            <!-- Team Member 3 -->
+            <div data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000" class="bg-white rounded shadow-xl overflow-hidden group">
+                <div class="relative overflow-hidden">
+                    <img src="images/team_michael.webp" alt="Team 3" class="w-full h-72 object-cover transform group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-brand-blue bg-opacity-80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="flex space-x-4">
+                            <a href="https://linkedin.com" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-brand-blue hover:bg-brand-orange hover:text-white transition transform hover:-translate-y-1"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://twitter.com" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-brand-blue hover:bg-brand-orange hover:text-white transition transform hover:-translate-y-1"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 text-center border-b-4 border-transparent group-hover:border-brand-orange transition">
+                    <h3 class="text-xl font-bold text-brand-darker mb-1">Michael Doe</h3>
+                    <p class="text-brand-orange text-sm font-semibold">Marketing Head</p>
+                </div>
+            </div>
+            <!-- Team Member 4 -->
+            <div data-aos="fade-up" data-aos-delay="700" data-aos-duration="1000" class="bg-white rounded shadow-xl overflow-hidden group">
+                <div class="relative overflow-hidden">
+                    <img src="images/team_sarah.webp" alt="Team 4" class="w-full h-72 object-cover transform group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-brand-blue bg-opacity-80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="flex space-x-4">
+                            <a href="https://linkedin.com" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-brand-blue hover:bg-brand-orange hover:text-white transition transform hover:-translate-y-1"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://twitter.com" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-brand-blue hover:bg-brand-orange hover:text-white transition transform hover:-translate-y-1"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 text-center border-b-4 border-transparent group-hover:border-brand-orange transition">
+                    <h3 class="text-xl font-bold text-brand-darker mb-1">Sarah Palmer</h3>
+                    <p class="text-brand-orange text-sm font-semibold">Operations Manager</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-24 relative" style="background-image: url('images/image_26.webp'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 bg-brand-darker bg-opacity-70"></div>
+        <div class="container mx-auto px-4 md:px-8 relative z-10 grid md:grid-cols-2 gap-12 items-center">
+            <div class="text-white pr-8">
+                <h2 data-aos="fade-up" class="text-4xl md:text-5xl font-bold mb-6 leading-tight">See How Others<br>Have Benefited</h2>
+                <p class="mb-8 text-gray-300 max-w-md">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                <a href="services.html" class="bg-brand-orange hover:bg-brand-orangeHover transition transform hover:scale-105 px-8 py-3 rounded font-semibold inline-flex items-center">
+                    See More <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+            <div class="flex space-x-6 overflow-x-auto pb-4 custom-scrollbar">
+                <!-- Testimonial Card 1 -->
+                <div data-aos="fade-left" class="bg-brand-blue border-l-4 border-brand-orange p-8 min-w-[320px] shadow-lg flex-shrink-0">
+                    <div class="text-brand-orange mb-6 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-white text-sm mb-8 font-light italic">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."</p>
+                    <div class="flex items-center">
+                        <img src="images/image_16.webp" alt="Profile picture of John Doe, Business Director" class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="text-white font-bold">Mr. John Doe</h4>
+                            <p class="text-brand-orange text-xs font-semibold">DIRECTOR</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial Card 2 -->
+                <div data-aos="fade-left" class="bg-brand-blue border-l-4 border-brand-orange p-8 min-w-[320px] shadow-lg flex-shrink-0">
+                    <div class="text-brand-orange mb-6 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-white text-sm mb-8 font-light italic">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."</p>
+                    <div class="flex items-center">
+                        <img src="images/image_101.webp" alt="Profile picture of John Doe, Business Director" class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="text-white font-bold">Mr. John Doe</h4>
+                            <p class="text-brand-orange text-xs font-semibold">DIRECTOR</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog / Content Section -->
+    <section class="py-24 bg-white">
+         <div class="container mx-auto px-4 md:px-8 text-center mb-16">
+            <p class="text-brand-orange font-semibold tracking-widest text-sm uppercase flex items-center justify-center mb-4">
+                STAY INFORMED, STAY AHEAD <span class="w-8 h-0.5 bg-brand-orange ml-3"></span>
+            </p>
+            <h2 data-aos="fade-up" class="text-4xl font-bold text-brand-darker leading-tight">Stay Ahead Of The Curve With<br>Our Thought-Provoking Content</h2>
+        </div>
+        <div class="container mx-auto px-4 md:px-8 grid md:grid-cols-3 gap-8 mb-12">
+            <!-- Blog Card 1 -->
+            <div data-aos="fade-up" class="bg-white shadow-lg group hover:-translate-y-2 transition duration-300 border border-gray-100">
+                <div class="relative">
+                    <img src="images/image_18.webp" alt="Blog 1" class="w-full h-60 object-cover">
+                    <div class="absolute top-4 left-4 bg-brand-blue text-white text-xs px-3 py-1 font-semibold tracking-wider">CATEGORY</div>
+                    <div class="absolute bottom-0 left-4 bg-brand-blue text-white text-center p-3 transform translate-y-1/2 shadow">
+                        <div class="font-bold text-xl leading-none mb-1">15</div>
+                        <div class="text-xs uppercase">Mar</div>
+                    </div>
+                </div>
+                <div class="p-8 pt-12">
+                    <h3 class="text-xl font-bold text-brand-darker mb-4 group-hover:text-brand-orange transition">The Role Of Emotional Intelligence In Leadership</h3>
+                    <p class="text-gray-500 text-sm mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                    <a href="blog-single.html" class="text-brand-orange text-sm font-semibold flex items-center">Learn more <i class="fas fa-angle-double-right ml-2"></i></a>
+                </div>
+            </div>
+            <!-- Blog Card 2 -->
+            <div data-aos="fade-up" class="bg-white shadow-lg group hover:-translate-y-2 transition duration-300 border border-gray-100">
+                <div class="relative">
+                    <img src="images/image_19.webp" alt="Blog 2" class="w-full h-60 object-cover">
+                    <div class="absolute top-4 left-4 bg-brand-blue text-white text-xs px-3 py-1 font-semibold tracking-wider">CATEGORY</div>
+                    <div class="absolute bottom-0 left-4 bg-brand-blue text-white text-center p-3 transform translate-y-1/2 shadow">
+                        <div class="font-bold text-xl leading-none mb-1">22</div>
+                        <div class="text-xs uppercase">Apr</div>
+                    </div>
+                </div>
+                <div class="p-8 pt-12">
+                    <h3 class="text-xl font-bold text-brand-darker mb-4 group-hover:text-brand-orange transition">Building A Roadmap For Business Success</h3>
+                    <p class="text-gray-500 text-sm mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                    <a href="blog-single.html" class="text-brand-orange text-sm font-semibold flex items-center">Learn more <i class="fas fa-angle-double-right ml-2"></i></a>
+                </div>
+            </div>
+            <!-- Blog Card 3 -->
+            <div data-aos="fade-up" class="bg-white shadow-lg group hover:-translate-y-2 transition duration-300 border border-gray-100">
+                <div class="relative">
+                    <img src="images/image_20.webp" alt="Blog 3" class="w-full h-60 object-cover">
+                    <div class="absolute top-4 left-4 bg-brand-blue text-white text-xs px-3 py-1 font-semibold tracking-wider">CATEGORY</div>
+                    <div class="absolute bottom-0 left-4 bg-brand-blue text-white text-center p-3 transform translate-y-1/2 shadow">
+                        <div class="font-bold text-xl leading-none mb-1">05</div>
+                        <div class="text-xs uppercase">May</div>
+                    </div>
+                </div>
+                <div class="p-8 pt-12">
+                    <h3 class="text-xl font-bold text-brand-darker mb-4 group-hover:text-brand-orange transition">Streamlining Your Business Processes For Efficiency</h3>
+                    <p class="text-gray-500 text-sm mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                    <a href="blog-single.html" class="text-brand-orange text-sm font-semibold flex items-center">Learn more <i class="fas fa-angle-double-right ml-2"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="blog.html" class="bg-brand-orange hover:bg-brand-orangeHover text-white transition transform hover:scale-105 px-8 py-3 rounded font-semibold inline-flex items-center">
+                See All Blog <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+        <!-- Footer -->
+        <!-- Footer -->
+    <footer class="bg-brand-blue pt-16 pb-6 border-t-4 border-brand-orange mt-auto">
+        <div class="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 text-white">
+            <div class="pr-4">
+                <h3 class="text-2xl font-bold tracking-wider mb-6">STackly</h3>
+                <p class="text-sm text-blue-200 leading-relaxed">Expert business consulting strategies designed to drive success, streamline operations, and build long-term growth.</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                <ul class="space-y-3 text-sm text-blue-200 font-medium">
+                    <li><a href="index.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Homepage</a></li>
+                    <li><a href="about.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> About Us</a></li>
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Our Services</a></li>
+                    <li><a href="projects.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Projects Work</a></li>
+                    <li><a href="blog.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Blog</a></li>
+                    <li><a href="contact.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Contact Us</a></li>
+                    
+                    
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6">Consulting Service</h4>
+                <ul class="space-y-3 text-sm text-blue-200 font-medium">
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Strategic Planning</a></li>
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Process Optimization</a></li>
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Market Research</a></li>
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Business Analysis</a></li>
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Change Management</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Head Office Address</h4>
+                <p class="text-sm text-blue-200 mb-6">MMR Complex, Chinna Thirupathi, Near Chinna Muniyappan Kovil, Salem 636003</p>
+                <h4 class="text-lg font-bold mb-2">Days Open</h4>
+                <p class="text-sm text-blue-200">Monday - Friday 09 AM - 10 PM</p>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 md:px-8 border-t border-blue-800 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-blue-300">
+            <p>All Rights Reserved - STackly Consulting</p>
+            <div class="flex space-x-4 mt-4 md:mt-0 text-white">
+                <a href="https://facebook.com" aria-label="Facebook" class="hover:text-brand-orange transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com" aria-label="Twitter" class="hover:text-brand-orange transition"><i class="fab fa-twitter"></i></a>
+                <a href="https://youtube.com" aria-label="YouTube" class="hover:text-brand-orange transition"><i class="fab fa-youtube"></i></a>
+                <a href="https://pinterest.com" aria-label="Pinterest" class="hover:text-brand-orange transition"><i class="fab fa-pinterest-p"></i></a>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out-cubic',
+            once: true,
+            offset: 50,
+        });
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; // The lower the slower
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = +counter.getAttribute('data-target');
+                    
+                    const updateCount = () => {
+                        const count = +counter.innerText.replace(/,/g, '');
+                        const inc = target / speed;
+
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + inc).toLocaleString();
+                            setTimeout(updateCount, 10);
+                        } else {
+                            counter.innerText = target.toLocaleString();
+                        }
+                    };
+
+                    updateCount();
+                    observer.unobserve(counter);
+                }
+            });
+        }, observerOptions);
+
+        counters.forEach(counter => {
+            observer.observe(counter);
+        });
+    </script>
+
+    </body>
+</html>
+
+
+
+
+
+

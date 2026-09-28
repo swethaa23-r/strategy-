@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - STackly</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#115b9c',
+                            dark: '#0c3e6a',
+                            darker: '#1f2937',
+                            orange: '#e87316',
+                            orangeHover: '#d16511',
+                            light: '#f4f7f6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { overflow-x: hidden; background-color: #f8fafc; }
+        .active-nav { background-color: rgba(255,255,255,0.1); border-left: 4px solid #e87316; }
+    </style>
+
+</head>
+<body class="font-sans text-gray-800 flex bg-gray-50">
+
+    
+    <!-- Sidebar -->
+    <aside class="w-64 bg-brand-blue h-screen fixed top-0 left-0 flex flex-col shadow-xl z-20 transition-transform transform -translate-x-full md:translate-x-0" id="sidebar">
+        <div class="h-16 flex items-center justify-between px-6 bg-brand-dark shadow-md border-b border-brand-blue border-opacity-50">
+            <h1 class="text-white text-2xl font-bold tracking-wider">STackly<span class="text-brand-orange">User</span></h1>
+            <button id="closeSidebarBtn" class="md:hidden text-gray-300 hover:text-white focus:outline-none">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <div class="flex-grow py-6 overflow-y-auto">
+            <nav class="flex flex-col space-y-2">
+                
+            <a href="user-dashboard.html" class="flex items-center py-3 px-6 text-gray-200 transition-colors border-l-4 border-transparent hover:bg-white hover:bg-opacity-5 hover:border-brand-orange">
+                <i class="fas fa-home w-6 text-center text-lg"></i>
+                <span class="ml-3 font-medium">Dashboard</span>
+            </a>
+        
+            <a href="user-services.html" class="flex items-center py-3 px-6 text-gray-200 transition-colors border-l-4 border-transparent hover:bg-white hover:bg-opacity-5 hover:border-brand-orange">
+                <i class="fas fa-concierge-bell w-6 text-center text-lg"></i>
+                <span class="ml-3 font-medium">My Services</span>
+            </a>
+        
+            <a href="user-projects.html" class="flex items-center py-3 px-6 text-gray-200 transition-colors border-l-4 active-nav">
+                <i class="fas fa-project-diagram w-6 text-center text-lg"></i>
+                <span class="ml-3 font-medium">My Projects</span>
+            </a>
+        
+            <a href="user-messages.html" class="flex items-center py-3 px-6 text-gray-200 transition-colors border-l-4 border-transparent hover:bg-white hover:bg-opacity-5 hover:border-brand-orange">
+                <i class="fas fa-comments w-6 text-center text-lg"></i>
+                <span class="ml-3 font-medium">Messages</span>
+            </a>
+        
+            <a href="user-profile.html" class="flex items-center py-3 px-6 text-gray-200 transition-colors border-l-4 border-transparent hover:bg-white hover:bg-opacity-5 hover:border-brand-orange">
+                <i class="fas fa-user w-6 text-center text-lg"></i>
+                <span class="ml-3 font-medium">Profile</span>
+            </a>
+        
+            <a href="user-settings.html" class="flex items-center py-3 px-6 text-gray-200 transition-colors border-l-4 border-transparent hover:bg-white hover:bg-opacity-5 hover:border-brand-orange">
+                <i class="fas fa-cog w-6 text-center text-lg"></i>
+                <span class="ml-3 font-medium">Settings</span>
+            </a>
+        
+            </nav>
+        </div>
+        <div class="p-4 bg-brand-dark">
+            <button id="logoutBtn" class="w-full bg-transparent border border-gray-400 hover:bg-red-600 hover:border-red-600 text-white py-2 px-4 rounded transition flex items-center justify-center font-semibold">
+                <i class="fas fa-sign-out-alt mr-2"></i> Logout
+            </button>
+        </div>
+    </aside>
+
+    <!-- Overlay -->
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-10 hidden md:hidden transition-opacity"></div>
+    
+    <!-- Topbar -->
+    <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6 fixed top-0 right-0 left-0 md:left-64 z-10 transition-all">
+        <div class="flex items-center">
+            <button id="mobileMenuBtn" class="md:hidden text-gray-500 hover:text-brand-orange focus:outline-none mr-4">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+            <h2 class="text-xl font-semibold text-gray-800" id="pageTitle">Projects</h2>
+        </div>
+        <div class="flex items-center space-x-4">
+            <div class="relative">
+                <button class="text-gray-400 hover:text-brand-orange transition">
+                    <i class="fas fa-bell text-xl"></i>
+                </button>
+            </div>
+            <div class="flex items-center border-l pl-4">
+                <div class="mr-3 text-right hidden sm:block">
+                    <p class="text-sm font-bold text-gray-800" id="userEmailDisplay">User</p>
+                    <p class="text-xs text-brand-orange font-semibold" id="userRoleDisplay">Client Account</p>
+                </div>
+                <div class="h-10 w-10 rounded-full bg-brand-orange text-white flex items-center justify-center text-lg font-bold shadow-md">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+
+    <!-- Main Content Area -->
+    <main class="pt-16 md:pl-64 min-h-screen flex flex-col transition-all w-full">
+        <div class="p-6 md:p-8 flex-grow">
+            
+        <!-- Section 1: Overview Stats -->
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+            <div class="bg-white rounded shadow-sm border border-gray-100 p-4 flex flex-col justify-center items-center text-center">
+                <i class="fas fa-folder-open text-gray-400 text-2xl mb-2"></i>
+                <p class="text-2xl font-bold text-brand-blue">3</p>
+                <p class="text-xs text-gray-500 uppercase font-semibold">Total Projects</p>
+            </div>
+            <div class="bg-white rounded shadow-sm border border-gray-100 p-4 flex flex-col justify-center items-center text-center">
+                <i class="fas fa-spinner text-brand-orange text-2xl mb-2"></i>
+                <p class="text-2xl font-bold text-gray-800">1</p>
+                <p class="text-xs text-gray-500 uppercase font-semibold">In Progress</p>
+            </div>
+            <div class="bg-white rounded shadow-sm border border-gray-100 p-4 flex flex-col justify-center items-center text-center">
+                <i class="fas fa-check-circle text-green-500 text-2xl mb-2"></i>
+                <p class="text-2xl font-bold text-gray-800">2</p>
+                <p class="text-xs text-gray-500 uppercase font-semibold">Completed</p>
+            </div>
+            <div class="bg-white rounded shadow-sm border border-gray-100 p-4 flex flex-col justify-center items-center text-center">
+                <i class="fas fa-file-invoice text-purple-500 text-2xl mb-2"></i>
+                <p class="text-2xl font-bold text-gray-800">12</p>
+                <p class="text-xs text-gray-500 uppercase font-semibold">Deliverables</p>
+            </div>
+        </section>
+        
+        <!-- Section 2: Active Projects Timeline -->
+        <section class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-8">
+            <h3 class="text-lg font-bold text-gray-800 mb-6 border-b pb-2">Active Projects</h3>
+            <div class="border border-gray-100 rounded-lg p-6 hover:shadow-md transition">
+                <div class="flex justify-between items-start mb-2">
+                    <h4 class="font-bold text-xl text-brand-blue">Corporate Rebranding Strategy</h4>
+                    <span class="bg-brand-orange text-white text-xs font-bold px-3 py-1 rounded-full">Active</span>
+                </div>
+                <p class="text-sm text-gray-500 mb-4">Complete overhaul of brand assets and digital strategy.</p>
+                
+                <div class="mb-2 flex justify-between text-xs font-bold text-gray-700">
+                    <span>Phase 2: Market Analysis</span>
+                    <span>65% Completed</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5 mb-6">
+                    <div class="bg-green-500 h-2.5 rounded-full" style="width: 65%"></div>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between text-sm border-t border-gray-100 pt-4">
+                    <div class="text-gray-600 mb-2 sm:mb-0"><i class="far fa-calendar-alt mr-2"></i> Deadline: <span class="font-semibold">Nov 15, 2026</span></div>
+                    <button class="bg-gray-100 text-gray-800 hover:bg-brand-blue hover:text-white px-4 py-2 rounded font-semibold transition">View Workspace</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Project Deliverables/Files -->
+        <section class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-8">
+            <h3 class="text-lg font-bold text-gray-800 mb-4 border-b pb-2">Recent Deliverables</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="border border-gray-200 rounded p-4 flex items-center justify-between hover:bg-gray-50 cursor-pointer transition group">
+                    <div class="flex items-center">
+                        <i class="fas fa-file-pdf text-red-500 text-2xl mr-3"></i>
+                        <div>
+                            <p class="font-bold text-gray-800 text-sm group-hover:text-brand-blue">Brand_Audit.pdf</p>
+                            <p class="text-xs text-gray-500">2.4 MB</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-download text-gray-400 group-hover:text-brand-orange"></i>
+                </div>
+                <div class="border border-gray-200 rounded p-4 flex items-center justify-between hover:bg-gray-50 cursor-pointer transition group">
+                    <div class="flex items-center">
+                        <i class="fas fa-file-excel text-green-500 text-2xl mr-3"></i>
+                        <div>
+                            <p class="font-bold text-gray-800 text-sm group-hover:text-brand-blue">Competitor_Data.xlsx</p>
+                            <p class="text-xs text-gray-500">1.1 MB</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-download text-gray-400 group-hover:text-brand-orange"></i>
+                </div>
+                <div class="border border-gray-200 rounded p-4 flex items-center justify-between hover:bg-gray-50 cursor-pointer transition group">
+                    <div class="flex items-center">
+                        <i class="fas fa-file-powerpoint text-orange-500 text-2xl mr-3"></i>
+                        <div>
+                            <p class="font-bold text-gray-800 text-sm group-hover:text-brand-blue">Strategy_Deck_v1.pptx</p>
+                            <p class="text-xs text-gray-500">5.8 MB</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-download text-gray-400 group-hover:text-brand-orange"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Request New Project -->
+        <section class="bg-brand-blue rounded-lg shadow-sm p-6 text-white text-center flex flex-col md:flex-row justify-between items-center">
+            <div class="text-left mb-4 md:mb-0">
+                <h3 class="text-xl font-bold mb-1">Ready for the next phase?</h3>
+                <p class="text-blue-200 text-sm">Start a new project or request a followup consultation.</p>
+            </div>
+            <button class="bg-white text-brand-blue hover:bg-brand-orange hover:text-white px-8 py-3 rounded-full font-bold transition shadow-lg w-full md:w-auto whitespace-nowrap">
+                Start New Project
+            </button>
+        </section>
+    
+        </div>
+        
+        <footer class="bg-white border-t p-4 text-center text-xs text-gray-500 mt-auto shadow-inner">
+            &copy; 2026 STackly Consulting. All Rights Reserved.
+        </footer>
+    </main>
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check auth
+            const role = localStorage.getItem('userRole');
+            const email = localStorage.getItem('userEmail');
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            
+            if (!isLoggedIn) {
+                window.location.href = 'login.html';
+                return;
+            }
+            if (role === 'Admin') {
+                window.location.href = 'admin-dashboard.html';
+                return;
+            }
+            if (role !== 'User') {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            const emailDisplay = document.getElementById('userEmailDisplay');
+            if(emailDisplay && email) emailDisplay.innerText = email;
+            
+            const roleDisplay = document.getElementById('userRoleDisplay');
+            if(roleDisplay && role) roleDisplay.innerText = role;
+            
+            const dynamicEmail = document.getElementById('dynamicEmail');
+            if(dynamicEmail && email) dynamicEmail.innerText = email;
+            
+            const dynamicRole = document.getElementById('dynamicRole');
+            if(dynamicRole && role) dynamicRole.innerText = role;
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const closeSidebarBtn = document.getElementById('closeSidebarBtn');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+
+            function openSidebar() {
+                if(sidebar) sidebar.classList.remove('-translate-x-full');
+                if(overlay) overlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeSidebar() {
+                if(sidebar) sidebar.classList.add('-translate-x-full');
+                if(overlay) overlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+
+            if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openSidebar);
+            if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeSidebar);
+            if (overlay) overlay.addEventListener('click', closeSidebar);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && sidebar && !sidebar.classList.contains('-translate-x-full')) {
+                    closeSidebar();
+                }
+            });
+
+            // Close when clicking a link
+            if(sidebar) {
+                const sidebarLinks = sidebar.querySelectorAll('nav a');
+                sidebarLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        if(window.innerWidth < 768) {
+                            closeSidebar();
+                        }
+                    });
+                });
+            }
+
+            // Logout
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', () => {
+                    localStorage.removeItem('userRole');
+                    localStorage.removeItem('userEmail');
+                    localStorage.removeItem('isLoggedIn');
+                    window.location.href = 'login.html';
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

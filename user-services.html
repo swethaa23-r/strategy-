@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - STackly</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#115b9c',
+                            dark: '#0c3e6a',
+                            darker: '#1f2937',
+                            orange: '#e87316',
+                            orangeHover: '#d16511',
+                            light: '#f4f7f6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { overflow-x: hidden; background-color: #f8fafc; }
+        .active-nav { background-color: rgba(255,255,255,0.1); border-left: 4px solid #e87316; }
+    </style>
+
+</head>
+<body class="font-sans text-gray-800 flex bg-gray-50">
+
+    
+    <!-- Sidebar -->
+    <aside class="w-64 bg-brand-blue h-screen fixed top-0 left-0 flex flex-col shadow-xl z-20 transition-transform transform -translate-x-full md:translate-x-0" id="sidebar">
+        <div class="h-16 flex items-center justify-between px-6 bg-brand-dark shadow-md border-b border-brand-blue border-opacity-50">
+            <h1 class="text-white text-2xl font-bold tracking-wider">STackly<span class="text-brand-orange">User</span></h1>
+            <button id="closeSidebarBtn" class="md:hidden text-gray-300 hover:text-white focus:outline-none">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <div class="flex-grow py-6 overflow-y-auto">
+            <nav class="flex flex-col space-y-2">
+                
+            <a href="user-dashboard.html" class="flex items-center py-3 px-6 text-gray-200 transition-colors border-l-4 border-transparent hover:bg-white hover:bg-opacity-5 hover:border-brand-orange">
+                <i class="fas fa-home w-6 text-center text-lg"></i>
+                <span class="ml-3 font-medium">Dashboard</span>
+            </a>
+        
+            <a href="user-services.html" class="flex items-center py-3 px-6 text-gray-200 transition-colors border-l-4 active-nav">
+                <i class="fas fa-concierge-bell w-6 text-center text-lg"></i>
+                <span class="ml-3 font-medium">My Services</span>
+            </a>
+        
+            <a href="user-projects.html" class="flex items-center py-3 px-6 text-gray-200 transition-colors border-l-4 border-transparent hover:bg-white hover:bg-opacity-5 hover:border-brand-orange">
+                <i class="fas fa-project-diagram w-6 text-center text-lg"></i>
+                <span class="ml-3 font-medium">My Projects</span>
+            </a>
+        
+            <a href="user-messages.html" class="flex items-center py-3 px-6 text-gray-200 transition-colors border-l-4 border-transparent hover:bg-white hover:bg-opacity-5 hover:border-brand-orange">
+                <i class="fas fa-comments w-6 text-center text-lg"></i>
+                <span class="ml-3 font-medium">Messages</span>
+            </a>
+        
+            <a href="user-profile.html" class="flex items-center py-3 px-6 text-gray-200 transition-colors border-l-4 border-transparent hover:bg-white hover:bg-opacity-5 hover:border-brand-orange">
+                <i class="fas fa-user w-6 text-center text-lg"></i>
+                <span class="ml-3 font-medium">Profile</span>
+            </a>
+        
+            <a href="user-settings.html" class="flex items-center py-3 px-6 text-gray-200 transition-colors border-l-4 border-transparent hover:bg-white hover:bg-opacity-5 hover:border-brand-orange">
+                <i class="fas fa-cog w-6 text-center text-lg"></i>
+                <span class="ml-3 font-medium">Settings</span>
+            </a>
+        
+            </nav>
+        </div>
+        <div class="p-4 bg-brand-dark">
+            <button id="logoutBtn" class="w-full bg-transparent border border-gray-400 hover:bg-red-600 hover:border-red-600 text-white py-2 px-4 rounded transition flex items-center justify-center font-semibold">
+                <i class="fas fa-sign-out-alt mr-2"></i> Logout
+            </button>
+        </div>
+    </aside>
+
+    <!-- Overlay -->
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-10 hidden md:hidden transition-opacity"></div>
+    
+    <!-- Topbar -->
+    <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6 fixed top-0 right-0 left-0 md:left-64 z-10 transition-all">
+        <div class="flex items-center">
+            <button id="mobileMenuBtn" class="md:hidden text-gray-500 hover:text-brand-orange focus:outline-none mr-4">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+            <h2 class="text-xl font-semibold text-gray-800" id="pageTitle">Services</h2>
+        </div>
+        <div class="flex items-center space-x-4">
+            <div class="relative">
+                <button class="text-gray-400 hover:text-brand-orange transition">
+                    <i class="fas fa-bell text-xl"></i>
+                </button>
+            </div>
+            <div class="flex items-center border-l pl-4">
+                <div class="mr-3 text-right hidden sm:block">
+                    <p class="text-sm font-bold text-gray-800" id="userEmailDisplay">User</p>
+                    <p class="text-xs text-brand-orange font-semibold" id="userRoleDisplay">Client Account</p>
+                </div>
+                <div class="h-10 w-10 rounded-full bg-brand-orange text-white flex items-center justify-center text-lg font-bold shadow-md">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+
+    <!-- Main Content Area -->
+    <main class="pt-16 md:pl-64 min-h-screen flex flex-col transition-all w-full">
+        <div class="p-6 md:p-8 flex-grow">
+            
+        <!-- Section 1: Search/Filter -->
+        <section class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 mb-6 flex flex-col sm:flex-row gap-4 items-center justify-between">
+            <h3 class="font-bold text-gray-800 hidden md:block">Service Catalog</h3>
+            <div class="relative w-full sm:w-64">
+                <i class="fas fa-search absolute left-3 top-2.5 text-gray-400"></i>
+                <input type="text" placeholder="Search services..." class="w-full pl-9 pr-3 py-2 border border-gray-200 rounded focus:outline-none focus:border-brand-blue text-sm">
+            </div>
+            <select class="w-full sm:w-auto border border-gray-200 p-2 rounded text-sm focus:outline-none focus:border-brand-blue">
+                <option>All Categories</option>
+                <option>Strategy</option>
+                <option>Marketing</option>
+                <option>Technology</option>
+            </select>
+        </section>
+
+        <!-- Section 2: Active Subscriptions -->
+        <section class="mb-8">
+            <h3 class="text-lg font-bold text-gray-800 mb-4 border-l-4 border-brand-orange pl-3">My Enrolled Services</h3>
+            <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+                <table class="w-full text-left text-sm">
+                    <thead class="bg-gray-50 border-b border-gray-100">
+                        <tr>
+                            <th class="p-4 font-semibold text-gray-600">Service Name</th>
+                            <th class="p-4 font-semibold text-gray-600">Start Date</th>
+                            <th class="p-4 font-semibold text-gray-600">Status</th>
+                            <th class="p-4 font-semibold text-gray-600">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        <tr>
+                            <td class="p-4 font-bold text-brand-blue">Strategic Planning</td>
+                            <td class="p-4 text-gray-500">Oct 01, 2026</td>
+                            <td class="p-4"><span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold">Active</span></td>
+                            <td class="p-4"><button class="text-brand-orange hover:underline font-semibold">View Details</button></td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-bold text-brand-blue">Market Research</td>
+                            <td class="p-4 text-gray-500">Sep 15, 2026</td>
+                            <td class="p-4"><span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold">Active</span></td>
+                            <td class="p-4"><button class="text-brand-orange hover:underline font-semibold">View Details</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Section 3: Available Services -->
+        <section class="mb-8">
+            <h3 class="text-lg font-bold text-gray-800 mb-4 border-l-4 border-brand-blue pl-3">Explore New Services</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white border border-gray-100 rounded-lg p-6 shadow-sm hover:shadow-md transition text-center group">
+                    <div class="w-16 h-16 mx-auto bg-blue-50 text-brand-blue rounded-full flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition transform">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 mb-2">Process Optimization</h4>
+                    <p class="text-sm text-gray-500 mb-4 line-clamp-3">Streamline your operations and reduce overhead costs with our expert analysts.</p>
+                    <button class="bg-brand-blue text-white w-full py-2 rounded font-semibold text-sm hover:bg-brand-dark transition">Learn More</button>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white border border-gray-100 rounded-lg p-6 shadow-sm hover:shadow-md transition text-center group">
+                    <div class="w-16 h-16 mx-auto bg-blue-50 text-brand-blue rounded-full flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition transform">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 mb-2">Business Analysis</h4>
+                    <p class="text-sm text-gray-500 mb-4 line-clamp-3">In-depth insights into your financial metrics and performance tracking.</p>
+                    <button class="bg-brand-blue text-white w-full py-2 rounded font-semibold text-sm hover:bg-brand-dark transition">Learn More</button>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white border border-gray-100 rounded-lg p-6 shadow-sm hover:shadow-md transition text-center group">
+                    <div class="w-16 h-16 mx-auto bg-blue-50 text-brand-blue rounded-full flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition transform">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 mb-2">Change Management</h4>
+                    <p class="text-sm text-gray-500 mb-4 line-clamp-3">Smooth transition frameworks for organizational restructuring.</p>
+                    <button class="bg-brand-blue text-white w-full py-2 rounded font-semibold text-sm hover:bg-brand-dark transition">Learn More</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 4: Request Form -->
+        <section class="bg-white rounded-lg shadow-sm border border-gray-100 p-8">
+            <h3 class="text-lg font-bold text-gray-800 mb-2">Can't find what you're looking for?</h3>
+            <p class="text-sm text-gray-500 mb-6">Request a custom consulting service tailored to your specific needs.</p>
+            <form class="space-y-4 max-w-2xl">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <input type="text" placeholder="Service Topic" class="border border-gray-300 rounded px-4 py-2 text-sm focus:outline-none focus:border-brand-orange">
+                    <input type="text" placeholder="Your Industry" class="border border-gray-300 rounded px-4 py-2 text-sm focus:outline-none focus:border-brand-orange">
+                </div>
+                <textarea placeholder="Describe your business challenge..." rows="4" class="w-full border border-gray-300 rounded px-4 py-2 text-sm focus:outline-none focus:border-brand-orange resize-none"></textarea>
+                <button type="button" class="bg-brand-orange hover:bg-brand-orangeHover text-white px-6 py-2 rounded font-bold transition shadow-sm">Submit Request</button>
+            </form>
+        </section>
+    
+        </div>
+        
+        <footer class="bg-white border-t p-4 text-center text-xs text-gray-500 mt-auto shadow-inner">
+            &copy; 2026 STackly Consulting. All Rights Reserved.
+        </footer>
+    </main>
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check auth
+            const role = localStorage.getItem('userRole');
+            const email = localStorage.getItem('userEmail');
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            
+            if (!isLoggedIn) {
+                window.location.href = 'login.html';
+                return;
+            }
+            if (role === 'Admin') {
+                window.location.href = 'admin-dashboard.html';
+                return;
+            }
+            if (role !== 'User') {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            const emailDisplay = document.getElementById('userEmailDisplay');
+            if(emailDisplay && email) emailDisplay.innerText = email;
+            
+            const roleDisplay = document.getElementById('userRoleDisplay');
+            if(roleDisplay && role) roleDisplay.innerText = role;
+            
+            const dynamicEmail = document.getElementById('dynamicEmail');
+            if(dynamicEmail && email) dynamicEmail.innerText = email;
+            
+            const dynamicRole = document.getElementById('dynamicRole');
+            if(dynamicRole && role) dynamicRole.innerText = role;
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const closeSidebarBtn = document.getElementById('closeSidebarBtn');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+
+            function openSidebar() {
+                if(sidebar) sidebar.classList.remove('-translate-x-full');
+                if(overlay) overlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeSidebar() {
+                if(sidebar) sidebar.classList.add('-translate-x-full');
+                if(overlay) overlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+
+            if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openSidebar);
+            if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeSidebar);
+            if (overlay) overlay.addEventListener('click', closeSidebar);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && sidebar && !sidebar.classList.contains('-translate-x-full')) {
+                    closeSidebar();
+                }
+            });
+
+            // Close when clicking a link
+            if(sidebar) {
+                const sidebarLinks = sidebar.querySelectorAll('nav a');
+                sidebarLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        if(window.innerWidth < 768) {
+                            closeSidebar();
+                        }
+                    });
+                });
+            }
+
+            // Logout
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', () => {
+                    localStorage.removeItem('userRole');
+                    localStorage.removeItem('userEmail');
+                    localStorage.removeItem('isLoggedIn');
+                    window.location.href = 'login.html';
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

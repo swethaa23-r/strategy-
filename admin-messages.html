@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - STackly</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#115b9c',
+                            dark: '#0c3e6a',
+                            darker: '#1f2937',
+                            orange: '#e87316',
+                            orangeHover: '#d16511',
+                            light: '#f4f7f6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { overflow-x: hidden; background-color: #f3f4f6; }
+        .active-nav { background-color: rgba(255,255,255,0.1); border-left: 4px solid #e87316; }
+    </style>
+
+</head>
+<body class="font-sans text-gray-800">
+
+    
+    <!-- Sidebar -->
+    <aside class="w-64 bg-brand-dark h-screen fixed top-0 left-0 flex flex-col shadow-xl z-20 transition-transform transform -translate-x-full md:translate-x-0" id="sidebar">
+        <div class="h-16 flex items-center justify-between px-6 bg-brand-darker shadow-md">
+            <h1 class="text-white text-2xl font-bold tracking-wider">STackly<span class="text-brand-orange">Admin</span></h1>
+            <button id="closeSidebarBtn" class="md:hidden text-gray-300 hover:text-white focus:outline-none">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <div class="flex-grow py-6 overflow-y-auto">
+            <nav class="flex flex-col space-y-2">
+                
+            <a href="admin-dashboard.html" class="flex items-center py-3 px-6 text-gray-300 transition-colors border-l-4 border-transparent hover:bg-white hover:bg-opacity-5 hover:border-brand-orange">
+                <i class="fas fa-chart-line w-6 text-center text-lg"></i>
+                <span class="ml-3 font-medium">Dashboard Overview</span>
+            </a>
+        
+            <a href="admin-users.html" class="flex items-center py-3 px-6 text-gray-300 transition-colors border-l-4 border-transparent hover:bg-white hover:bg-opacity-5 hover:border-brand-orange">
+                <i class="fas fa-users w-6 text-center text-lg"></i>
+                <span class="ml-3 font-medium">Manage Users</span>
+            </a>
+        
+            <a href="admin-projects.html" class="flex items-center py-3 px-6 text-gray-300 transition-colors border-l-4 border-transparent hover:bg-white hover:bg-opacity-5 hover:border-brand-orange">
+                <i class="fas fa-briefcase w-6 text-center text-lg"></i>
+                <span class="ml-3 font-medium">Manage Projects</span>
+            </a>
+        
+            <a href="admin-messages.html" class="flex items-center py-3 px-6 text-gray-300 transition-colors border-l-4 active-nav">
+                <i class="fas fa-envelope w-6 text-center text-lg"></i>
+                <span class="ml-3 font-medium">Messages</span>
+            </a>
+        
+            <a href="admin-profile.html" class="flex items-center py-3 px-6 text-gray-300 transition-colors border-l-4 border-transparent hover:bg-white hover:bg-opacity-5 hover:border-brand-orange">
+                <i class="fas fa-user-circle w-6 text-center text-lg"></i>
+                <span class="ml-3 font-medium">My Profile</span>
+            </a>
+        
+            <a href="admin-settings.html" class="flex items-center py-3 px-6 text-gray-300 transition-colors border-l-4 border-transparent hover:bg-white hover:bg-opacity-5 hover:border-brand-orange">
+                <i class="fas fa-cog w-6 text-center text-lg"></i>
+                <span class="ml-3 font-medium">Settings</span>
+            </a>
+        
+            </nav>
+        </div>
+        <div class="p-4 bg-brand-darker">
+            <button id="logoutBtn" class="w-full bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded transition flex items-center justify-center font-semibold">
+                <i class="fas fa-sign-out-alt mr-2"></i> Logout
+            </button>
+        </div>
+    </aside>
+
+    <!-- Overlay -->
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-10 hidden md:hidden transition-opacity"></div>
+    
+    <!-- Topbar -->
+    <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6 fixed top-0 right-0 left-0 md:left-64 z-10 transition-all">
+        <div class="flex items-center">
+            <button id="mobileMenuBtn" class="md:hidden text-gray-500 hover:text-brand-orange focus:outline-none mr-4">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+            <h2 class="text-xl font-semibold text-gray-800" id="pageTitle">Messages</h2>
+        </div>
+        <div class="flex items-center space-x-4">
+            <div class="relative">
+                <button class="text-gray-400 hover:text-brand-orange transition">
+                    <i class="fas fa-bell text-xl"></i>
+                    <span class="absolute top-0 right-0 -mt-1 -mr-1 flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-orange opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-brand-orange"></span>
+                    </span>
+                </button>
+            </div>
+            <div class="flex items-center border-l pl-4">
+                <div class="mr-3 text-right hidden sm:block">
+                    <p class="text-sm font-bold text-gray-800" id="adminEmailDisplay">Admin User</p>
+                    <p class="text-xs text-brand-orange font-semibold" id="adminRoleDisplay">Administrator</p>
+                </div>
+                <div class="h-10 w-10 rounded-full bg-brand-blue text-white flex items-center justify-center text-lg font-bold shadow-md">
+                    A
+                </div>
+            </div>
+        </div>
+    </header>
+    
+
+    <!-- Main Content Area -->
+    <main class="pt-16 md:pl-64 min-h-screen flex flex-col transition-all">
+        <div class="p-6 md:p-8 flex-grow">
+            
+        <!-- Section 1: Inbox Stats -->
+        <section class="grid grid-cols-3 gap-4 mb-6">
+            <div class="bg-white p-4 rounded shadow-sm border-l-4 border-brand-orange flex justify-between items-center">
+                <div><p class="text-xs text-gray-500 uppercase font-bold">Unread</p><p class="text-2xl font-bold text-gray-800">28</p></div>
+                <i class="fas fa-envelope text-brand-orange text-2xl opacity-50"></i>
+            </div>
+            <div class="bg-white p-4 rounded shadow-sm border-l-4 border-brand-blue flex justify-between items-center">
+                <div><p class="text-xs text-gray-500 uppercase font-bold">Total</p><p class="text-2xl font-bold text-gray-800">1,405</p></div>
+                <i class="fas fa-inbox text-brand-blue text-2xl opacity-50"></i>
+            </div>
+            <div class="bg-white p-4 rounded shadow-sm border-l-4 border-green-500 flex justify-between items-center">
+                <div><p class="text-xs text-gray-500 uppercase font-bold">Avg Response</p><p class="text-2xl font-bold text-gray-800">1.2h</p></div>
+                <i class="fas fa-stopwatch text-green-500 text-2xl opacity-50"></i>
+            </div>
+        </section>
+
+        <div class="flex flex-col lg:flex-row gap-6 h-[600px]">
+            <!-- Section 2: Inbox List -->
+            <section class="w-full lg:w-1/3 bg-white rounded-lg shadow-sm overflow-hidden flex flex-col h-full border border-gray-100">
+                <div class="p-4 border-b bg-gray-50 font-bold text-gray-800 flex justify-between items-center">
+                    Inbox
+                    <button class="text-brand-blue hover:text-brand-orange"><i class="fas fa-filter"></i></button>
+                </div>
+                <div class="overflow-y-auto flex-grow">
+                    <!-- Msg 1 (Unread) -->
+                    <div class="p-4 border-b hover:bg-gray-50 cursor-pointer bg-blue-50 border-l-4 border-brand-blue">
+                        <div class="flex justify-between items-baseline mb-1">
+                            <h4 class="font-bold text-gray-900 text-sm">Alice Cooper</h4>
+                            <span class="text-xs text-brand-blue font-bold">10:45 AM</span>
+                        </div>
+                        <p class="text-xs font-semibold text-gray-800 truncate">Partnership Inquiry</p>
+                        <p class="text-xs text-gray-500 truncate mt-1">Hello, we are interested in discussing...</p>
+                    </div>
+                    <!-- Msg 2 -->
+                    <div class="p-4 border-b hover:bg-gray-50 cursor-pointer border-l-4 border-transparent">
+                        <div class="flex justify-between items-baseline mb-1">
+                            <h4 class="font-bold text-gray-700 text-sm">TechCorp Support</h4>
+                            <span class="text-xs text-gray-400">Yesterday</span>
+                        </div>
+                        <p class="text-xs font-medium text-gray-600 truncate">Project Update - Phase 2</p>
+                        <p class="text-xs text-gray-400 truncate mt-1">Attached are the latest deliverables.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Reading Pane -->
+            <section class="w-full lg:w-2/3 bg-white rounded-lg shadow-sm flex flex-col h-full border border-gray-100">
+                <div class="p-6 border-b flex justify-between items-center bg-gray-50">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 text-brand-blue flex items-center justify-center font-bold text-lg mr-4">A</div>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Alice Cooper</h3>
+                            <p class="text-xs text-gray-500">alice@example.com • Oct 24, 2026, 10:45 AM</p>
+                        </div>
+                    </div>
+                    <div class="space-x-2 text-gray-400">
+                        <button class="hover:text-red-500 transition"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+                <div class="p-6 flex-grow overflow-y-auto">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">Partnership Inquiry</h2>
+                    <div class="text-gray-700 text-sm leading-relaxed space-y-4">
+                        <p>Hello Team,</p>
+                        <p>I hope this email finds you well. We are a startup based in New York looking for strategic consulting services to help us scale our operations over the next 12 months.</p>
+                        <p>Could we schedule a brief 15-minute call to discuss how STackly might be able to assist us?</p>
+                        <p>Best regards,<br>Alice Cooper<br>CEO, InnovateX</p>
+                    </div>
+                </div>
+                
+                <!-- Section 4: Quick Reply -->
+                <div class="p-4 border-t bg-gray-50">
+                    <textarea class="w-full border rounded-lg p-3 text-sm focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue resize-none" rows="3" placeholder="Type your reply here..."></textarea>
+                    <div class="flex justify-between items-center mt-3">
+                        <button class="text-gray-400 hover:text-brand-blue"><i class="fas fa-paperclip"></i> Attach File</button>
+                        <button class="bg-brand-blue hover:bg-brand-dark text-white px-6 py-2 rounded font-medium transition"><i class="fas fa-paper-plane mr-2"></i> Send Reply</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    
+        </div>
+        
+        <footer class="bg-white border-t p-4 text-center text-xs text-gray-500 mt-auto">
+            &copy; 2026 STackly Consulting. All Rights Reserved.
+        </footer>
+    </main>
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check auth
+            const role = localStorage.getItem('userRole');
+            const email = localStorage.getItem('userEmail');
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            
+            if (!isLoggedIn) {
+                window.location.href = 'login.html';
+                return;
+            }
+            if (role === 'User') {
+                window.location.href = 'user-dashboard.html';
+                return;
+            }
+            if (role !== 'Admin') {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            const emailDisplay = document.getElementById('adminEmailDisplay');
+            if(emailDisplay && email) emailDisplay.innerText = email;
+            
+            const roleDisplay = document.getElementById('adminRoleDisplay');
+            if(roleDisplay && role) roleDisplay.innerText = role;
+            
+            const profileRoleDisplay = document.getElementById('adminProfileRoleDisplay');
+            if(profileRoleDisplay && role) profileRoleDisplay.innerText = role;
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const closeSidebarBtn = document.getElementById('closeSidebarBtn');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+
+            function openSidebar() {
+                if(sidebar) sidebar.classList.remove('-translate-x-full');
+                if(overlay) overlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeSidebar() {
+                if(sidebar) sidebar.classList.add('-translate-x-full');
+                if(overlay) overlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+
+            if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openSidebar);
+            if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeSidebar);
+            if (overlay) overlay.addEventListener('click', closeSidebar);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && sidebar && !sidebar.classList.contains('-translate-x-full')) {
+                    closeSidebar();
+                }
+            });
+
+            // Close when clicking a link
+            if(sidebar) {
+                const sidebarLinks = sidebar.querySelectorAll('nav a');
+                sidebarLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        if(window.innerWidth < 768) {
+                            closeSidebar();
+                        }
+                    });
+                });
+            }
+
+            // Logout
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', () => {
+                    localStorage.removeItem('userRole');
+                    localStorage.removeItem('userEmail');
+                    localStorage.removeItem('isLoggedIn');
+                    window.location.href = 'login.html';
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

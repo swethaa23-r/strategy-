@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Blog - Business Consulting</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#115b9c',
+                            dark: '#0c3e6a',
+                            darker: '#1f2937',
+                            orange: '#e87316',
+                            orangeHover: '#d16511',
+                            light: '#f4f7f6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { overflow-x: hidden; }
+        .hero-bg {
+            background-image: linear-gradient(to right, rgba(17, 91, 156, 0.85) 0%, rgba(12, 62, 106, 0.9) 100%), url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .newsletter-bg {
+            background-image: linear-gradient(to right, rgba(12, 62, 106, 0.9) 0%, rgba(17, 91, 156, 0.85) 100%), url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            [data-aos] {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+    </style>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js" defer></script>
+</head>
+<body class="flex flex-col min-h-screen font-sans text-gray-600 antialiased bg-gray-50 overflow-x-hidden">
+
+        <!-- Top Bar -->
+    <div class="bg-gray-900 text-gray-300 text-sm py-2 hidden lg:block">
+        <div class="container mx-auto px-4 md:px-8 flex justify-between items-center">
+            <div class="flex space-x-6">
+                <span><i class="fas fa-envelope text-brand-orange mr-2"></i> hello@STackly.co</span>
+                <span><i class="fas fa-phone-alt text-brand-orange mr-2"></i> +91 9000 9000 90</span>
+            </div>
+            <div class="flex space-x-4">
+                <a href="https://facebook.com" class="hover:text-brand-orange transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com" class="hover:text-brand-orange transition"><i class="fab fa-twitter"></i></a>
+                <a href="https://youtube.com" class="hover:text-brand-orange transition"><i class="fab fa-youtube"></i></a>
+                <a href="https://pinterest.com" class="hover:text-brand-orange transition"><i class="fab fa-pinterest-p"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-brand-blue text-white sticky top-0 z-50 shadow-md relative">
+        <div class="container mx-auto px-4 md:px-8 py-4 flex justify-between items-center border-b border-brand-blue border-opacity-50">
+            <div class="text-2xl font-bold tracking-wider z-20 relative">
+                <a href="index.html" aria-label="Home">STackly</a>
+            </div>
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex space-x-8 items-center font-medium text-sm">
+                <a href="index.html" class="nav-link-index hover:text-brand-orange border-b-2 border-transparent pb-1 transition">Home</a>
+                <a href="about.html" class="nav-link-about hover:text-brand-orange border-b-2 border-transparent pb-1 transition">About</a>
+                <a href="services.html" class="nav-link-services hover:text-brand-orange border-b-2 border-transparent pb-1 transition">Services</a>
+                <a href="projects.html" class="nav-link-projects hover:text-brand-orange border-b-2 border-transparent pb-1 transition">Projects</a>
+                <a href="blog.html" class="nav-link-blog hover:text-brand-orange border-b-2 border-transparent pb-1 transition">Blog</a>
+                <a href="contact.html" class="nav-link-contact hover:text-brand-orange border-b-2 border-transparent pb-1 transition">Contact</a>
+            </div>
+            <!-- Desktop Login & Signup -->
+            <div class="hidden md:flex space-x-4 items-center">
+                <a href="login.html" class="text-white hover:text-brand-orange transition duration-300 text-sm font-semibold">Login</a>
+                <a href="signup.html" class="bg-brand-dark hover:bg-brand-orange transition duration-300 px-6 py-2 rounded text-sm font-semibold shadow">Signup</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none z-20 relative" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden opacity-0 transition-opacity duration-300"></div>
+        
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="fixed top-0 right-0 h-full w-3/4 max-w-sm bg-brand-dark shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col">
+            <div class="p-4 flex justify-end border-b border-gray-700">
+                <button id="mobile-close-btn" class="text-white focus:outline-none p-2" aria-label="Close navigation">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <div class="flex flex-col py-6 px-8 space-y-6 text-lg font-medium overflow-y-auto">
+                <a href="index.html" class="nav-link-index hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Home</a>
+                <a href="about.html" class="nav-link-about hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">About</a>
+                <a href="services.html" class="nav-link-services hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Services</a>
+                <a href="projects.html" class="nav-link-projects hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Projects</a>
+                <a href="blog.html" class="nav-link-blog hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Blog</a>
+                <a href="contact.html" class="nav-link-contact hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Contact</a>
+                <hr class="border-gray-700">
+                <a href="login.html" class="text-white text-center hover:text-brand-orange transition duration-300 px-6 py-2 font-semibold">Login</a>
+                <a href="signup.html" class="bg-brand-orange text-center hover:bg-white hover:text-brand-dark transition duration-300 px-6 py-3 rounded font-semibold shadow">Signup</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header (Hero) -->
+    <section class="hero-bg py-32 text-center text-white relative">
+        <div class="relative z-10 max-w-3xl mx-auto px-4" data-aos="fade-up" data-aos-duration="1000">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4">Our Blog</h1>
+            <p class="text-xl text-gray-200 font-light">Find Our Latest Blog Content</p>
+        </div>
+    </section>
+
+    <!-- Blog Grid Section -->
+    <section class="py-24 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                
+                <!-- Blog Card 1 -->
+                <div class="bg-white shadow-xl group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110" alt="Business consulting professionals collaborating on a strategic roadmap">
+                        <!-- Category Badge -->
+                        <div class="absolute top-4 left-4 bg-[#3b6b93] text-white text-xs font-bold px-4 py-1.5 uppercase tracking-wider shadow-md">
+                            Category
+                        </div>
+                        <!-- Date Badge -->
+                        <div class="absolute -bottom-6 left-6 bg-brand-blue text-white text-center flex flex-col justify-center w-14 h-16 shadow-lg z-10">
+                            <span class="text-xl font-bold leading-none">11</span>
+                            <span class="text-xs uppercase font-medium mt-1">Feb</span>
+                        </div>
+                    </div>
+                    <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-brand-orange transition-colors"><a href="blog-single.html">The Role Of Emotional Intelligence In Leadership</a></h3>
+                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                        <a href="blog-single.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors">Learn more &raquo;</a>
+                    </div>
+                </div>
+                
+                <!-- Blog Card 2 -->
+                <div class="bg-white shadow-xl group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=2069&auto=format&fit=crop" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110" alt="Business consulting professionals collaborating on a strategic roadmap">
+                        <div class="absolute top-4 left-4 bg-[#3b6b93] text-white text-xs font-bold px-4 py-1.5 uppercase tracking-wider shadow-md">
+                            Category
+                        </div>
+                        <div class="absolute -bottom-6 left-6 bg-brand-blue text-white text-center flex flex-col justify-center w-14 h-16 shadow-lg z-10">
+                            <span class="text-xl font-bold leading-none">11</span>
+                            <span class="text-xs uppercase font-medium mt-1">Feb</span>
+                        </div>
+                    </div>
+                    <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-brand-orange transition-colors"><a href="blog-single.html">Building A Roadmap For Business Success</a></h3>
+                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                        <a href="blog-single.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors">Learn more &raquo;</a>
+                    </div>
+                </div>
+
+                <!-- Blog Card 3 -->
+                <div class="bg-white shadow-xl group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110" alt="Business consulting professionals collaborating on a strategic roadmap">
+                        <div class="absolute top-4 left-4 bg-[#3b6b93] text-white text-xs font-bold px-4 py-1.5 uppercase tracking-wider shadow-md">
+                            Category
+                        </div>
+                        <div class="absolute -bottom-6 left-6 bg-brand-blue text-white text-center flex flex-col justify-center w-14 h-16 shadow-lg z-10">
+                            <span class="text-xl font-bold leading-none">11</span>
+                            <span class="text-xs uppercase font-medium mt-1">Feb</span>
+                        </div>
+                    </div>
+                    <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-brand-orange transition-colors"><a href="blog-single.html">Streamlining Your Business Processes For Efficiency</a></h3>
+                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                        <a href="blog-single.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors">Learn more &raquo;</a>
+                    </div>
+                </div>
+
+                <!-- Blog Card 4 -->
+                <div class="bg-white shadow-xl group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110" alt="Business consulting professionals collaborating on a strategic roadmap">
+                        <div class="absolute top-4 left-4 bg-[#3b6b93] text-white text-xs font-bold px-4 py-1.5 uppercase tracking-wider shadow-md">
+                            Category
+                        </div>
+                        <div class="absolute -bottom-6 left-6 bg-brand-blue text-white text-center flex flex-col justify-center w-14 h-16 shadow-lg z-10">
+                            <span class="text-xl font-bold leading-none">11</span>
+                            <span class="text-xs uppercase font-medium mt-1">Feb</span>
+                        </div>
+                    </div>
+                    <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-brand-orange transition-colors"><a href="blog-single.html">Leveraging Analytics For Informed Business Decisions</a></h3>
+                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                        <a href="blog-single.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors">Learn more &raquo;</a>
+                    </div>
+                </div>
+
+                <!-- Blog Card 5 -->
+                <div class="bg-white shadow-xl group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1542744094-24638ea0b56c?q=80&w=2070&auto=format&fit=crop" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110" alt="Business consulting professionals collaborating on a strategic roadmap">
+                        <div class="absolute top-4 left-4 bg-[#3b6b93] text-white text-xs font-bold px-4 py-1.5 uppercase tracking-wider shadow-md">
+                            Category
+                        </div>
+                        <div class="absolute -bottom-6 left-6 bg-brand-blue text-white text-center flex flex-col justify-center w-14 h-16 shadow-lg z-10">
+                            <span class="text-xl font-bold leading-none">11</span>
+                            <span class="text-xs uppercase font-medium mt-1">Feb</span>
+                        </div>
+                    </div>
+                    <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-brand-orange transition-colors"><a href="blog-single.html">Adapting To Modern Business Realities</a></h3>
+                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                        <a href="blog-single.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors">Learn more &raquo;</a>
+                    </div>
+                </div>
+
+                <!-- Blog Card 6 -->
+                <div class="bg-white shadow-xl group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32d7?q=80&w=1932&auto=format&fit=crop" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110" alt="Business consulting professionals collaborating on a strategic roadmap">
+                        <div class="absolute top-4 left-4 bg-[#3b6b93] text-white text-xs font-bold px-4 py-1.5 uppercase tracking-wider shadow-md">
+                            Category
+                        </div>
+                        <div class="absolute -bottom-6 left-6 bg-brand-blue text-white text-center flex flex-col justify-center w-14 h-16 shadow-lg z-10">
+                            <span class="text-xl font-bold leading-none">11</span>
+                            <span class="text-xs uppercase font-medium mt-1">Feb</span>
+                        </div>
+                    </div>
+                    <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-brand-orange transition-colors"><a href="blog-single.html">Strategies For Successful Organizational Transformation</a></h3>
+                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                        <a href="blog-single.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors">Learn more &raquo;</a>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Pagination (Optional extra for realism) -->
+            <div class="mt-16 flex justify-center space-x-2" data-aos="fade-up">
+                <a href="blog-single.html" class="w-10 h-10 flex items-center justify-center bg-brand-orange text-white font-bold shadow-md">1</a>
+                <a href="blog-single.html" class="w-10 h-10 flex items-center justify-center bg-white text-gray-700 font-bold hover:bg-gray-100 shadow-sm border border-gray-200">2</a>
+                <a href="blog-single.html" class="w-10 h-10 flex items-center justify-center bg-white text-gray-700 font-bold hover:bg-gray-100 shadow-sm border border-gray-200"><i class="fas fa-angle-right"></i></a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-bg py-24 relative border-b-8 border-brand-dark">
+        <div class="relative z-10 max-w-4xl mx-auto px-4 text-center text-white" data-aos="zoom-in" data-aos-duration="1000">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Subscribe Our Newsletter</h2>
+            <p class="text-lg text-blue-100 mb-12 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+            
+            <form class="flex flex-col gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="text-left">
+                        <label class="block text-sm font-bold mb-2 text-white/90">Your Name</label>
+                        <input type="text" placeholder="Eg. John Doe" class="w-full bg-transparent border border-blue-400 p-4 text-white placeholder-blue-300 focus:outline-none focus:border-white transition">
+                    </div>
+                    <div class="text-left">
+                        <label class="block text-sm font-bold mb-2 text-white/90">Email</label>
+                        <input type="email" placeholder="Email" class="w-full bg-transparent border border-blue-400 p-4 text-white placeholder-blue-300 focus:outline-none focus:border-white transition">
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-brand-orange text-white font-bold py-4 mt-4 hover:bg-white hover:text-brand-blue transition duration-300 shadow-xl text-lg">Subscribe Now</button>
+            </form>
+        </div>
+    </section>
+
+        <!-- Footer -->
+        <!-- Footer -->
+    <footer class="bg-brand-blue pt-16 pb-6 border-t-4 border-brand-orange mt-auto">
+        <div class="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 text-white">
+            <div class="pr-4">
+                <h3 class="text-2xl font-bold tracking-wider mb-6">STackly</h3>
+                <p class="text-sm text-blue-200 leading-relaxed">Expert business consulting strategies designed to drive success, streamline operations, and build long-term growth.</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                <ul class="space-y-3 text-sm text-blue-200 font-medium">
+                    <li><a href="index.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Homepage</a></li>
+                    <li><a href="about.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> About Us</a></li>
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Our Services</a></li>
+                    <li><a href="projects.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Projects Work</a></li>
+                    <li><a href="blog.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Blog</a></li>
+                    <li><a href="contact.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Contact Us</a></li>
+                    
+                    
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6">Consulting Service</h4>
+                <ul class="space-y-3 text-sm text-blue-200 font-medium">
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Strategic Planning</a></li>
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Process Optimization</a></li>
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Market Research</a></li>
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Business Analysis</a></li>
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Change Management</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Head Office Address</h4>
+                <p class="text-sm text-blue-200 mb-6">MMR Complex, Chinna Thirupathi, Near Chinna Muniyappan Kovil, Salem 636003</p>
+                <h4 class="text-lg font-bold mb-2">Days Open</h4>
+                <p class="text-sm text-blue-200">Monday - Friday 09 AM - 10 PM</p>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 md:px-8 border-t border-blue-800 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-blue-300">
+            <p>All Rights Reserved - STackly Consulting</p>
+            <div class="flex space-x-4 mt-4 md:mt-0 text-white">
+                <a href="https://facebook.com" aria-label="Facebook" class="hover:text-brand-orange transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com" aria-label="Twitter" class="hover:text-brand-orange transition"><i class="fab fa-twitter"></i></a>
+                <a href="https://youtube.com" aria-label="YouTube" class="hover:text-brand-orange transition"><i class="fab fa-youtube"></i></a>
+                <a href="https://pinterest.com" aria-label="Pinterest" class="hover:text-brand-orange transition"><i class="fab fa-pinterest-p"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    
+    </body>
+</html>
+
+

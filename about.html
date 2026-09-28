@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Business Consulting</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Custom Tailwind Configuration to match the screenshots -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#084B83', // Dark Blue
+                        secondary: '#F26101', // Orange Accent
+                        dark: '#111827',
+                        lightbg: '#F8FAFC',
+                        brand: {
+                            blue: '#115b9c',
+                            dark: '#0c3e6a',
+                            darker: '#1f2937',
+                            orange: '#e87316',
+                            orangeHover: '#d16511',
+                            light: '#f4f7f6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+        /* Custom image overlapping for the about section */
+        .img-overlay-container {
+            position: relative;
+            min-height: 550px;
+        }
+        .img-overlay-container .img-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 80%;
+            height: 450px;
+            object-fit: cover;
+            z-index: 1;
+        }
+        .img-overlay-container .img-front {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 70%;
+            height: 350px;
+            object-fit: cover;
+            border: 12px solid white;
+            z-index: 2;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .stats-box {
+            position: absolute;
+            bottom: 40px;
+            left: -20px;
+            background-color: #F26101;
+            color: white;
+            padding: 1.5rem 2rem;
+            z-index: 3;
+            box-shadow: 0 10px 15px -3px rgba(242, 97, 1, 0.4);
+        }
+    
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            [data-aos] {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+    </style>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js" defer></script>
+</head>
+<body class="flex flex-col min-h-screen font-sans text-gray-700 antialiased bg-gray-50">
+
+        <!-- Top Bar -->
+    <div class="bg-gray-900 text-gray-300 text-sm py-2 hidden lg:block">
+        <div class="container mx-auto px-4 md:px-8 flex justify-between items-center">
+            <div class="flex space-x-6">
+                <span><i class="fas fa-envelope text-brand-orange mr-2"></i> hello@STackly.co</span>
+                <span><i class="fas fa-phone-alt text-brand-orange mr-2"></i> +91 9000 9000 90</span>
+            </div>
+            <div class="flex space-x-4">
+                <a href="https://facebook.com" class="hover:text-brand-orange transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com" class="hover:text-brand-orange transition"><i class="fab fa-twitter"></i></a>
+                <a href="https://youtube.com" class="hover:text-brand-orange transition"><i class="fab fa-youtube"></i></a>
+                <a href="https://pinterest.com" class="hover:text-brand-orange transition"><i class="fab fa-pinterest-p"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-brand-blue text-white sticky top-0 z-50 shadow-md relative">
+        <div class="container mx-auto px-4 md:px-8 py-4 flex justify-between items-center border-b border-brand-blue border-opacity-50">
+            <div class="text-2xl font-bold tracking-wider z-20 relative">
+                <a href="index.html" aria-label="Home">STackly</a>
+            </div>
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex space-x-8 items-center font-medium text-sm">
+                <a href="index.html" class="nav-link-index hover:text-brand-orange border-b-2 border-transparent pb-1 transition">Home</a>
+                <a href="about.html" class="nav-link-about hover:text-brand-orange border-b-2 border-transparent pb-1 transition">About</a>
+                <a href="services.html" class="nav-link-services hover:text-brand-orange border-b-2 border-transparent pb-1 transition">Services</a>
+                <a href="projects.html" class="nav-link-projects hover:text-brand-orange border-b-2 border-transparent pb-1 transition">Projects</a>
+                <a href="blog.html" class="nav-link-blog hover:text-brand-orange border-b-2 border-transparent pb-1 transition">Blog</a>
+                <a href="contact.html" class="nav-link-contact hover:text-brand-orange border-b-2 border-transparent pb-1 transition">Contact</a>
+            </div>
+            <!-- Desktop Login & Signup -->
+            <div class="hidden md:flex space-x-4 items-center">
+                <a href="login.html" class="text-white hover:text-brand-orange transition duration-300 text-sm font-semibold">Login</a>
+                <a href="signup.html" class="bg-brand-dark hover:bg-brand-orange transition duration-300 px-6 py-2 rounded text-sm font-semibold shadow">Signup</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none z-20 relative" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden opacity-0 transition-opacity duration-300"></div>
+        
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="fixed top-0 right-0 h-full w-3/4 max-w-sm bg-brand-dark shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col">
+            <div class="p-4 flex justify-end border-b border-gray-700">
+                <button id="mobile-close-btn" class="text-white focus:outline-none p-2" aria-label="Close navigation">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <div class="flex flex-col py-6 px-8 space-y-6 text-lg font-medium overflow-y-auto">
+                <a href="index.html" class="nav-link-index hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Home</a>
+                <a href="about.html" class="nav-link-about hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">About</a>
+                <a href="services.html" class="nav-link-services hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Services</a>
+                <a href="projects.html" class="nav-link-projects hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Projects</a>
+                <a href="blog.html" class="nav-link-blog hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Blog</a>
+                <a href="contact.html" class="nav-link-contact hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Contact</a>
+                <hr class="border-gray-700">
+                <a href="login.html" class="text-white text-center hover:text-brand-orange transition duration-300 px-6 py-2 font-semibold">Login</a>
+                <a href="signup.html" class="bg-brand-orange text-center hover:bg-white hover:text-brand-dark transition duration-300 px-6 py-3 rounded font-semibold shadow">Signup</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header (Hero) -->
+    <section class="relative bg-[url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center py-32 text-center">
+        <div class="absolute inset-0 bg-primary/80 mix-blend-multiply"></div>
+        <div class="relative z-10 max-w-3xl mx-auto px-4" data-aos="fade-up" data-aos-duration="1000">
+            <h1 class="text-5xl md:text-6xl font-bold text-white mb-4">About Us</h1>
+            <p class="text-xl text-gray-200">Passionate About Driving Success For Businesses</p>
+        </div>
+    </section>
+
+    <!-- About Intro Section -->
+    <section class="py-24 px-4 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <!-- Images Left -->
+        <div class="img-overlay-container w-full" data-aos="fade-right" data-aos-duration="1200">
+            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop" alt="Consulting Team" class="img-back">
+            <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=2069&auto=format&fit=crop" alt="Business Woman" class="img-front">
+            <div class="stats-box" data-aos="zoom-in" data-aos-delay="400">
+                <div class="text-5xl font-extrabold mb-1">680<span class="text-xl align-top">+</span></div>
+                <div class="text-sm font-semibold tracking-wide uppercase">Business Trust Us</div>
+            </div>
+        </div>
+        
+        <!-- Text Right -->
+        <div data-aos="fade-left" data-aos-duration="1200">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="w-10 h-0.5 bg-secondary"></span>
+                <h4 class="text-secondary font-bold uppercase tracking-widest text-sm">About Us</h4>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold text-dark mb-6 leading-tight">We Are Business Consultants Dedicated To Driving Your Success</h2>
+            <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+            </p>
+            <blockquote class="border-l-4 border-secondary pl-6 py-2 mb-8 bg-gray-50 italic text-gray-600 text-lg">
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."
+            </blockquote>
+            
+            <div class="flex items-start gap-5 mb-10" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-primary mt-1">
+                    <i class="far fa-calendar-alt text-4xl"></i>
+                </div>
+                <div>
+                    <h5 class="font-bold text-dark text-xl mb-1">15 Years Of Experience</h5>
+                    <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+            
+            <a href="about.html" class="inline-block bg-secondary text-white px-8 py-4 font-semibold hover:bg-primary transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                Learn More <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="bg-primary py-24 px-4 relative mt-16">
+        <!-- Background decorative pattern -->
+        <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmZmZmYiLz48L3N2Zz4=')]"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="flex flex-col lg:flex-row gap-12 items-end mb-16">
+                <div class="lg:w-1/2" data-aos="fade-right">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="w-10 h-0.5 bg-secondary"></span>
+                        <h4 class="text-secondary font-bold uppercase tracking-widest text-sm">Our Mission & Vision</h4>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-white leading-tight">Discover The Core Principles That Guide Us</h2>
+                </div>
+                <div class="lg:w-1/2 text-gray-300" data-aos="fade-left">
+                    <p class="text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                </div>
+            </div>
+
+            <!-- Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
+                <!-- Vision Card -->
+                <div class="bg-white p-10 shadow-2xl relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-secondary transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                    <div class="w-16 h-16 bg-primary/10 text-primary flex items-center justify-center mb-6 text-3xl rounded-sm">
+                        <i class="far fa-eye"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4">Our Vision</h3>
+                    <p class="text-gray-600">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+                </div>
+                <!-- Mission Card -->
+                <div class="bg-white p-10 shadow-2xl relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-secondary transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                    <div class="w-16 h-16 bg-primary/10 text-primary flex items-center justify-center mb-6 text-3xl rounded-sm">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4">Our Mission</h3>
+                    <p class="text-gray-600">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white border-t border-white/20 pt-16" data-aos="fade-up" data-aos-delay="300">
+                <div>
+                    <div class="text-5xl font-bold mb-3 flex justify-center items-center">680<span class="text-secondary text-3xl ml-1">+</span></div>
+                    <div class="font-semibold tracking-wide text-sm text-gray-300">Business Trust Us</div>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold mb-3 flex justify-center items-center">1,354<span class="text-secondary text-3xl ml-1">+</span></div>
+                    <div class="font-semibold tracking-wide text-sm text-gray-300">Projects Done</div>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold mb-3 flex justify-center items-center">97%<span class="text-secondary text-3xl ml-1">+</span></div>
+                    <div class="font-semibold tracking-wide text-sm text-gray-300">Success Rate</div>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold mb-3 flex justify-center items-center">15Y<span class="text-secondary text-3xl ml-1">+</span></div>
+                    <div class="font-semibold tracking-wide text-sm text-gray-300">Years Of Experience</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="bg-gray-50 py-24 px-4 pb-32">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <div class="flex items-center justify-center gap-3 mb-4">
+                    <span class="w-10 h-0.5 bg-secondary"></span>
+                    <h4 class="text-secondary font-bold uppercase tracking-widest text-sm">Team Values</h4>
+                    <span class="w-10 h-0.5 bg-secondary"></span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-dark">A Commitment To Client<br>Success Are The Cornerstones</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div class="relative group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976&auto=format&fit=crop" class="w-full h-[450px] object-cover group-hover:scale-110 transition-transform duration-700" alt="Portrait of a dedicated consulting team member">
+                        <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white">
+                            <h3 class="text-2xl font-bold">Ms. Sarah Jane</h3>
+                            <p class="mb-6 text-secondary font-semibold uppercase text-sm tracking-wider">Consultant</p>
+                            <div class="flex gap-3">
+                                <a href="https://facebook.com" class="w-10 h-10 bg-secondary flex items-center justify-center hover:bg-white hover:text-secondary transition-colors"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://twitter.com" class="w-10 h-10 bg-secondary flex items-center justify-center hover:bg-white hover:text-secondary transition-colors"><i class="fab fa-twitter"></i></a>
+                                <a href="https://linkedin.com" class="w-10 h-10 bg-secondary flex items-center justify-center hover:bg-white hover:text-secondary transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-blue-600/10 backdrop-blur p-8 text-dark text-center mt-[-40px] relative z-10 mx-6 bg-white shadow-xl border-b-4 border-secondary">
+                        <i class="fas fa-quote-left text-3xl text-gray-200 mb-3 absolute top-4 left-6"></i>
+                        <p class="italic text-gray-600 relative z-10 mt-2">"Lorem ipsum dolor sit amet consectetur adipiscing elit."</p>
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="relative group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop" class="w-full h-[450px] object-cover group-hover:scale-110 transition-transform duration-700" alt="Portrait of a dedicated consulting team member">
+                        <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white">
+                            <h3 class="text-2xl font-bold">Mr. John Doe</h3>
+                            <p class="mb-6 text-secondary font-semibold uppercase text-sm tracking-wider">Director</p>
+                            <div class="flex gap-3">
+                                <a href="https://facebook.com" class="w-10 h-10 bg-secondary flex items-center justify-center hover:bg-white hover:text-secondary transition-colors"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://twitter.com" class="w-10 h-10 bg-secondary flex items-center justify-center hover:bg-white hover:text-secondary transition-colors"><i class="fab fa-twitter"></i></a>
+                                <a href="https://linkedin.com" class="w-10 h-10 bg-secondary flex items-center justify-center hover:bg-white hover:text-secondary transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-blue-600/10 backdrop-blur p-8 text-dark text-center mt-[-40px] relative z-10 mx-6 bg-white shadow-xl border-b-4 border-secondary">
+                        <i class="fas fa-quote-left text-3xl text-gray-200 mb-3 absolute top-4 left-6"></i>
+                        <p class="italic text-gray-600 relative z-10 mt-2">"Lorem ipsum dolor sit amet consectetur adipiscing elit."</p>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="relative group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1974&auto=format&fit=crop" class="w-full h-[450px] object-cover group-hover:scale-110 transition-transform duration-700" alt="Portrait of a dedicated consulting team member">
+                        <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white">
+                            <h3 class="text-2xl font-bold">Ms. Emily Chen</h3>
+                            <p class="mb-6 text-secondary font-semibold uppercase text-sm tracking-wider">Analyst</p>
+                            <div class="flex gap-3">
+                                <a href="https://facebook.com" class="w-10 h-10 bg-secondary flex items-center justify-center hover:bg-white hover:text-secondary transition-colors"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://twitter.com" class="w-10 h-10 bg-secondary flex items-center justify-center hover:bg-white hover:text-secondary transition-colors"><i class="fab fa-twitter"></i></a>
+                                <a href="https://linkedin.com" class="w-10 h-10 bg-secondary flex items-center justify-center hover:bg-white hover:text-secondary transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-blue-600/10 backdrop-blur p-8 text-dark text-center mt-[-40px] relative z-10 mx-6 bg-white shadow-xl border-b-4 border-secondary">
+                        <i class="fas fa-quote-left text-3xl text-gray-200 mb-3 absolute top-4 left-6"></i>
+                        <p class="italic text-gray-600 relative z-10 mt-2">"Lorem ipsum dolor sit amet consectetur adipiscing elit."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Our Team Section -->
+    <section class="relative bg-[url('https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?q=80&w=2069&auto=format&fit=crop')] bg-cover bg-center py-0 md:py-16 mb-2">
+        <div class="max-w-7xl mx-auto px-4 relative z-10 flex">
+            <!-- Blue Box -->
+            <div class="bg-primary text-white p-10 md:p-16 w-full md:w-1/2 lg:w-5/12 shadow-2xl border-b-4 border-secondary" data-aos="fade-right" data-aos-duration="1000">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">Interested In Becoming A Part Of Our Dynamic Team? Lets Join Us</h2>
+                <p class="text-gray-300 mb-8 text-sm md:text-base leading-relaxed">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                </p>
+                
+                <!-- Progress Bars -->
+                <div class="mb-6">
+                    <div class="flex justify-between text-xs font-bold uppercase tracking-wider mb-2">
+                        <span>Work Culture</span>
+                        <span>98%</span>
+                    </div>
+                    <div class="w-full bg-blue-900/50 h-2 relative">
+                        <div class="bg-white h-2 absolute top-0 left-0 w-[98%]" data-aos="fade-right" data-aos-delay="200" data-aos-duration="1000"></div>
+                    </div>
+                </div>
+                
+                <div class="mb-10">
+                    <div class="flex justify-between text-xs font-bold uppercase tracking-wider mb-2">
+                        <span>Work Life Balance</span>
+                        <span>100%</span>
+                    </div>
+                    <div class="w-full bg-blue-900/50 h-2 relative">
+                        <div class="bg-white h-2 absolute top-0 left-0 w-full" data-aos="fade-right" data-aos-delay="400" data-aos-duration="1000"></div>
+                    </div>
+                </div>
+                
+                <a href="contact.html" class="inline-block bg-secondary text-white px-8 py-3 font-semibold hover:bg-white hover:text-primary transition duration-300 shadow-md">
+                    Apply Now <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call To Action Section -->
+    <section class="relative bg-[url('https://images.unsplash.com/photo-1556761175-5973dc0f32d7?q=80&w=1932&auto=format&fit=crop')] bg-cover bg-center py-24 px-4 bg-fixed">
+        <div class="absolute inset-0 bg-primary/90 mix-blend-multiply"></div>
+        <div class="relative z-10 max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10" data-aos="fade-up">
+            <div class="md:w-2/3 text-center md:text-left">
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight">Let's Discuss Your Business Goals & Schedule A Free Consultation Today</h2>
+                <p class="text-gray-300 text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
+            </div>
+            <div class="md:w-1/3 text-center md:text-right">
+                <a href="contact.html" class="inline-block bg-secondary text-white px-8 py-4 font-bold uppercase tracking-wider hover:bg-white hover:text-primary transition duration-300 shadow-xl">
+                    Get a Quotation <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+        <!-- Footer -->
+        <!-- Footer -->
+    <footer class="bg-brand-blue pt-16 pb-6 border-t-4 border-brand-orange mt-auto">
+        <div class="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 text-white">
+            <div class="pr-4">
+                <h3 class="text-2xl font-bold tracking-wider mb-6">STackly</h3>
+                <p class="text-sm text-blue-200 leading-relaxed">Expert business consulting strategies designed to drive success, streamline operations, and build long-term growth.</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                <ul class="space-y-3 text-sm text-blue-200 font-medium">
+                    <li><a href="index.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Homepage</a></li>
+                    <li><a href="about.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> About Us</a></li>
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Our Services</a></li>
+                    <li><a href="projects.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Projects Work</a></li>
+                    <li><a href="blog.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Blog</a></li>
+                    <li><a href="contact.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Contact Us</a></li>
+                    
+                    
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6">Consulting Service</h4>
+                <ul class="space-y-3 text-sm text-blue-200 font-medium">
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Strategic Planning</a></li>
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Process Optimization</a></li>
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Market Research</a></li>
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Business Analysis</a></li>
+                    <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Change Management</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Head Office Address</h4>
+                <p class="text-sm text-blue-200 mb-6">MMR Complex, Chinna Thirupathi, Near Chinna Muniyappan Kovil, Salem 636003</p>
+                <h4 class="text-lg font-bold mb-2">Days Open</h4>
+                <p class="text-sm text-blue-200">Monday - Friday 09 AM - 10 PM</p>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 md:px-8 border-t border-blue-800 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-blue-300">
+            <p>All Rights Reserved - STackly Consulting</p>
+            <div class="flex space-x-4 mt-4 md:mt-0 text-white">
+                <a href="https://facebook.com" aria-label="Facebook" class="hover:text-brand-orange transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com" aria-label="Twitter" class="hover:text-brand-orange transition"><i class="fab fa-twitter"></i></a>
+                <a href="https://youtube.com" aria-label="YouTube" class="hover:text-brand-orange transition"><i class="fab fa-youtube"></i></a>
+                <a href="https://pinterest.com" aria-label="Pinterest" class="hover:text-brand-orange transition"><i class="fab fa-pinterest-p"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    
+    </body>
+</html>
+
+

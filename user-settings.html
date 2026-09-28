@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - STackly</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#115b9c',
+                            dark: '#0c3e6a',
+                            darker: '#1f2937',
+                            orange: '#e87316',
+                            orangeHover: '#d16511',
+                            light: '#f4f7f6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { overflow-x: hidden; background-color: #f8fafc; }
+        .active-nav { background-color: rgba(255,255,255,0.1); border-left: 4px solid #e87316; }
+    </style>
+
+</head>
+<body class="font-sans text-gray-800 flex bg-gray-50">
+
+    
+    <!-- Sidebar -->
+    <aside class="w-64 bg-brand-blue h-screen fixed top-0 left-0 flex flex-col shadow-xl z-20 transition-transform transform -translate-x-full md:translate-x-0" id="sidebar">
+        <div class="h-16 flex items-center justify-between px-6 bg-brand-dark shadow-md border-b border-brand-blue border-opacity-50">
+            <h1 class="text-white text-2xl font-bold tracking-wider">STackly<span class="text-brand-orange">User</span></h1>
+            <button id="closeSidebarBtn" class="md:hidden text-gray-300 hover:text-white focus:outline-none">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <div class="flex-grow py-6 overflow-y-auto">
+            <nav class="flex flex-col space-y-2">
+                
+            <a href="user-dashboard.html" class="flex items-center py-3 px-6 text-gray-200 transition-colors border-l-4 border-transparent hover:bg-white hover:bg-opacity-5 hover:border-brand-orange">
+                <i class="fas fa-home w-6 text-center text-lg"></i>
+                <span class="ml-3 font-medium">Dashboard</span>
+            </a>
+        
+            <a href="user-services.html" class="flex items-center py-3 px-6 text-gray-200 transition-colors border-l-4 border-transparent hover:bg-white hover:bg-opacity-5 hover:border-brand-orange">
+                <i class="fas fa-concierge-bell w-6 text-center text-lg"></i>
+                <span class="ml-3 font-medium">My Services</span>
+            </a>
+        
+            <a href="user-projects.html" class="flex items-center py-3 px-6 text-gray-200 transition-colors border-l-4 border-transparent hover:bg-white hover:bg-opacity-5 hover:border-brand-orange">
+                <i class="fas fa-project-diagram w-6 text-center text-lg"></i>
+                <span class="ml-3 font-medium">My Projects</span>
+            </a>
+        
+            <a href="user-messages.html" class="flex items-center py-3 px-6 text-gray-200 transition-colors border-l-4 border-transparent hover:bg-white hover:bg-opacity-5 hover:border-brand-orange">
+                <i class="fas fa-comments w-6 text-center text-lg"></i>
+                <span class="ml-3 font-medium">Messages</span>
+            </a>
+        
+            <a href="user-profile.html" class="flex items-center py-3 px-6 text-gray-200 transition-colors border-l-4 border-transparent hover:bg-white hover:bg-opacity-5 hover:border-brand-orange">
+                <i class="fas fa-user w-6 text-center text-lg"></i>
+                <span class="ml-3 font-medium">Profile</span>
+            </a>
+        
+            <a href="user-settings.html" class="flex items-center py-3 px-6 text-gray-200 transition-colors border-l-4 active-nav">
+                <i class="fas fa-cog w-6 text-center text-lg"></i>
+                <span class="ml-3 font-medium">Settings</span>
+            </a>
+        
+            </nav>
+        </div>
+        <div class="p-4 bg-brand-dark">
+            <button id="logoutBtn" class="w-full bg-transparent border border-gray-400 hover:bg-red-600 hover:border-red-600 text-white py-2 px-4 rounded transition flex items-center justify-center font-semibold">
+                <i class="fas fa-sign-out-alt mr-2"></i> Logout
+            </button>
+        </div>
+    </aside>
+
+    <!-- Overlay -->
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-10 hidden md:hidden transition-opacity"></div>
+    
+    <!-- Topbar -->
+    <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6 fixed top-0 right-0 left-0 md:left-64 z-10 transition-all">
+        <div class="flex items-center">
+            <button id="mobileMenuBtn" class="md:hidden text-gray-500 hover:text-brand-orange focus:outline-none mr-4">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+            <h2 class="text-xl font-semibold text-gray-800" id="pageTitle">Settings</h2>
+        </div>
+        <div class="flex items-center space-x-4">
+            <div class="relative">
+                <button class="text-gray-400 hover:text-brand-orange transition">
+                    <i class="fas fa-bell text-xl"></i>
+                </button>
+            </div>
+            <div class="flex items-center border-l pl-4">
+                <div class="mr-3 text-right hidden sm:block">
+                    <p class="text-sm font-bold text-gray-800" id="userEmailDisplay">User</p>
+                    <p class="text-xs text-brand-orange font-semibold" id="userRoleDisplay">Client Account</p>
+                </div>
+                <div class="h-10 w-10 rounded-full bg-brand-orange text-white flex items-center justify-center text-lg font-bold shadow-md">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+
+    <!-- Main Content Area -->
+    <main class="pt-16 md:pl-64 min-h-screen flex flex-col transition-all w-full">
+        <div class="p-6 md:p-8 flex-grow">
+            
+        <div class="max-w-4xl mx-auto space-y-6">
+            <!-- Section 1: General Preferences -->
+            <section class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 md:p-8">
+                <h3 class="text-lg font-bold text-gray-800 mb-6 border-b pb-2">General Preferences</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Language</label>
+                        <select class="w-full border border-gray-300 rounded px-4 py-2 text-sm focus:outline-none focus:border-brand-blue bg-white">
+                            <option>English (US)</option>
+                            <option>Tamil (ta)</option>
+                            <option>Spanish (es)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Timezone</label>
+                        <select class="w-full border border-gray-300 rounded px-4 py-2 text-sm focus:outline-none focus:border-brand-blue bg-white">
+                            <option>(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi</option>
+                            <option>(GMT+00:00) London</option>
+                            <option>(GMT-05:00) Eastern Time (US & Canada)</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="mt-6 bg-brand-blue hover:bg-brand-dark text-white px-6 py-2 rounded text-sm font-bold transition">Save Preferences</button>
+            </section>
+
+            <!-- Section 2: Email Notifications -->
+            <section class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 md:p-8">
+                <h3 class="text-lg font-bold text-gray-800 mb-6 border-b pb-2">Email Notifications</h3>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between p-3 hover:bg-gray-50 rounded transition">
+                        <div>
+                            <p class="font-bold text-gray-800 text-sm">Project Updates</p>
+                            <p class="text-xs text-gray-500">When a project status changes or deliverables are added.</p>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" class="sr-only peer" checked>
+                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-blue"></div>
+                        </label>
+                    </div>
+                    <div class="flex items-center justify-between p-3 hover:bg-gray-50 rounded transition border-t border-gray-100">
+                        <div>
+                            <p class="font-bold text-gray-800 text-sm">New Messages</p>
+                            <p class="text-xs text-gray-500">When you receive a new reply from support.</p>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" class="sr-only peer" checked>
+                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-blue"></div>
+                        </label>
+                    </div>
+                    <div class="flex items-center justify-between p-3 hover:bg-gray-50 rounded transition border-t border-gray-100">
+                        <div>
+                            <p class="font-bold text-gray-800 text-sm">Marketing Emails</p>
+                            <p class="text-xs text-gray-500">Newsletters, promotional offers, and company news.</p>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" class="sr-only peer">
+                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-blue"></div>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Privacy Settings -->
+            <section class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 md:p-8">
+                <h3 class="text-lg font-bold text-gray-800 mb-6 border-b pb-2">Privacy & Visibility</h3>
+                <div class="space-y-4">
+                    <label class="flex items-start cursor-pointer group">
+                        <input type="checkbox" checked class="mt-1 h-4 w-4 text-brand-orange rounded border-gray-300 cursor-pointer">
+                        <span class="ml-3">
+                            <span class="block text-sm font-bold text-gray-800 group-hover:text-brand-blue transition">Share usage data</span>
+                            <span class="block text-xs text-gray-500">Help us improve by sharing anonymous usage statistics.</span>
+                        </span>
+                    </label>
+                    <label class="flex items-start cursor-pointer group">
+                        <input type="checkbox" class="mt-1 h-4 w-4 text-brand-orange rounded border-gray-300 cursor-pointer">
+                        <span class="ml-3">
+                            <span class="block text-sm font-bold text-gray-800 group-hover:text-brand-blue transition">Show profile to other clients</span>
+                            <span class="block text-xs text-gray-500">Allow your basic profile info to be visible in community forums (if applicable).</span>
+                        </span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- Section 4: Danger Zone -->
+            <section class="bg-red-50 rounded-lg shadow-sm border border-red-200 p-6 md:p-8">
+                <h3 class="text-lg font-bold text-red-800 mb-4 border-b border-red-200 pb-2">Danger Zone</h3>
+                <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <div>
+                        <p class="text-sm font-bold text-gray-900">Delete Account</p>
+                        <p class="text-xs text-gray-600 mt-1">Permanently remove your account and all associated data. This action cannot be undone.</p>
+                    </div>
+                    <button class="bg-white text-red-600 border border-red-300 hover:bg-red-600 hover:text-white px-6 py-2 rounded text-sm font-bold transition whitespace-nowrap shadow-sm">Delete Account</button>
+                </div>
+            </section>
+        </div>
+    
+        </div>
+        
+        <footer class="bg-white border-t p-4 text-center text-xs text-gray-500 mt-auto shadow-inner">
+            &copy; 2026 STackly Consulting. All Rights Reserved.
+        </footer>
+    </main>
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check auth
+            const role = localStorage.getItem('userRole');
+            const email = localStorage.getItem('userEmail');
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            
+            if (!isLoggedIn) {
+                window.location.href = 'login.html';
+                return;
+            }
+            if (role === 'Admin') {
+                window.location.href = 'admin-dashboard.html';
+                return;
+            }
+            if (role !== 'User') {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            const emailDisplay = document.getElementById('userEmailDisplay');
+            if(emailDisplay && email) emailDisplay.innerText = email;
+            
+            const roleDisplay = document.getElementById('userRoleDisplay');
+            if(roleDisplay && role) roleDisplay.innerText = role;
+            
+            const dynamicEmail = document.getElementById('dynamicEmail');
+            if(dynamicEmail && email) dynamicEmail.innerText = email;
+            
+            const dynamicRole = document.getElementById('dynamicRole');
+            if(dynamicRole && role) dynamicRole.innerText = role;
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const closeSidebarBtn = document.getElementById('closeSidebarBtn');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+
+            function openSidebar() {
+                if(sidebar) sidebar.classList.remove('-translate-x-full');
+                if(overlay) overlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeSidebar() {
+                if(sidebar) sidebar.classList.add('-translate-x-full');
+                if(overlay) overlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+
+            if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openSidebar);
+            if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeSidebar);
+            if (overlay) overlay.addEventListener('click', closeSidebar);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && sidebar && !sidebar.classList.contains('-translate-x-full')) {
+                    closeSidebar();
+                }
+            });
+
+            // Close when clicking a link
+            if(sidebar) {
+                const sidebarLinks = sidebar.querySelectorAll('nav a');
+                sidebarLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        if(window.innerWidth < 768) {
+                            closeSidebar();
+                        }
+                    });
+                });
+            }
+
+            // Logout
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', () => {
+                    localStorage.removeItem('userRole');
+                    localStorage.removeItem('userEmail');
+                    localStorage.removeItem('isLoggedIn');
+                    window.location.href = 'login.html';
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

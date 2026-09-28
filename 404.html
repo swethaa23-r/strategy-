@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Not Found | STackly</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        body { font-family: 'Poppins', sans-serif; background: #0c3e6a; overflow: hidden; }
+        .floating { animation: floating 3.5s ease-in-out infinite; }
+        @keyframes floating {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        .glow-text { text-shadow: 0 0 25px rgba(232, 115, 22, 0.7); }
+        .bg-shapes { position: absolute; filter: blur(60px); opacity: 0.4; animation: shape-move 10s infinite alternate; z-index: -1;}
+        @keyframes shape-move {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, -50px) scale(1.2); }
+        }
+    
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            [data-aos] {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+    </style>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js" defer></script>
+</head>
+<body class="flex flex-col min-h-screen flex items-center justify-center h-screen text-white relative">
+    <!-- Animated background glowing shapes -->
+    <div class="bg-shapes bg-blue-500 w-96 h-96 rounded-full top-[-10%] left-[-10%]"></div>
+    <div class="bg-shapes bg-orange-500 w-96 h-96 rounded-full bottom-[-10%] right-[-10%]" style="animation-duration: 12s; animation-direction: alternate-reverse;"></div>
+
+    <div class="text-center z-10 p-8 max-w-2xl">
+        <div data-aos="zoom-in" data-aos-duration="1500" class="text-[12rem] font-bold text-transparent bg-clip-text bg-gradient-to-br from-orange-400 to-orange-600 leading-none floating glow-text mb-2">
+            404
+        </div>
+        <h1 data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000" class="text-4xl md:text-5xl font-bold mb-6 tracking-wide drop-shadow-lg">Page Not Found</h1>
+        <p data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000" class="text-lg text-blue-100 mb-10 mx-auto">
+            Oops! The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+        </p>
+        
+        <div data-aos="zoom-in-up" data-aos-delay="700" data-aos-duration="1000" class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+            <!-- Go Back Home Button -->
+            <a href="index.html" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full font-semibold transition transform hover:scale-110 shadow-[0_0_15px_rgba(232,115,22,0.5)] flex items-center">
+                <i class="fas fa-home mr-2"></i> Go to Homepage
+            </a>
+            <!-- Go Back (History) Button -->
+            <button onclick="window.history.back()" class="border-2 border-blue-300 hover:bg-blue-300 hover:text-blue-900 text-blue-100 px-8 py-4 rounded-full font-semibold transition transform hover:scale-110 flex items-center">
+                <i class="fas fa-undo-alt mr-2"></i> Go Back
+            </button>
+        </div>
+    </div>
+
+    
+    <script>AOS.init({ once: true });</script>
+
+    </body>
+</html>
+
+
