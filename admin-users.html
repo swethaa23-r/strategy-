@@ -33,12 +33,16 @@
     </script>
 
     <style>
+        img { max-width: 100%; height: auto; }
+
+        body { overflow-x: hidden; }
+
         body { overflow-x: hidden; background-color: #f3f4f6; }
         .active-nav { background-color: rgba(255,255,255,0.1); border-left: 4px solid #e87316; }
     </style>
 
 </head>
-<body class="font-sans text-gray-800">
+<body class="font-sans text-gray-800 overflow-x-hidden">
 
     
     <!-- Sidebar -->
@@ -131,7 +135,7 @@
         <div class="p-6 md:p-8 flex-grow">
             
         <!-- Section 1: Summary -->
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 w-full max-w-full box-border overflow-hidden">
             <div class="bg-white p-6 rounded-lg shadow-sm border-t-4 border-brand-blue">
                 <h4 class="text-gray-500 font-medium text-sm">Total Users</h4>
                 <p class="text-3xl font-bold text-gray-800 mt-2">1,245</p>
@@ -147,7 +151,7 @@
         </section>
         
         <!-- Section 2: Search & Filter -->
-        <section class="bg-white p-4 rounded-lg shadow-sm mb-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <section class="bg-white p-4 rounded-lg shadow-sm mb-6 flex flex-col md:flex-row justify-between items-center gap-4 w-full max-w-full box-border overflow-hidden">
             <div class="relative w-full md:w-96">
                 <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
                 <input type="text" placeholder="Search users by name or email..." class="w-full pl-10 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue">
@@ -163,7 +167,7 @@
         </section>
         
         <!-- Section 3: Users Table -->
-        <section class="bg-white rounded-lg shadow-sm overflow-hidden mb-6">
+        <section class="bg-white rounded-lg shadow-sm overflow-hidden mb-6 w-full max-w-full box-border overflow-hidden">
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse">
                     <thead>
@@ -212,7 +216,7 @@
         </section>
         
         <!-- Section 4: Pagination -->
-        <section class="flex justify-between items-center text-sm text-gray-600 bg-white p-4 rounded-lg shadow-sm">
+        <section class="flex justify-between items-center text-sm text-gray-600 bg-white p-4 rounded-lg shadow-sm w-full max-w-full box-border overflow-hidden">
             <p>Showing 1 to 10 of 1,245 entries</p>
             <div class="flex space-x-1">
                 <button class="px-3 py-1 border rounded hover:bg-gray-100">Prev</button>

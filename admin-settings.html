@@ -33,12 +33,16 @@
     </script>
 
     <style>
+        img { max-width: 100%; height: auto; }
+
+        body { overflow-x: hidden; }
+
         body { overflow-x: hidden; background-color: #f3f4f6; }
         .active-nav { background-color: rgba(255,255,255,0.1); border-left: 4px solid #e87316; }
     </style>
 
 </head>
-<body class="font-sans text-gray-800">
+<body class="font-sans text-gray-800 overflow-x-hidden">
 
     
     <!-- Sidebar -->
@@ -217,7 +221,7 @@
                 </section>
                 
                 <!-- Section 4: System Info / Actions -->
-                <section class="bg-red-50 rounded-lg shadow-sm border border-red-100 p-6">
+                <section class="bg-red-50 rounded-lg shadow-sm border border-red-100 p-6 w-full max-w-full box-border overflow-hidden">
                     <h3 class="text-lg font-bold text-red-800 mb-4 border-b border-red-200 pb-2">Danger Zone</h3>
                     <div class="flex flex-col md:flex-row justify-between items-center gap-4">
                         <div>

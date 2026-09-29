@@ -32,12 +32,16 @@
     </script>
 
     <style>
+        img { max-width: 100%; height: auto; }
+
+        body { overflow-x: hidden; }
+
         body { overflow-x: hidden; background-color: #f8fafc; }
         .active-nav { background-color: rgba(255,255,255,0.1); border-left: 4px solid #e87316; }
     </style>
 
 </head>
-<body class="font-sans text-gray-800 flex bg-gray-50">
+<body class="font-sans text-gray-800 flex bg-gray-50 overflow-x-hidden">
 
     
     <!-- Sidebar -->
@@ -126,7 +130,7 @@
         <div class="p-6 md:p-8 flex-grow">
             
         <!-- Section 1: Search/Filter -->
-        <section class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 mb-6 flex flex-col sm:flex-row gap-4 items-center justify-between">
+        <section class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 mb-6 flex flex-col sm:flex-row gap-4 items-center justify-between w-full max-w-full box-border overflow-hidden">
             <h3 class="font-bold text-gray-800 hidden md:block">Service Catalog</h3>
             <div class="relative w-full sm:w-64">
                 <i class="fas fa-search absolute left-3 top-2.5 text-gray-400"></i>
@@ -141,7 +145,7 @@
         </section>
 
         <!-- Section 2: Active Subscriptions -->
-        <section class="mb-8">
+        <section class="mb-8 w-full max-w-full box-border overflow-hidden">
             <h3 class="text-lg font-bold text-gray-800 mb-4 border-l-4 border-brand-orange pl-3">My Enrolled Services</h3>
             <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
                 <table class="w-full text-left text-sm">
@@ -172,7 +176,7 @@
         </section>
 
         <!-- Section 3: Available Services -->
-        <section class="mb-8">
+        <section class="mb-8 w-full max-w-full box-border overflow-hidden">
             <h3 class="text-lg font-bold text-gray-800 mb-4 border-l-4 border-brand-blue pl-3">Explore New Services</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Card 1 -->
@@ -206,7 +210,7 @@
         </section>
         
         <!-- Section 4: Request Form -->
-        <section class="bg-white rounded-lg shadow-sm border border-gray-100 p-8">
+        <section class="bg-white rounded-lg shadow-sm border border-gray-100 p-8 w-full max-w-full box-border overflow-hidden">
             <h3 class="text-lg font-bold text-gray-800 mb-2">Can't find what you're looking for?</h3>
             <p class="text-sm text-gray-500 mb-6">Request a custom consulting service tailored to your specific needs.</p>
             <form class="space-y-4 max-w-2xl">

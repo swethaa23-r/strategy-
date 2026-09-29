@@ -28,6 +28,10 @@
         }
     </script>
     <style>
+        img { max-width: 100%; height: auto; }
+
+        body { overflow-x: hidden; }
+
         @import url('images/image_22.webp');
         
         .hero-bg {
@@ -90,10 +94,10 @@
                 <a href="blog.html" class="nav-link-blog hover:text-brand-orange border-b-2 border-transparent pb-1 transition">Blog</a>
                 <a href="contact.html" class="nav-link-contact hover:text-brand-orange border-b-2 border-transparent pb-1 transition">Contact</a>
             </div>
-            <!-- Desktop Login & Signup -->
+            <!-- Desktop Login & Register -->
             <div class="hidden md:flex space-x-4 items-center">
                 <a href="login.html" class="text-white hover:text-brand-orange transition duration-300 text-sm font-semibold">Login</a>
-                <a href="signup.html" class="bg-brand-dark hover:bg-brand-orange transition duration-300 px-6 py-2 rounded text-sm font-semibold shadow">Signup</a>
+                <a href="register.html" class="bg-brand-dark hover:bg-brand-orange transition duration-300 px-6 py-2 rounded text-sm font-semibold shadow">Register</a>
             </div>
             
             <!-- Mobile Menu Button -->
@@ -121,13 +125,13 @@
                 <a href="contact.html" class="nav-link-contact hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Contact</a>
                 <hr class="border-gray-700">
                 <a href="login.html" class="text-white text-center hover:text-brand-orange transition duration-300 px-6 py-2 font-semibold">Login</a>
-                <a href="signup.html" class="bg-brand-orange text-center hover:bg-white hover:text-brand-dark transition duration-300 px-6 py-3 rounded font-semibold shadow">Signup</a>
+                <a href="register.html" class="bg-brand-orange text-center hover:bg-white hover:text-brand-dark transition duration-300 px-6 py-3 rounded font-semibold shadow">Register</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-bg relative pt-20 pb-32 text-white">
+    <section class="hero-bg relative pt-20 pb-32 text-white w-full max-w-full box-border overflow-hidden">
         <div class="container mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-8 items-center">
             <div class="space-y-6 text-center md:text-left flex flex-col items-center md:items-start">
                 <p class="text-brand-orange font-semibold tracking-widest text-sm uppercase flex items-center justify-center md:justify-start">
@@ -140,12 +144,10 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
                 </p>
                 <div class="flex items-center space-x-6 pt-4 justify-center md:justify-start w-full">
-                    <a href="about.html" class="bg-brand-orange hover:bg-brand-orangeHover transition transform hover:scale-105 px-8 py-3 rounded font-semibold flex items-center">
+                    <a href="404.html" class="bg-brand-orange hover:bg-brand-orangeHover transition transform hover:scale-105 px-8 py-3 rounded font-semibold flex items-center">
                         Learn More
                     </a>
-                    <div class="flex items-center font-semibold">
-                        <i class="fas fa-phone-alt text-brand-orange mr-2 text-xl"></i> Contact Us
-                    </div>
+                    <a href="404.html" class="flex items-center font-semibold hover:text-brand-orange transition"><i class="fas fa-phone-alt text-brand-orange mr-2 text-xl"></i> Contact Us</a>
                 </div>
             </div>
             
@@ -179,7 +181,7 @@
     </section>
 
     <!-- About Section -->
-    <section class="py-24 bg-white">
+    <section class="py-24 bg-white w-full max-w-full box-border overflow-hidden">
         <div class="container mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-16 items-center">
             <div class="relative h-96 md:h-auto">
                 <img src="images/about_professional.webp" alt="Business Analysis" class="w-2/3 h-80 object-cover rounded-xl shadow-lg border-4 border-gray-100">
@@ -210,7 +212,7 @@
                     </div>
                 </div>
                 <div data-aos="fade-up" data-aos-delay="400" class="pt-4">
-                    <a href="about.html" class="bg-brand-orange hover:bg-brand-orangeHover text-white transition transform hover:scale-105 px-8 py-3 rounded font-semibold inline-flex items-center">
+                    <a href="404.html" class="bg-brand-orange hover:bg-brand-orangeHover text-white transition transform hover:scale-105 px-8 py-3 rounded font-semibold inline-flex items-center">
                         Learn More
                     </a>
                 </div>
@@ -219,7 +221,7 @@
     </section>
 
     <!-- Services Section -->
-    <section class="py-24 relative" style="background-image: url('images/image_24.webp'); background-size: cover; background-position: center;">
+    <section class="py-24 relative w-full max-w-full box-border overflow-hidden" style="background-image: url('images/image_24.webp'); background-size: cover; background-position: center;">
         <div class="absolute inset-0 bg-brand-darker bg-opacity-90"></div>
         <div class="container mx-auto px-4 md:px-8 relative z-10">
             <div class="flex flex-col md:flex-row justify-between items-end mb-12">
@@ -227,7 +229,7 @@
                     <p class="text-brand-orange font-semibold tracking-widest text-sm uppercase mb-2">CONSULTING SOLUTIONS</p>
                     <h2 data-aos="fade-up" class="text-4xl font-bold">We've Got Your Business Covered</h2>
                 </div>
-                <a href="services.html" class="bg-brand-orange hover:bg-brand-orangeHover text-white transition transform hover:scale-105 px-8 py-3 rounded font-semibold inline-flex items-center mt-6 md:mt-0">
+                <a href="404.html" class="bg-brand-orange hover:bg-brand-orangeHover text-white transition transform hover:scale-105 px-8 py-3 rounded font-semibold inline-flex items-center mt-6 md:mt-0">
                     Discover All 
                 </a>
             </div>
@@ -238,49 +240,49 @@
                     <i class="fas fa-lightbulb text-4xl text-brand-orange group-hover:text-white mb-6 transition"></i>
                     <h3 class="text-2xl font-bold text-brand-darker group-hover:text-white mb-4 transition">Strategic Planning</h3>
                     <p class="text-gray-500 group-hover:text-blue-100 mb-6 transition">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <a href="services.html" class="text-brand-orange font-semibold flex items-center group-hover:text-white transition">Learn More</a>
+                    <a href="404.html" class="text-brand-orange font-semibold flex items-center group-hover:text-white transition">Learn More</a>
                 </div>
                 <!-- Card 2 -->
                 <div data-aos="flip-up" data-aos-delay="150" data-aos-duration="1000" class="bg-white text-gray-600 p-10 shadow-xl border-b-4 border-transparent hover:border-brand-orange hover:bg-brand-blue group hover:-translate-y-2 transition duration-300">
                     <i class="fas fa-handshake text-4xl text-brand-orange group-hover:text-white mb-6 transition"></i>
                     <h3 class="text-2xl font-bold text-brand-darker group-hover:text-white mb-4 transition">Process Optimization</h3>
                     <p class="text-gray-500 group-hover:text-blue-100 mb-6 transition">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <a href="services.html" class="text-brand-orange font-semibold flex items-center group-hover:text-white transition">Learn More</a>
+                    <a href="404.html" class="text-brand-orange font-semibold flex items-center group-hover:text-white transition">Learn More</a>
                 </div>
                 <!-- Card 3 -->
                 <div data-aos="flip-up" data-aos-delay="300" data-aos-duration="1000" class="bg-white text-gray-600 p-10 shadow-xl border-b-4 border-transparent hover:border-brand-orange hover:bg-brand-blue group hover:-translate-y-2 transition duration-300">
                     <i class="fas fa-search-chart text-4xl text-brand-orange group-hover:text-white mb-6 transition"></i>
                     <h3 class="text-2xl font-bold text-brand-darker group-hover:text-white mb-4 transition">Market Research</h3>
                     <p class="text-gray-500 group-hover:text-blue-100 mb-6 transition">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <a href="services.html" class="text-brand-orange font-semibold flex items-center group-hover:text-white transition">Learn More</a>
+                    <a href="404.html" class="text-brand-orange font-semibold flex items-center group-hover:text-white transition">Learn More</a>
                 </div>
                 <!-- Card 4 -->
                 <div data-aos="flip-up" data-aos-duration="1000" class="bg-white text-gray-600 p-10 shadow-xl border-b-4 border-transparent hover:border-brand-orange hover:bg-brand-blue group hover:-translate-y-2 transition duration-300">
                     <i class="fas fa-search-dollar text-4xl text-brand-orange group-hover:text-white mb-6 transition"></i>
                     <h3 class="text-2xl font-bold text-brand-darker group-hover:text-white mb-4 transition">Business Analysis</h3>
                     <p class="text-gray-500 group-hover:text-blue-100 mb-6 transition">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <a href="services.html" class="text-brand-orange font-semibold flex items-center group-hover:text-white transition">Learn More</a>
+                    <a href="404.html" class="text-brand-orange font-semibold flex items-center group-hover:text-white transition">Learn More</a>
                 </div>
                 <!-- Card 5 -->
                 <div data-aos="flip-up" data-aos-delay="150" data-aos-duration="1000" class="bg-white text-gray-600 p-10 shadow-xl border-b-4 border-transparent hover:border-brand-orange hover:bg-brand-blue group hover:-translate-y-2 transition duration-300">
                     <i class="fas fa-sync-alt text-4xl text-brand-orange group-hover:text-white mb-6 transition"></i>
                     <h3 class="text-2xl font-bold text-brand-darker group-hover:text-white mb-4 transition">Change Management</h3>
                     <p class="text-gray-500 group-hover:text-blue-100 mb-6 transition">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <a href="services.html" class="text-brand-orange font-semibold flex items-center group-hover:text-white transition">Learn More</a>
+                    <a href="404.html" class="text-brand-orange font-semibold flex items-center group-hover:text-white transition">Learn More</a>
                 </div>
                 <!-- Card 6 -->
                 <div data-aos="flip-up" data-aos-delay="300" data-aos-duration="1000" class="bg-white text-gray-600 p-10 shadow-xl border-b-4 border-transparent hover:border-brand-orange hover:bg-brand-blue group hover:-translate-y-2 transition duration-300">
                     <i class="fas fa-cogs text-4xl text-brand-orange group-hover:text-white mb-6 transition"></i>
                     <h3 class="text-2xl font-bold text-brand-darker group-hover:text-white mb-4 transition">Development & Training</h3>
                     <p class="text-gray-500 group-hover:text-blue-100 mb-6 transition">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <a href="services.html" class="text-brand-orange font-semibold flex items-center group-hover:text-white transition">Learn More</a>
+                    <a href="404.html" class="text-brand-orange font-semibold flex items-center group-hover:text-white transition">Learn More</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Methodology Section -->
-    <section class="bg-brand-blue text-white py-24 relative overflow-hidden">
+    <section class="bg-brand-blue text-white py-24 relative overflow-hidden w-full max-w-full box-border overflow-hidden">
         <div class="absolute right-0 top-0 w-1/2 h-full opacity-10 pointer-events-none">
             <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full transform translate-x-1/4 -translate-y-1/4">
                 <path fill="#F07C00" d="M45,-76.3C58.3,-69.1,69.1,-55.8,76.3,-41.5C83.5,-27.2,87.2,-11.9,85.6,3.1C84,18.1,77.1,32.7,67.8,45.2C58.5,57.7,46.8,68.1,32.8,74.5C18.8,80.9,2.5,83.3,-13.2,81.1C-28.9,78.9,-44,72.1,-56.3,61.4C-68.6,50.7,-78.1,36.1,-82.7,20.4C-87.3,4.7,-87,-12.1,-81,-27.2C-75,-42.3,-63.3,-55.7,-49.4,-62.7C-35.5,-69.7,-19.4,-70.3,-2.3,-67.2C14.8,-64.1,29.6,-57.3,45,-76.3Z" transform="translate(100 100)" />
@@ -333,7 +335,7 @@
     </section>
 
     <!-- Why Choose Us / CTA Section -->
-    <section class="bg-brand-blue text-white py-24 relative overflow-hidden">
+    <section class="bg-brand-blue text-white py-24 relative overflow-hidden w-full max-w-full box-border overflow-hidden">
         <!-- Background decorative shape -->
         <div class="absolute top-0 right-0 w-1/2 h-full bg-brand-dark transform origin-bottom-left -skew-x-12 hidden md:block"></div>
         
@@ -342,7 +344,7 @@
                 <h2 data-aos="fade-up" class="text-4xl md:text-5xl font-bold leading-tight">
                     We Offer A Unique Business Analysis To Growth Strategies Designed To Meets Specific Need
                 </h2>
-                <a href="about.html" class="bg-brand-orange hover:bg-brand-orangeHover text-white transition transform hover:scale-105 px-8 py-3 rounded font-semibold inline-flex items-center">
+                <a href="404.html" class="bg-brand-orange hover:bg-brand-orangeHover text-white transition transform hover:scale-105 px-8 py-3 rounded font-semibold inline-flex items-center">
                     Learn More
                 </a>
             </div>
@@ -398,7 +400,7 @@
     </div>
 
     <!-- Case Studies Section -->
-    <section class="pt-24 pb-32 bg-gray-50">
+    <section class="pt-24 pb-32 bg-gray-50 w-full max-w-full box-border overflow-hidden">
         <div class="container mx-auto px-4 md:px-8 text-center mb-16">
             <h2 data-aos="fade-up" class="text-3xl md:text-4xl font-bold text-brand-darker leading-tight">
                 Explore In-Depth Case Studies<br>Highlighting The Tangible<br>Results Our Consulting Services
@@ -416,7 +418,7 @@
                 <div class="bg-white p-6 absolute bottom-0 left-8 right-8 transform translate-y-1/2 shadow-lg border-b-2 border-transparent group-hover:border-brand-orange text-center transition duration-300">
                     <h3 class="font-bold text-brand-darker mb-2">Strategic Growth Initiative</h3>
                     <p class="text-sm text-gray-500 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <a href="projects.html" class="text-brand-orange text-sm font-semibold">Learn More</a>
+                    <a href="404.html" class="text-brand-orange text-sm font-semibold">Learn More</a>
                 </div>
             </div>
             <!-- Card 2 -->
@@ -430,7 +432,7 @@
                 <div class="bg-white p-6 absolute bottom-0 left-8 right-8 transform translate-y-1/2 shadow-lg border-b-2 border-transparent group-hover:border-brand-orange text-center transition duration-300">
                     <h3 class="font-bold text-brand-darker mb-2">Operational Efficiency</h3>
                     <p class="text-sm text-gray-500 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <a href="projects.html" class="text-brand-orange text-sm font-semibold">Learn More</a>
+                    <a href="404.html" class="text-brand-orange text-sm font-semibold">Learn More</a>
                 </div>
             </div>
             <!-- Card 3 -->
@@ -444,7 +446,7 @@
                 <div class="bg-white p-6 absolute bottom-0 left-8 right-8 transform translate-y-1/2 shadow-lg border-b-2 border-transparent group-hover:border-brand-orange text-center transition duration-300">
                     <h3 class="font-bold text-brand-darker mb-2">Expansion Strategy</h3>
                     <p class="text-sm text-gray-500 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <a href="projects.html" class="text-brand-orange text-sm font-semibold">Learn More</a>
+                    <a href="404.html" class="text-brand-orange text-sm font-semibold">Learn More</a>
                 </div>
             </div>
             <!-- Card 4 -->
@@ -458,7 +460,7 @@
                 <div class="bg-white p-6 absolute bottom-0 left-8 right-8 transform translate-y-1/2 shadow-lg border-b-2 border-transparent group-hover:border-brand-orange text-center transition duration-300">
                     <h3 class="font-bold text-brand-darker mb-2">Change Management</h3>
                     <p class="text-sm text-gray-500 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <a href="projects.html" class="text-brand-orange text-sm font-semibold">Learn More</a>
+                    <a href="404.html" class="text-brand-orange text-sm font-semibold">Learn More</a>
                 </div>
             </div>
             <!-- Card 5 -->
@@ -472,7 +474,7 @@
                 <div class="bg-white p-6 absolute bottom-0 left-8 right-8 transform translate-y-1/2 shadow-lg border-b-2 border-transparent group-hover:border-brand-orange text-center transition duration-300">
                     <h3 class="font-bold text-brand-darker mb-2">Development Program</h3>
                     <p class="text-sm text-gray-500 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <a href="projects.html" class="text-brand-orange text-sm font-semibold">Learn More</a>
+                    <a href="404.html" class="text-brand-orange text-sm font-semibold">Learn More</a>
                 </div>
             </div>
             <!-- Card 6 -->
@@ -486,19 +488,19 @@
                 <div class="bg-white p-6 absolute bottom-0 left-8 right-8 transform translate-y-1/2 shadow-lg border-b-2 border-transparent group-hover:border-brand-orange text-center transition duration-300">
                     <h3 class="font-bold text-brand-darker mb-2">Customer Experience</h3>
                     <p class="text-sm text-gray-500 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <a href="projects.html" class="text-brand-orange text-sm font-semibold">Learn More</a>
+                    <a href="404.html" class="text-brand-orange text-sm font-semibold">Learn More</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Consultation CTA -->
-    <section class="relative py-24 bg-brand-blue text-white overflow-hidden" style="background-image: url('images/image_102.webp'); background-blend-mode: multiply; background-size: cover; background-position: top center;">
+    <section class="relative py-24 bg-brand-blue text-white overflow-hidden w-full max-w-full box-border overflow-hidden" style="background-image: url('images/image_102.webp'); background-blend-mode: multiply; background-size: cover; background-position: top center;">
         <div class="container mx-auto px-4 md:px-8 relative z-10 grid md:grid-cols-2">
             <div>
                 <h2 data-aos="fade-up" class="text-4xl md:text-5xl font-bold mb-6 leading-tight">Let's Discuss Your Business Goals & Schedule A Free Consultation Today</h2>
                 <p class="text-blue-100 mb-8 max-w-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                <a href="services.html#pricing" class="bg-brand-orange hover:bg-brand-orangeHover transition transform hover:scale-105 px-8 py-3 rounded font-semibold inline-flex items-center">
+                <a href="404.html" class="bg-brand-orange hover:bg-brand-orangeHover transition transform hover:scale-105 px-8 py-3 rounded font-semibold inline-flex items-center">
                     Get a Quotation 
                 </a>
             </div>
@@ -506,7 +508,7 @@
     </section>
 
     <!-- Stay Updated / FAQ Section -->
-    <section class="py-24 bg-brand-blue text-white">
+    <section class="py-24 bg-brand-blue text-white w-full max-w-full box-border overflow-hidden">
         <div class="container mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-16 items-center">
             <div class="relative md:pr-8 md:pb-8">
                 <img src="images/image_11.webp" alt="Consulting" class="w-full shadow-lg rounded">
@@ -556,7 +558,7 @@
 
     
     <!-- Our Team Section -->
-    <section class="py-24 bg-gray-50 overflow-hidden">
+    <section class="py-24 bg-gray-50 overflow-hidden w-full max-w-full box-border overflow-hidden">
         <div class="container mx-auto px-4 md:px-8 text-center mb-16">
             <p data-aos="fade-down" class="text-brand-orange font-semibold tracking-widest text-sm uppercase flex items-center justify-center mb-4">
                 MEET THE EXPERTS <span class="w-8 h-0.5 bg-brand-orange ml-3"></span>
@@ -632,13 +634,13 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="py-24 relative" style="background-image: url('images/image_26.webp'); background-size: cover; background-position: center;">
+    <section class="py-24 relative w-full max-w-full box-border overflow-hidden" style="background-image: url('images/image_26.webp'); background-size: cover; background-position: center;">
         <div class="absolute inset-0 bg-brand-darker bg-opacity-70"></div>
         <div class="container mx-auto px-4 md:px-8 relative z-10 grid md:grid-cols-2 gap-12 items-center">
             <div class="text-white pr-8">
                 <h2 data-aos="fade-up" class="text-4xl md:text-5xl font-bold mb-6 leading-tight">See How Others<br>Have Benefited</h2>
                 <p class="mb-8 text-gray-300 max-w-md">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                <a href="services.html" class="bg-brand-orange hover:bg-brand-orangeHover transition transform hover:scale-105 px-8 py-3 rounded font-semibold inline-flex items-center">
+                <a href="404.html" class="bg-brand-orange hover:bg-brand-orangeHover transition transform hover:scale-105 px-8 py-3 rounded font-semibold inline-flex items-center">
                     See More 
                 </a>
             </div>
@@ -676,7 +678,7 @@
     </section>
 
     <!-- Blog / Content Section -->
-    <section class="py-24 bg-white">
+    <section class="py-24 bg-white w-full max-w-full box-border overflow-hidden">
          <div class="container mx-auto px-4 md:px-8 text-center mb-16">
             <p class="text-brand-orange font-semibold tracking-widest text-sm uppercase flex items-center justify-center mb-4">
                 STAY INFORMED, STAY AHEAD <span class="w-8 h-0.5 bg-brand-orange ml-3"></span>
@@ -697,7 +699,7 @@
                 <div class="p-8 pt-12">
                     <h3 class="text-xl font-bold text-brand-darker mb-4 group-hover:text-brand-orange transition">The Role Of Emotional Intelligence In Leadership</h3>
                     <p class="text-gray-500 text-sm mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                    <a href="blog-single.html" class="text-brand-orange text-sm font-semibold flex items-center">Learn More</a>
+                    <a href="404.html" class="text-brand-orange text-sm font-semibold flex items-center">Learn More</a>
                 </div>
             </div>
             <!-- Blog Card 2 -->
@@ -713,7 +715,7 @@
                 <div class="p-8 pt-12">
                     <h3 class="text-xl font-bold text-brand-darker mb-4 group-hover:text-brand-orange transition">Building A Roadmap For Business Success</h3>
                     <p class="text-gray-500 text-sm mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                    <a href="blog-single.html" class="text-brand-orange text-sm font-semibold flex items-center">Learn More</a>
+                    <a href="404.html" class="text-brand-orange text-sm font-semibold flex items-center">Learn More</a>
                 </div>
             </div>
             <!-- Blog Card 3 -->
@@ -729,7 +731,7 @@
                 <div class="p-8 pt-12">
                     <h3 class="text-xl font-bold text-brand-darker mb-4 group-hover:text-brand-orange transition">Streamlining Your Business Processes For Efficiency</h3>
                     <p class="text-gray-500 text-sm mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                    <a href="blog-single.html" class="text-brand-orange text-sm font-semibold flex items-center">Learn More</a>
+                    <a href="404.html" class="text-brand-orange text-sm font-semibold flex items-center">Learn More</a>
                 </div>
             </div>
         </div>
@@ -756,7 +758,7 @@
                     <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Our Services</a></li>
                     <li><a href="projects.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Projects Work</a></li>
                     <li><a href="blog.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Blog</a></li>
-                    <li><a href="contact.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Contact Us</a></li>
+                    <li><a href="404.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Contact Us</a></li>
                     
                     
                 </ul>

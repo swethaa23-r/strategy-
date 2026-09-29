@@ -32,12 +32,16 @@
     </script>
 
     <style>
+        img { max-width: 100%; height: auto; }
+
+        body { overflow-x: hidden; }
+
         body { overflow-x: hidden; background-color: #f8fafc; }
         .active-nav { background-color: rgba(255,255,255,0.1); border-left: 4px solid #e87316; }
     </style>
 
 </head>
-<body class="font-sans text-gray-800 flex bg-gray-50">
+<body class="font-sans text-gray-800 flex bg-gray-50 overflow-x-hidden">
 
     
     <!-- Sidebar -->
@@ -126,7 +130,7 @@
         <div class="p-6 md:p-8 flex-grow">
             
         <!-- Section 1: Overview Stats -->
-        <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 w-full max-w-full box-border overflow-hidden">
             <div class="bg-white rounded shadow-sm border border-gray-100 p-4 flex flex-col justify-center items-center text-center">
                 <i class="fas fa-folder-open text-gray-400 text-2xl mb-2"></i>
                 <p class="text-2xl font-bold text-brand-blue">3</p>
@@ -150,7 +154,7 @@
         </section>
         
         <!-- Section 2: Active Projects Timeline -->
-        <section class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-8">
+        <section class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-8 w-full max-w-full box-border overflow-hidden">
             <h3 class="text-lg font-bold text-gray-800 mb-6 border-b pb-2">Active Projects</h3>
             <div class="border border-gray-100 rounded-lg p-6 hover:shadow-md transition">
                 <div class="flex justify-between items-start mb-2">
@@ -175,7 +179,7 @@
         </section>
 
         <!-- Section 3: Project Deliverables/Files -->
-        <section class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-8">
+        <section class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-8 w-full max-w-full box-border overflow-hidden">
             <h3 class="text-lg font-bold text-gray-800 mb-4 border-b pb-2">Recent Deliverables</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 <div class="border border-gray-200 rounded p-4 flex items-center justify-between hover:bg-gray-50 cursor-pointer transition group">
@@ -212,7 +216,7 @@
         </section>
 
         <!-- Section 4: Request New Project -->
-        <section class="bg-brand-blue rounded-lg shadow-sm p-6 text-white text-center flex flex-col md:flex-row justify-between items-center">
+        <section class="bg-brand-blue rounded-lg shadow-sm p-6 text-white text-center flex flex-col md:flex-row justify-between items-center w-full max-w-full box-border overflow-hidden">
             <div class="text-left mb-4 md:mb-0">
                 <h3 class="text-xl font-bold mb-1">Ready for the next phase?</h3>
                 <p class="text-blue-200 text-sm">Start a new project or request a followup consultation.</p>
