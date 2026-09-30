@@ -32,7 +32,7 @@
             max-width: 100%;
             height: auto; }
 
-        body { overflow-x: hidden; overflow-x: hidden; }
+        
 
         @import url('images/image_22.webp');
         
@@ -71,8 +71,7 @@
 
     <style>
         /* Global Text & Layout Overflow Fixes */
-        html,
-        body { overflow-x: hidden;
+        html, body { overflow-x: clip;
             width: 100%;
             max-width: 100%;
             margin: 0;
@@ -97,7 +96,7 @@
         }
     </style>
 </head>
-<body class="flex flex-col min-h-screen font-sans text-gray-600 antialiased bg-gray-50 overflow-x-hidden">
+<body class="flex flex-col min-h-screen font-sans text-gray-600 antialiased bg-gray-50  overflow-x-clip">
 
         <!-- Top Bar -->
     <div class="bg-gray-900 text-gray-300 text-sm py-2 hidden lg:block">
@@ -116,7 +115,7 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="bg-brand-blue text-white sticky top-0 z-50 shadow-md w-full max-w-full overflow-x-hidden">
+    <nav class="bg-brand-blue text-white sticky top-0 z-50 shadow-md w-full max-w-full  overflow-x-clip">
         <div class="container mx-auto px-4 md:px-8 py-4 flex justify-between items-center border-b border-brand-blue border-opacity-50 relative z-[55] bg-brand-blue">
             <div class="text-2xl font-bold tracking-wider z-20 relative">
                 <a href="index.html" aria-label="Home"><img src="images/logo.webp" alt="STackly Logo" class="h-8 md:h-10 w-auto max-w-full object-contain"></a>
@@ -161,7 +160,7 @@
             </div>
         </div>
     </nav>
-<main class="w-full overflow-x-hidden">
+<main class="w-full  overflow-x-clip">
 
 
     <!-- Hero Section -->
@@ -721,7 +720,7 @@
         </div>
         <div class="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <!-- Blog Card 1 -->
-            <div data-aos="fade-up" class="bg-white shadow-lg group hover:-translate-y-2 transition duration-300 border border-gray-100">
+            <div data-aos="fade-up" class="bg-white shadow-lg group hover:-translate-y-2 transition duration-300 border border-gray-100 h-full flex flex-col">
                 <div class="relative">
                     <img src="images/image_18.webp" alt="Blog 1" class="w-full h-60 object-cover">
                     <div class="absolute top-4 left-4 bg-brand-blue text-white text-xs px-3 py-1 font-semibold tracking-wider">CATEGORY</div>
@@ -730,14 +729,14 @@
                         <div class="text-xs uppercase">Mar</div>
                     </div>
                 </div>
-                <div class="p-8 pt-12">
+                <div class="p-8 pt-12 flex-grow flex flex-col">
                     <h3 class="text-xl font-bold text-brand-darker mb-4 group-hover:text-brand-orange transition">The Role Of Emotional Intelligence In Leadership</h3>
                     <p class="text-gray-500 text-sm mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                    <a href="blog-single.html" class="text-brand-orange text-sm font-semibold flex items-center">Learn More</a>
+                    <a href="blog-single.html" class="text-brand-orange text-sm font-semibold flex items-center mt-auto">Learn More</a>
                 </div>
             </div>
             <!-- Blog Card 2 -->
-            <div data-aos="fade-up" class="bg-white shadow-lg group hover:-translate-y-2 transition duration-300 border border-gray-100">
+            <div data-aos="fade-up" class="bg-white shadow-lg group hover:-translate-y-2 transition duration-300 border border-gray-100 h-full flex flex-col">
                 <div class="relative">
                     <img src="images/image_19.webp" alt="Blog 2" class="w-full h-60 object-cover">
                     <div class="absolute top-4 left-4 bg-brand-blue text-white text-xs px-3 py-1 font-semibold tracking-wider">CATEGORY</div>
@@ -746,14 +745,14 @@
                         <div class="text-xs uppercase">Apr</div>
                     </div>
                 </div>
-                <div class="p-8 pt-12">
+                <div class="p-8 pt-12 flex-grow flex flex-col">
                     <h3 class="text-xl font-bold text-brand-darker mb-4 group-hover:text-brand-orange transition">Building A Roadmap For Business Success</h3>
                     <p class="text-gray-500 text-sm mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                    <a href="blog-single.html" class="text-brand-orange text-sm font-semibold flex items-center">Learn More</a>
+                    <a href="blog-single.html" class="text-brand-orange text-sm font-semibold flex items-center mt-auto">Learn More</a>
                 </div>
             </div>
             <!-- Blog Card 3 -->
-            <div data-aos="fade-up" class="bg-white shadow-lg group hover:-translate-y-2 transition duration-300 border border-gray-100">
+            <div data-aos="fade-up" class="bg-white shadow-lg group hover:-translate-y-2 transition duration-300 border border-gray-100 h-full flex flex-col">
                 <div class="relative">
                     <img src="images/image_20.webp" alt="Blog 3" class="w-full h-60 object-cover">
                     <div class="absolute top-4 left-4 bg-brand-blue text-white text-xs px-3 py-1 font-semibold tracking-wider">CATEGORY</div>
@@ -762,10 +761,10 @@
                         <div class="text-xs uppercase">May</div>
                     </div>
                 </div>
-                <div class="p-8 pt-12">
+                <div class="p-8 pt-12 flex-grow flex flex-col">
                     <h3 class="text-xl font-bold text-brand-darker mb-4 group-hover:text-brand-orange transition">Streamlining Your Business Processes For Efficiency</h3>
                     <p class="text-gray-500 text-sm mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                    <a href="blog-single.html" class="text-brand-orange text-sm font-semibold flex items-center">Learn More</a>
+                    <a href="blog-single.html" class="text-brand-orange text-sm font-semibold flex items-center mt-auto">Learn More</a>
                 </div>
             </div>
         </div>
@@ -781,7 +780,7 @@
     <footer class="bg-brand-blue pt-16 pb-6 border-t-4 border-brand-orange mt-auto">
         <div class="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 text-white">
             <div class="pr-4">
-                <a href="index.html" aria-label="Home"><img src="images/logo.webp" alt="STackly Logo" class="h-12 w-auto mb-6"></a>
+                <a href="index.html" aria-label="Home"><img src="images/logo.webp" alt="STackly Logo" class="h-8 md:h-10 w-auto mb-6 max-w-full object-contain"></a>
                 <p class="text-sm text-blue-200 leading-relaxed">Expert business consulting strategies designed to drive success, streamline operations, and build long-term growth.</p>
             </div>
             <div>
@@ -879,6 +878,11 @@
 </main>
 </body>
 </html>
+
+
+
+
+
 
 
 

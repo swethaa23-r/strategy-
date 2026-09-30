@@ -44,7 +44,7 @@
             max-width: 100%;
             height: auto; }
 
-        body { overflow-x: hidden; overflow-x: hidden; }
+        body { overflow-x: clip; overflow-x: clip; }
         .hero-bg {
             background-image: linear-gradient(to right, rgba(17, 91, 156, 0.85) 0%, rgba(12, 62, 106, 0.9) 100%), url('images/image_10.webp');
             background-size: cover;
@@ -83,7 +83,7 @@
     <style>
         /* Global Text & Layout Overflow Fixes */
         html,
-        body { overflow-x: hidden;
+        body { overflow-x: clip;
             width: 100%;
             max-width: 100%;
             margin: 0;
@@ -108,7 +108,7 @@
         }
     </style>
 </head>
-<body class="flex flex-col min-h-screen font-sans text-gray-600 antialiased bg-gray-50 overflow-x-hidden">
+<body class="flex flex-col min-h-screen font-sans text-gray-600 antialiased bg-gray-50 overflow-x-clip">
 
         <!-- Top Bar -->
     <div class="bg-gray-900 text-gray-300 text-sm py-2 hidden lg:block">
@@ -127,7 +127,7 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="bg-brand-blue text-white sticky top-0 z-50 shadow-md w-full max-w-full overflow-x-hidden">
+    <nav class="bg-brand-blue text-white sticky top-0 z-50 shadow-md w-full max-w-full overflow-x-clip">
         <div class="container mx-auto px-4 md:px-8 py-4 flex justify-between items-center border-b border-brand-blue border-opacity-50 relative z-[55] bg-brand-blue">
             <div class="text-2xl font-bold tracking-wider z-20 relative">
                 <a href="index.html" aria-label="Home"><img src="images/logo.webp" alt="STackly Logo" class="h-8 md:h-10 w-auto max-w-full object-contain"></a>
@@ -172,7 +172,7 @@
             </div>
         </div>
     </nav>
-<main class="w-full overflow-x-hidden">
+<main class="w-full overflow-x-clip">
 
 
     <!-- Page Header (Hero) -->
@@ -190,7 +190,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 
                 <!-- Blog Card 1 -->
-                <div class="bg-white shadow-xl group" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-white shadow-xl group h-full flex flex-col" data-aos="fade-up" data-aos-delay="100">
                     <div class="relative overflow-hidden">
                         <img src="images/image_12.webp" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110" alt="Business consulting professionals collaborating on a strategic roadmap">
                         <!-- Category Badge -->
@@ -199,109 +199,109 @@
                         </div>
                         <!-- Date Badge -->
                         <div class="absolute -bottom-6 left-6 bg-brand-blue text-white text-center flex flex-col justify-center w-14 h-16 shadow-lg z-10">
-                            <span class="text-xl font-bold leading-none">11</span>
-                            <span class="text-xs uppercase font-medium mt-1">Feb</span>
+                            <span class="text-xl font-bold leading-none">15</span>
+                            <span class="text-xs uppercase font-medium mt-1">Mar</span>
                         </div>
                     </div>
-                    <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300">
+                    <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300 flex-grow flex flex-col">
                         <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-brand-orange transition-colors"><a href="blog-single.html">The Role Of Emotional Intelligence In Leadership</a></h3>
                         <p class="text-gray-500 text-sm mb-6 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors">Learn more &raquo;</a>
+                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors mt-auto block w-fit">Learn more &raquo;</a>
                     </div>
                 </div>
                 
                 <!-- Blog Card 2 -->
-                <div class="bg-white shadow-xl group" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white shadow-xl group h-full flex flex-col" data-aos="fade-up" data-aos-delay="200">
                     <div class="relative overflow-hidden">
                         <img src="images/image_13.webp" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110" alt="Business consulting professionals collaborating on a strategic roadmap">
                         <div class="absolute top-4 left-4 bg-[#3b6b93] text-white text-xs font-bold px-4 py-1.5 uppercase tracking-wider shadow-md">
                             Category
                         </div>
                         <div class="absolute -bottom-6 left-6 bg-brand-blue text-white text-center flex flex-col justify-center w-14 h-16 shadow-lg z-10">
-                            <span class="text-xl font-bold leading-none">11</span>
-                            <span class="text-xs uppercase font-medium mt-1">Feb</span>
+                            <span class="text-xl font-bold leading-none">22</span>
+                            <span class="text-xs uppercase font-medium mt-1">Apr</span>
                         </div>
                     </div>
-                    <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300">
+                    <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300 flex-grow flex flex-col">
                         <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-brand-orange transition-colors"><a href="blog-single.html">Building A Roadmap For Business Success</a></h3>
                         <p class="text-gray-500 text-sm mb-6 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors">Learn more &raquo;</a>
+                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors mt-auto block w-fit">Learn more &raquo;</a>
                     </div>
                 </div>
 
                 <!-- Blog Card 3 -->
-                <div class="bg-white shadow-xl group" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-white shadow-xl group h-full flex flex-col" data-aos="fade-up" data-aos-delay="300">
                     <div class="relative overflow-hidden">
                         <img src="images/image_14.webp" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110" alt="Business consulting professionals collaborating on a strategic roadmap">
                         <div class="absolute top-4 left-4 bg-[#3b6b93] text-white text-xs font-bold px-4 py-1.5 uppercase tracking-wider shadow-md">
                             Category
                         </div>
                         <div class="absolute -bottom-6 left-6 bg-brand-blue text-white text-center flex flex-col justify-center w-14 h-16 shadow-lg z-10">
-                            <span class="text-xl font-bold leading-none">11</span>
-                            <span class="text-xs uppercase font-medium mt-1">Feb</span>
+                            <span class="text-xl font-bold leading-none">05</span>
+                            <span class="text-xs uppercase font-medium mt-1">May</span>
                         </div>
                     </div>
-                    <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300">
+                    <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300 flex-grow flex flex-col">
                         <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-brand-orange transition-colors"><a href="blog-single.html">Streamlining Your Business Processes For Efficiency</a></h3>
                         <p class="text-gray-500 text-sm mb-6 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors">Learn more &raquo;</a>
+                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors mt-auto block w-fit">Learn more &raquo;</a>
                     </div>
                 </div>
 
                 <!-- Blog Card 4 -->
-                <div class="bg-white shadow-xl group" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-white shadow-xl group h-full flex flex-col" data-aos="fade-up" data-aos-delay="100">
                     <div class="relative overflow-hidden">
                         <img src="images/image_15.webp" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110" alt="Business consulting professionals collaborating on a strategic roadmap">
                         <div class="absolute top-4 left-4 bg-[#3b6b93] text-white text-xs font-bold px-4 py-1.5 uppercase tracking-wider shadow-md">
                             Category
                         </div>
                         <div class="absolute -bottom-6 left-6 bg-brand-blue text-white text-center flex flex-col justify-center w-14 h-16 shadow-lg z-10">
-                            <span class="text-xl font-bold leading-none">11</span>
-                            <span class="text-xs uppercase font-medium mt-1">Feb</span>
+                            <span class="text-xl font-bold leading-none">12</span>
+                            <span class="text-xs uppercase font-medium mt-1">Jun</span>
                         </div>
                     </div>
-                    <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300">
+                    <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300 flex-grow flex flex-col">
                         <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-brand-orange transition-colors"><a href="blog-single.html">Leveraging Analytics For Informed Business Decisions</a></h3>
                         <p class="text-gray-500 text-sm mb-6 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors">Learn more &raquo;</a>
+                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors mt-auto block w-fit">Learn more &raquo;</a>
                     </div>
                 </div>
 
                 <!-- Blog Card 5 -->
-                <div class="bg-white shadow-xl group" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white shadow-xl group h-full flex flex-col" data-aos="fade-up" data-aos-delay="200">
                     <div class="relative overflow-hidden">
                         <img src="images/image_16.webp" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110" alt="Business consulting professionals collaborating on a strategic roadmap">
                         <div class="absolute top-4 left-4 bg-[#3b6b93] text-white text-xs font-bold px-4 py-1.5 uppercase tracking-wider shadow-md">
                             Category
                         </div>
                         <div class="absolute -bottom-6 left-6 bg-brand-blue text-white text-center flex flex-col justify-center w-14 h-16 shadow-lg z-10">
-                            <span class="text-xl font-bold leading-none">11</span>
-                            <span class="text-xs uppercase font-medium mt-1">Feb</span>
+                            <span class="text-xl font-bold leading-none">18</span>
+                            <span class="text-xs uppercase font-medium mt-1">Jul</span>
                         </div>
                     </div>
-                    <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300">
+                    <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300 flex-grow flex flex-col">
                         <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-brand-orange transition-colors"><a href="blog-single.html">Adapting To Modern Business Realities</a></h3>
                         <p class="text-gray-500 text-sm mb-6 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors">Learn more &raquo;</a>
+                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors mt-auto block w-fit">Learn more &raquo;</a>
                     </div>
                 </div>
 
                 <!-- Blog Card 6 -->
-                <div class="bg-white shadow-xl group" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-white shadow-xl group h-full flex flex-col" data-aos="fade-up" data-aos-delay="300">
                     <div class="relative overflow-hidden">
                         <img src="images/image_18.webp" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110" alt="Business consulting professionals collaborating on a strategic roadmap">
                         <div class="absolute top-4 left-4 bg-[#3b6b93] text-white text-xs font-bold px-4 py-1.5 uppercase tracking-wider shadow-md">
                             Category
                         </div>
                         <div class="absolute -bottom-6 left-6 bg-brand-blue text-white text-center flex flex-col justify-center w-14 h-16 shadow-lg z-10">
-                            <span class="text-xl font-bold leading-none">11</span>
-                            <span class="text-xs uppercase font-medium mt-1">Feb</span>
+                            <span class="text-xl font-bold leading-none">24</span>
+                            <span class="text-xs uppercase font-medium mt-1">Aug</span>
                         </div>
                     </div>
-                    <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300">
+                    <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300 flex-grow flex flex-col">
                         <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-brand-orange transition-colors"><a href="blog-single.html">Strategies For Successful Organizational Transformation</a></h3>
                         <p class="text-gray-500 text-sm mb-6 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors">Learn more &raquo;</a>
+                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors mt-auto block w-fit">Learn more &raquo;</a>
                     </div>
                 </div>
 
@@ -322,7 +322,7 @@
             <h2 class="text-4xl md:text-5xl font-bold mb-6">Subscribe Our Newsletter</h2>
             <p class="text-lg text-blue-100 mb-12 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
             
-            <form class="flex flex-col gap-6">
+            <form novalidate class="flex flex-col gap-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="text-left">
                         <label class="block text-sm font-bold mb-2 text-white/90">Your Name</label>
@@ -343,7 +343,7 @@
     <footer class="bg-brand-blue pt-16 pb-6 border-t-4 border-brand-orange mt-auto">
         <div class="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 text-white">
             <div class="pr-4">
-                <a href="index.html" aria-label="Home"><img src="images/logo.webp" alt="STackly Logo" class="h-12 w-auto mb-6"></a>
+                <a href="index.html" aria-label="Home"><img src="images/logo.webp" alt="STackly Logo" class="h-8 md:h-10 w-auto mb-6 max-w-full object-contain"></a>
                 <p class="text-sm text-blue-200 leading-relaxed">Expert business consulting strategies designed to drive success, streamline operations, and build long-term growth.</p>
             </div>
             <div>
@@ -394,6 +394,10 @@
 </main>
 </body>
 </html>
+
+
+
+
 
 
 

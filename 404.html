@@ -12,10 +12,10 @@
             max-width: 100%;
             height: auto; }
 
-        body { overflow-x: hidden; overflow-x: hidden; }
+        body { overflow-x: clip; overflow-x: clip; }
 
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-        body { overflow-x: hidden; font-family: 'Poppins', sans-serif; background: #0c3e6a; overflow: hidden; }
+        body { overflow-x: clip; font-family: 'Poppins', sans-serif; background: #0c3e6a; overflow: hidden; }
         .floating { animation: floating 3.5s ease-in-out infinite; }
         @keyframes floating {
             0% { transform: translateY(0px) rotate(0deg); }
@@ -55,7 +55,7 @@
     <style>
         /* Global Text & Layout Overflow Fixes */
         html,
-        body { overflow-x: hidden;
+        body { overflow-x: clip;
             width: 100%;
             max-width: 100%;
             margin: 0;
@@ -80,7 +80,7 @@
         }
     </style>
 </head>
-<body class="flex flex-col min-h-screen flex items-center justify-center h-screen text-white relative overflow-x-hidden">
+<body class="flex flex-col min-h-screen flex items-center justify-center h-screen text-white relative overflow-x-clip">
     <!-- Animated background glowing shapes -->
     <div class="bg-shapes bg-blue-500 w-96 h-96 rounded-full top-[-10%] left-[-10%]"></div>
     <div class="bg-shapes bg-orange-500 w-96 h-96 rounded-full bottom-[-10%] right-[-10%]" style="animation-duration: 12s; animation-direction: alternate-reverse;"></div>
@@ -111,6 +111,7 @@
 
     </body>
 </html>
+
 
 
 
