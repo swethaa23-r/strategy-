@@ -32,23 +32,59 @@
     </script>
 
     <style>
-        img { max-width: 100%; height: auto; }
+        img { width: 100%;
+            max-width: 100%;
+            height: auto; }
 
-        body { overflow-x: hidden; }
+        body { overflow-x: hidden; overflow-x: hidden; }
 
-        body { overflow-x: hidden; background-color: #f8fafc; }
+        body { overflow-x: hidden; overflow-x: hidden; background-color: #f8fafc; }
         .active-nav { background-color: rgba(255,255,255,0.1); border-left: 4px solid #e87316; }
-    </style>
+    
+        .faq-header { width: 100%; max-width: 100%; }
+        .faq-header h4, .faq-header span { flex: 1; min-width: 0; padding-right: 1rem; }
+        .faq-icon { flex-shrink: 0; }
+</style>
 
+
+
+
+    <style>
+        /* Global Text & Layout Overflow Fixes */
+        html,
+        body { overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3, h4, h5, h6, p, li, a, span, button {
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+        img, video, canvas, svg {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
-<body class="font-sans text-gray-800 flex bg-gray-50 overflow-x-hidden">
+<body class="font-sans text-gray-800 bg-gray-50 overflow-x-hidden">
 
     
     <!-- Sidebar -->
-    <aside class="w-64 bg-brand-blue h-screen fixed top-0 left-0 flex flex-col shadow-xl z-50 transition-transform transform -translate-x-full md:translate-x-0" id="sidebar">
+    <aside class="w-64 bg-brand-blue h-screen fixed top-0 flex flex-col shadow-xl z-50 -left-full lg:left-0 transition-all duration-300" id="sidebar">
         <div class="h-16 flex items-center justify-between px-6 bg-brand-dark shadow-md border-b border-brand-blue border-opacity-50">
             <a href="index.html" class="flex flex-col items-center justify-center gap-1 mt-2 mb-2"><img src="images/logo.webp" alt="STackly Logo" class="h-8 w-auto"><span class="text-white font-bold text-lg">User</span></a>
-            <button id="closeSidebarBtn" class="md:hidden text-gray-300 hover:text-white focus:outline-none">
+            <button id="closeSidebarBtn" class="lg:hidden text-gray-300 hover:text-white focus:outline-none">
                 <i class="fas fa-times text-xl"></i>
             </button>
         </div>
@@ -95,16 +131,16 @@
     </aside>
 
     <!-- Overlay -->
-    <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden transition-opacity"></div>
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden transition-opacity"></div>
     
     <!-- Topbar -->
-    <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6 fixed top-0 right-0 left-0 md:left-64 z-30 transition-all">
+    <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6 fixed top-0 right-0 left-0 lg:left-64 z-30 transition-all">
         <div class="flex items-center w-full md:w-auto justify-between md:justify-start">
-            <button id="mobileMenuBtn" class="md:hidden text-gray-500 hover:text-brand-orange focus:outline-none">
+            <button id="mobileMenuBtn" class="lg:hidden text-gray-500 hover:text-brand-orange focus:outline-none">
                 <i class="fas fa-bars text-xl"></i>
             </button>
-            <img src="images/logo.webp" alt="Logo" class="h-8 md:hidden mx-auto">
-            <h2 class="text-xl font-semibold text-gray-800 hidden md:block" id="pageTitle">Projects</h2>
+            <img src="images/logo.webp" alt="Logo" class="h-8 lg:hidden mx-auto">
+            <h2 class="text-xl font-semibold text-gray-800 hidden lg:block" id="pageTitle">Projects</h2>
         </div>
         <div class="hidden md:flex items-center space-x-4">
             <div class="relative">
@@ -126,11 +162,11 @@
     
 
     <!-- Main Content Area -->
-    <main class="pt-16 md:pl-64 min-h-screen flex flex-col transition-all w-full">
+    <main class="pt-16 lg:pl-64 min-h-screen flex flex-col transition-all">
         <div class="p-6 md:p-8 flex-grow">
             
         <!-- Section 1: Overview Stats -->
-        <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 w-full max-w-full box-border overflow-hidden">
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 w-full overflow-hidden">
             <div class="bg-white rounded shadow-sm border border-gray-100 p-4 flex flex-col justify-center items-center text-center">
                 <i class="fas fa-folder-open text-gray-400 text-2xl mb-2"></i>
                 <p class="text-2xl font-bold text-brand-blue">3</p>
@@ -154,7 +190,7 @@
         </section>
         
         <!-- Section 2: Active Projects Timeline -->
-        <section class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-8 w-full max-w-full box-border overflow-hidden">
+        <section class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-8 w-full overflow-hidden">
             <h3 class="text-lg font-bold text-gray-800 mb-6 border-b pb-2">Active Projects</h3>
             <div class="border border-gray-100 rounded-lg p-6 hover:shadow-md transition">
                 <div class="flex justify-between items-start mb-2">
@@ -179,7 +215,7 @@
         </section>
 
         <!-- Section 3: Project Deliverables/Files -->
-        <section class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-8 w-full max-w-full box-border overflow-hidden">
+        <section class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-8 w-full overflow-hidden">
             <h3 class="text-lg font-bold text-gray-800 mb-4 border-b pb-2">Recent Deliverables</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 <div class="border border-gray-200 rounded p-4 flex items-center justify-between hover:bg-gray-50 cursor-pointer transition group">
@@ -216,12 +252,12 @@
         </section>
 
         <!-- Section 4: Request New Project -->
-        <section class="bg-brand-blue rounded-lg shadow-sm p-6 text-white text-center flex flex-col md:flex-row justify-between items-center w-full max-w-full box-border overflow-hidden">
+        <section class="bg-brand-blue rounded-lg shadow-sm p-6 text-white text-center flex flex-col md:flex-row justify-between items-center w-full overflow-hidden">
             <div class="text-left mb-4 md:mb-0">
                 <h3 class="text-xl font-bold mb-1">Ready for the next phase?</h3>
                 <p class="text-blue-200 text-sm">Start a new project or request a followup consultation.</p>
             </div>
-            <button class="bg-white text-brand-blue hover:bg-gray-100 hover:text-brand-dark px-8 py-3 rounded-full font-bold transition shadow-lg w-full md:w-auto whitespace-nowrap">
+            <button class="bg-white text-brand-blue hover:bg-gray-100 hover:text-brand-dark px-8 py-3 rounded-full font-bold transition shadow-lg w-full md:w-auto ">
                 Start New Project
             </button>
         </section>
@@ -231,7 +267,7 @@
         <footer class="bg-white border-t p-4 text-center text-xs text-gray-500 mt-auto shadow-inner">
             &copy; 2026 STackly Consulting. All Rights Reserved.
         </footer>
-    </main>
+    
 
     
     <script>
@@ -289,7 +325,7 @@
             if (overlay) overlay.addEventListener('click', closeSidebar);
 
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && sidebar && !sidebar.classList.contains('-translate-x-full')) {
+                if (e.key === 'Escape' && sidebar && !sidebar.classList.contains('-left-full')) {
                     closeSidebar();
                 }
             });
@@ -426,6 +462,29 @@
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

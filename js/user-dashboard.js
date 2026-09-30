@@ -48,13 +48,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const overlay = document.getElementById('sidebarOverlay');
 
     function openSidebar() {
-        if(sidebar) sidebar.classList.remove('-translate-x-full');
+        if(sidebar) sidebar.classList.remove('-left-full');
         if(overlay) overlay.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
     }
 
+    
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1024) {
+            closeSidebar();
+        }
+    });
+    
     function closeSidebar() {
-        if(sidebar) sidebar.classList.add('-translate-x-full');
+        if(sidebar) sidebar.classList.add('-left-full');
         if(overlay) overlay.classList.add('hidden');
         document.body.style.overflow = '';
     }
@@ -64,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (overlay) overlay.addEventListener('click', closeSidebar);
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && sidebar && !sidebar.classList.contains('-translate-x-full')) {
+        if (e.key === 'Escape' && sidebar && !sidebar.classList.contains('-left-full')) {
             closeSidebar();
         }
     });
@@ -73,10 +80,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const sidebarLinks = sidebar.querySelectorAll('nav a');
         sidebarLinks.forEach(link => {
             link.addEventListener('click', () => {
-                if(window.innerWidth < 768) {
+                if(window.innerWidth < 1024) {
                     closeSidebar();
                 }
             });
         });
     }
 });
+
+
+

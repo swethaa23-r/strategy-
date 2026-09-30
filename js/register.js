@@ -130,15 +130,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Add some dummy full name saving too
                     localStorage.setItem("userName", fullName.value.trim());
                     
-                    setTimeout(() => {
-                        if (role.value === 'Admin') {
-                            window.location.href = 'admin-dashboard.html';
-                        } else {
-                            window.location.href = 'user-dashboard.html';
-                        }
-                    }, 1500);
+                    setTimeout(() => { window.location.href = 'login.html'; }, 1500);
                 }
             }
         });
     }
 });
+

@@ -8,12 +8,14 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        img { max-width: 100%; height: auto; }
+        img { width: 100%;
+            max-width: 100%;
+            height: auto; }
 
-        body { overflow-x: hidden; }
+        body { overflow-x: hidden; overflow-x: hidden; }
 
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-        body { font-family: 'Poppins', sans-serif; background: #0c3e6a; overflow: hidden; }
+        body { overflow-x: hidden; font-family: 'Poppins', sans-serif; background: #0c3e6a; overflow: hidden; }
         .floating { animation: floating 3.5s ease-in-out infinite; }
         @keyframes floating {
             0% { transform: translateY(0px) rotate(0deg); }
@@ -40,9 +42,43 @@
             }
         }
 
-    </style>
+    
+        .faq-header { width: 100%; max-width: 100%; }
+        .faq-header h4, .faq-header span { flex: 1; min-width: 0; padding-right: 1rem; }
+        .faq-icon { flex-shrink: 0; }
+</style>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/main.js" defer></script>
+
+
+
+    <style>
+        /* Global Text & Layout Overflow Fixes */
+        html,
+        body { overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3, h4, h5, h6, p, li, a, span, button {
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+        img, video, canvas, svg {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body class="flex flex-col min-h-screen flex items-center justify-center h-screen text-white relative overflow-x-hidden">
     <!-- Animated background glowing shapes -->
@@ -75,6 +111,29 @@
 
     </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

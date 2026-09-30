@@ -40,9 +40,11 @@
         }
     </script>
     <style>
-        img { max-width: 100%; height: auto; }
+        img { width: 100%;
+            max-width: 100%;
+            height: auto; }
 
-        body { overflow-x: hidden; }
+        body { overflow-x: hidden; overflow-x: hidden; }
         .hero-bg {
             background-image: linear-gradient(to right, rgba(17, 91, 156, 0.85) 0%, rgba(12, 62, 106, 0.9) 100%), url('images/image_19.webp');
             background-size: cover;
@@ -62,17 +64,51 @@
             }
         }
 
-    </style>
+    
+        .faq-header { width: 100%; max-width: 100%; }
+        .faq-header h4, .faq-header span { flex: 1; min-width: 0; padding-right: 1rem; }
+        .faq-icon { flex-shrink: 0; }
+</style>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/main.js" defer></script>
     <script src="js/contact.js" defer></script>
+
+
+
+    <style>
+        /* Global Text & Layout Overflow Fixes */
+        html,
+        body { overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3, h4, h5, h6, p, li, a, span, button {
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+        img, video, canvas, svg {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body class="flex flex-col min-h-screen font-sans text-gray-600 antialiased bg-gray-50 overflow-x-hidden">
 
         <!-- Top Bar -->
     <div class="bg-gray-900 text-gray-300 text-sm py-2 hidden lg:block">
         <div class="container mx-auto px-4 md:px-8 flex justify-between items-center">
-            <div class="flex space-x-6">
+            <div class="flex flex-col sm:flex-row sm:space-x-6 space-y-4 sm:space-y-0">
                 <span><i class="fas fa-envelope text-brand-orange mr-2"></i> hello@STackly.co</span>
                 <span><i class="fas fa-phone-alt text-brand-orange mr-2"></i> +91 9000 9000 90</span>
             </div>
@@ -86,10 +122,10 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="bg-brand-blue text-white sticky top-0 z-50 shadow-md relative">
-        <div class="container mx-auto px-4 md:px-8 py-4 flex justify-between items-center border-b border-brand-blue border-opacity-50">
+    <nav class="bg-brand-blue text-white sticky top-0 z-50 shadow-md w-full max-w-full overflow-x-hidden">
+        <div class="container mx-auto px-4 md:px-8 py-4 flex justify-between items-center border-b border-brand-blue border-opacity-50 relative z-[55] bg-brand-blue">
             <div class="text-2xl font-bold tracking-wider z-20 relative">
-                <a href="index.html" aria-label="Home"><img src="images/logo.webp" alt="STackly Logo" class="h-10 w-auto"></a>
+                <a href="index.html" aria-label="Home"><img src="images/logo.webp" alt="STackly Logo" class="h-8 md:h-10 w-auto max-w-full object-contain"></a>
             </div>
             <!-- Desktop Nav -->
             <div class="hidden md:flex space-x-8 items-center font-medium text-sm">
@@ -103,11 +139,11 @@
             <!-- Desktop Login & Register -->
             <div class="hidden md:flex space-x-4 items-center">
                 <a href="login.html" class="text-white hover:text-brand-orange transition duration-300 text-sm font-semibold">Login</a>
-                <a href="register.html" class="bg-brand-dark hover:bg-brand-orange transition duration-300 px-6 py-2 rounded text-sm font-semibold shadow">Register</a>
+                <a href="register.html" class="text-white hover:text-white bg-brand-dark hover:bg-brand-orange transition duration-300 px-6 py-2 rounded text-sm font-semibold shadow">Register</a>
             </div>
             
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none z-20 relative" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu">
+            <button id="mobile-menu-btn" class="md:hidden text-white mr-2 pr-2 focus:outline-none z-[60] relative" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu">
                 <i class="fas fa-bars text-2xl"></i>
             </button>
         </div>
@@ -116,12 +152,8 @@
         <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden opacity-0 transition-opacity duration-300"></div>
         
         <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="fixed top-0 right-0 h-full w-3/4 max-w-sm bg-brand-dark shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col">
-            <div class="p-4 flex justify-end border-b border-gray-700">
-                <button id="mobile-close-btn" class="text-white focus:outline-none p-2" aria-label="Close navigation">
-                    <i class="fas fa-times text-2xl"></i>
-                </button>
-            </div>
+        <div id="mobile-menu" style="width: min(85vw, 380px);" class="fixed top-0 -right-full h-full bg-brand-dark shadow-2xl z-[45] transition-all duration-300 flex flex-col pt-[73px]">
+            
             <div class="flex flex-col py-6 px-8 space-y-6 text-lg font-medium overflow-y-auto">
                 <a href="index.html" class="nav-link-index hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Home</a>
                 <a href="about.html" class="nav-link-about hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">About</a>
@@ -131,23 +163,25 @@
                 <a href="contact.html" class="nav-link-contact hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Contact</a>
                 <hr class="border-gray-700">
                 <a href="login.html" class="text-white text-center hover:text-brand-orange transition duration-300 px-6 py-2 font-semibold">Login</a>
-                <a href="register.html" class="bg-brand-orange text-center hover:bg-white hover:text-brand-dark transition duration-300 px-6 py-3 rounded font-semibold shadow">Register</a>
+                <a href="register.html" class="text-white bg-brand-orange text-center hover:bg-white hover:text-brand-dark transition duration-300 px-6 py-3 rounded font-semibold shadow">Register</a>
             </div>
         </div>
     </nav>
+<main class="w-full overflow-x-hidden">
+
 
     <!-- Page Header (Hero) -->
-    <section class="hero-bg py-32 text-center text-white relative w-full max-w-full box-border overflow-hidden">
+    <section class="hero-bg py-32 text-center text-white relative">
         <div class="relative z-10 max-w-3xl mx-auto px-4" data-aos="fade-up" data-aos-duration="1000">
-            <h1 class="text-5xl md:text-6xl font-bold mb-4">Contact Us</h1>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">Contact Us</h1>
             <p class="text-xl text-gray-200 font-light">Passionate About Driving Success For Businesses</p>
         </div>
     </section>
 
     <!-- Contact Form & Info Split -->
-    <section class="flex flex-col lg:flex-row w-full bg-white w-full max-w-full box-border overflow-hidden">
+    <section class="flex flex-col lg:flex-row w-full bg-white">
         <!-- Left: Form -->
-        <div class="lg:w-1/2 bg-brand-blue text-white p-10 md:p-16 lg:p-24" data-aos="fade-right">
+        <div class="lg:w-1/2 bg-brand-blue text-white px-5 py-10 md:p-16 lg:p-24" data-aos="fade-right">
             <h2 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">Contact Form To Share Your Details And Message</h2>
             <p class="text-blue-100 mb-10 leading-relaxed text-sm md:text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
               <form id="contactForm" class="space-y-6" novalidate>
@@ -197,7 +231,7 @@
         </div>
         
         <!-- Right: Info -->
-        <div class="lg:w-1/2 relative bg-[url('images/image_20.webp')] bg-cover bg-center p-10 md:p-16 lg:p-24 text-white" data-aos="fade-left">
+        <div class="lg:w-1/2 relative bg-[url('images/image_20.webp')] bg-cover bg-center px-5 py-10 md:p-16 lg:p-24 text-white" data-aos="fade-left">
             <div class="absolute inset-0 bg-[#3b6b93]/90 mix-blend-multiply"></div>
             <div class="relative z-10 h-full flex flex-col justify-center">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">We'd Love To Welcome You And Discuss With Us</h2>
@@ -210,7 +244,7 @@
                         </div>
                         <div class="ml-4">
                             <h4 class="font-bold text-lg mb-1">Head Office Address</h4>
-                            <p class="text-blue-100 leading-relaxed text-sm">MMR Complex, Chinna Thirupathi,<br>Near Chinna Muniyappan Kovil, Salem 636003</p>
+                            <p class="text-blue-100 leading-relaxed text-sm">MMR Complex, Chinna Thirupathi, Near Chinna Muniyappan Kovil, Salem 636003</p>
                         </div>
                     </li>
                     <li class="flex items-start">
@@ -246,7 +280,7 @@
     </section>
 
     <!-- Map Section -->
-    <section class="w-full min-h-[300px] md:h-[500px] bg-gray-200 w-full max-w-full box-border overflow-hidden" data-aos="fade-up">
+    <section class="w-full min-h-[300px] md:h-[500px] bg-gray-200" data-aos="fade-up">
         <!-- Embedded Google Map targeting MMR Complex, Chinna Thirupathi, Salem -->
         <iframe src="https://maps.google.com/maps?q=mmr%20complex,%20chinna%20thirupathi,%20near%20chinna%20muniyappan%20kovil,%20salem%20636003&t=&z=15&ie=UTF8&iwloc=&output=embed" 
                 width="100%" 
@@ -259,13 +293,13 @@
     </section>
 
     <!-- Our Knowledge / FAQ Block 1 -->
-    <section class="bg-brand-blue py-24 px-4 overflow-hidden relative w-full max-w-full box-border overflow-hidden">
+    <section class="bg-brand-blue py-24 px-4 overflow-hidden relative">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             
             <!-- Left: Image with overlapping box -->
             <div class="relative" data-aos="fade-right">
                 <img src="images/image_21.webp" class="w-full min-h-[300px] md:h-[550px] object-cover shadow-2xl" alt="Professional consultant analyzing business data">
-                <div class="absolute bottom-10 left-0 md:-left-12 bg-[#3b6b93] p-10 shadow-2xl max-w-sm border-l-4 border-brand-orange text-white z-10">
+                <div class="absolute bottom-10 left-0 md:-left-12 bg-[#3b6b93] p-6 md:p-10 shadow-2xl max-w-sm border-l-4 border-brand-orange text-white z-10">
                     <h4 class="font-bold text-2xl mb-4">Our Business</h4>
                     <p class="text-sm mb-8 text-blue-100 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
                     <div class="space-y-4 text-sm font-medium">
@@ -322,7 +356,7 @@
     </section>
 
     <!-- General Questions / FAQ Block 2 -->
-    <section class="py-24 px-4 bg-white w-full max-w-full box-border overflow-hidden">
+    <section class="py-24 px-4 bg-white">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             
             <!-- Left: Accordion -->
@@ -375,7 +409,7 @@
                 <div class="absolute inset-0 bg-[#3b6b93]/90 mix-blend-multiply"></div>
                 <div class="absolute inset-0 bg-brand-dark/20"></div>
                 
-                <div class="absolute inset-0 p-10 md:p-14 flex flex-col justify-center text-white z-10">
+                <div class="absolute inset-0 p-6 md:p-14 flex flex-col justify-center text-white z-10">
                     <h3 class="text-3xl md:text-4xl font-bold mb-4">Still Have Questions?</h3>
                     <p class="text-blue-100 mb-10 text-sm md:text-base leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     
@@ -401,7 +435,7 @@
                     <li><a href="services.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Our Services</a></li>
                     <li><a href="projects.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Projects Work</a></li>
                     <li><a href="blog.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Blog</a></li>
-                    <li><a href="404.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Contact Us</a></li>
+                    <li><a href="contact.html" class="hover:text-brand-orange transition flex items-center"><i class="fas fa-caret-right mr-2 text-brand-orange"></i> Contact Us</a></li>
                     
                     
                 </ul>
@@ -435,8 +469,38 @@
     </footer>
 
     
-    </body>
+    
+
+
+</main>
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -6,36 +6,57 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. Mobile Menu
     const menuBtn = document.getElementById('mobile-menu-btn');
-    const closeBtn = document.getElementById('mobile-close-btn');
     const menu = document.getElementById('mobile-menu');
     const overlay = document.getElementById('mobile-menu-overlay');
     const body = document.body;
     
     function openMenu() {
         if(!menu) return;
-        menu.classList.remove('translate-x-full');
-        overlay.classList.remove('hidden');
-        setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+        menu.classList.remove('-right-full'); menu.classList.add('right-0');
+        if(overlay) {
+            overlay.classList.remove('hidden');
+            setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+        }
         body.style.overflow = 'hidden';
-        if(menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
+        if(menuBtn) {
+            menuBtn.setAttribute('aria-expanded', 'true');
+            menuBtn.innerHTML = '<i class="fas fa-times text-2xl"></i>';
+        }
     }
+    
+    
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+            closeMenu();
+        }
+    });
     
     function closeMenu() {
         if(!menu) return;
-        menu.classList.add('translate-x-full');
-        overlay.classList.add('opacity-0');
-        setTimeout(() => overlay.classList.add('hidden'), 300);
+        menu.classList.remove('right-0'); menu.classList.add('-right-full');
+        if(overlay) {
+            overlay.classList.add('opacity-0');
+            setTimeout(() => overlay.classList.add('hidden'), 300);
+        }
         body.style.overflow = '';
-        if(menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+        if(menuBtn) {
+            menuBtn.setAttribute('aria-expanded', 'false');
+            menuBtn.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+        }
     }
     
-    if(menuBtn && closeBtn && menu && overlay) {
-        menuBtn.addEventListener('click', openMenu);
-        closeBtn.addEventListener('click', closeMenu);
-        overlay.addEventListener('click', closeMenu);
+    if(menuBtn && menu) {
+        menuBtn.addEventListener('click', (e) => {
+            if (menu.classList.contains('-right-full')) {
+                openMenu();
+            } else {
+                closeMenu();
+            }
+        });
+        if(overlay) overlay.addEventListener('click', closeMenu);
         
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !menu.classList.contains('translate-x-full')) closeMenu();
+            if (e.key === 'Escape' && !menu.classList.contains('-right-full')) closeMenu();
         });
         
         menu.querySelectorAll('a').forEach(link => {
@@ -280,5 +301,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+
+
+
 
 

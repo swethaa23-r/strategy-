@@ -33,23 +33,59 @@
     </script>
 
     <style>
-        img { max-width: 100%; height: auto; }
+        img { width: 100%;
+            max-width: 100%;
+            height: auto; }
 
-        body { overflow-x: hidden; }
+        body { overflow-x: hidden; overflow-x: hidden; }
 
-        body { overflow-x: hidden; background-color: #f3f4f6; }
+        body { overflow-x: hidden; overflow-x: hidden; background-color: #f3f4f6; }
         .active-nav { background-color: rgba(255,255,255,0.1); border-left: 4px solid #e87316; }
-    </style>
+    
+        .faq-header { width: 100%; max-width: 100%; }
+        .faq-header h4, .faq-header span { flex: 1; min-width: 0; padding-right: 1rem; }
+        .faq-icon { flex-shrink: 0; }
+</style>
 
+
+
+
+    <style>
+        /* Global Text & Layout Overflow Fixes */
+        html,
+        body { overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3, h4, h5, h6, p, li, a, span, button {
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+        img, video, canvas, svg {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body class="font-sans text-gray-800 overflow-x-hidden">
 
     
     <!-- Sidebar -->
-    <aside class="w-64 bg-brand-dark h-screen fixed top-0 left-0 flex flex-col shadow-xl z-50 transition-transform transform -translate-x-full md:translate-x-0" id="sidebar">
+    <aside class="w-64 bg-brand-dark h-screen fixed top-0 flex flex-col shadow-xl z-50 -left-full lg:left-0 transition-all duration-300" id="sidebar">
         <div class="min-h-[64px] py-2 flex items-center justify-between px-6 bg-brand-darker shadow-md">
             <a href="index.html" class="flex flex-col items-center justify-center gap-1 mt-2 mb-2"><img src="images/logo.webp" alt="STackly Logo" class="h-8 w-auto"><span class="text-white font-bold text-lg">Admin</span></a>
-            <button id="closeSidebarBtn" class="md:hidden text-gray-300 hover:text-white focus:outline-none">
+            <button id="closeSidebarBtn" class="lg:hidden text-gray-300 hover:text-white focus:outline-none">
                 <i class="fas fa-times text-xl"></i>
             </button>
         </div>
@@ -96,16 +132,16 @@
     </aside>
 
     <!-- Overlay -->
-    <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden transition-opacity"></div>
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden transition-opacity"></div>
     
     <!-- Topbar -->
-    <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6 fixed top-0 right-0 left-0 md:left-64 z-30 transition-all">
+    <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6 fixed top-0 right-0 left-0 lg:left-64 z-30 transition-all">
         <div class="flex items-center w-full md:w-auto justify-between md:justify-start">
-            <button id="mobileMenuBtn" class="md:hidden text-gray-500 hover:text-brand-orange focus:outline-none">
+            <button id="mobileMenuBtn" class="lg:hidden text-gray-500 hover:text-brand-orange focus:outline-none">
                 <i class="fas fa-bars text-xl"></i>
             </button>
-            <img src="images/logo.webp" alt="Logo" class="h-8 md:hidden mx-auto">
-            <h2 class="text-xl font-semibold text-gray-800 hidden md:block" id="pageTitle">Projects</h2>
+            <img src="images/logo.webp" alt="Logo" class="h-8 lg:hidden mx-auto">
+            <h2 class="text-xl font-semibold text-gray-800 hidden lg:block" id="pageTitle">Projects</h2>
         </div>
         <div class="hidden md:flex items-center space-x-4">
             <div class="relative">
@@ -131,11 +167,11 @@
     
 
     <!-- Main Content Area -->
-    <main class="pt-16 md:pl-64 min-h-screen flex flex-col transition-all">
+    <main class="pt-16 lg:pl-64 min-h-screen flex flex-col transition-all">
         <div class="p-6 md:p-8 flex-grow">
             
         <!-- Section 1: Stats -->
-        <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 w-full max-w-full box-border overflow-hidden">
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 w-full overflow-hidden">
             <div class="bg-white p-4 rounded shadow-sm text-center">
                 <h4 class="text-gray-500 text-xs uppercase tracking-wider font-bold mb-1">Total</h4>
                 <p class="text-2xl font-bold text-brand-blue">145</p>
@@ -155,7 +191,7 @@
         </section>
 
         <!-- Section 2: Projects Grid -->
-        <section class="mb-8 w-full max-w-full box-border overflow-hidden">
+        <section class="mb-8 w-full overflow-hidden">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-lg font-bold text-gray-800">Active Projects</h3>
                 <button class="text-sm bg-brand-blue text-white px-4 py-2 rounded font-medium hover:bg-brand-dark"><i class="fas fa-plus mr-1"></i> New Project</button>
@@ -208,7 +244,7 @@
         </section>
         
         <!-- Section 3: Recent Deliverables -->
-        <section class="bg-white rounded-lg shadow-sm p-6 mb-8 w-full max-w-full box-border overflow-hidden">
+        <section class="bg-white rounded-lg shadow-sm p-6 mb-8 w-full overflow-hidden">
             <h3 class="text-lg font-bold text-gray-800 mb-4 border-b pb-2">Recent Deliverables</h3>
             <ul class="space-y-4">
                 <li class="flex items-start">
@@ -229,7 +265,7 @@
         </section>
 
         <!-- Section 4: Create Project Quick Form -->
-        <section class="bg-gray-800 text-white rounded-lg shadow-sm p-8 w-full max-w-full box-border overflow-hidden">
+        <section class="bg-gray-800 text-white rounded-lg shadow-sm p-8 w-full overflow-hidden">
             <h3 class="text-xl font-bold mb-2">Need to start a new initiative?</h3>
             <p class="text-gray-300 text-sm mb-6">Quickly bootstrap a new project workspace and invite team members.</p>
             <form class="flex flex-col md:flex-row gap-4">
@@ -248,7 +284,7 @@
         <footer class="bg-white border-t p-4 text-center text-xs text-gray-500 mt-auto">
             &copy; 2026 STackly Consulting. All Rights Reserved.
         </footer>
-    </main>
+    
 
     
     <script>
@@ -303,7 +339,7 @@
             if (overlay) overlay.addEventListener('click', closeSidebar);
 
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && sidebar && !sidebar.classList.contains('-translate-x-full')) {
+                if (e.key === 'Escape' && sidebar && !sidebar.classList.contains('-left-full')) {
                     closeSidebar();
                 }
             });
@@ -440,6 +476,29 @@
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
