@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- AOS Animation CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
 
     <!-- Custom Tailwind Configuration to match the screenshots -->
     <script>
@@ -101,7 +101,7 @@
         }
 
     </style>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script src="js/main.js" defer></script>
 
     <style>
@@ -131,8 +131,25 @@
             height: auto;
         }
     </style>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="css/preloader.css" rel="stylesheet">
 </head>
-<body class="flex flex-col min-h-screen font-sans text-gray-700 antialiased bg-gray-50 overflow-x-clip">
+
+<body class="loading flex flex-col min-h-screen font-sans text-gray-700 antialiased bg-gray-50 overflow-x-clip">
+
+<div id="preloader">
+    <div class="preloader-content">
+        <div class="preloader-ring-wrapper">
+            <div class="preloader-ring-outer"></div>
+            <div class="preloader-ring-inner"></div>
+            <img src="images/logo.webp" alt="Logo" class="preloader-logo">
+        </div>
+        <div class="preloader-percentage" id="preloader-percentage-text">0%</div>
+        <div class="preloader-text">Preparing Your Strategy</div>
+    </div>
+</div>
+
 
         <!-- Top Bar -->
     <div class="bg-gray-900 text-gray-300 text-sm py-2 hidden lg:block">
@@ -152,9 +169,9 @@
 
     <!-- Navigation -->
     <nav class="bg-brand-blue text-white sticky top-0 z-50 shadow-md w-full max-w-full overflow-x-clip">
-        <div class="container mx-auto px-4 md:px-8 py-4 flex justify-between items-center border-b border-brand-blue border-opacity-50">
+        <div class="container mx-auto px-4 md:px-8 py-4 flex justify-between items-center border-b border-brand-blue border-opacity-50 relative z-[55] bg-brand-blue">
             <div class="text-2xl font-bold tracking-wider z-20 relative">
-                <a href="index.html" aria-label="Home"><img src="images/logo.webp" alt="STackly Logo" class="h-10 w-auto"></a>
+                <a href="index.html" aria-label="Home"><img src="images/logo.webp" alt="STackly Logo" class="h-8 md:h-10 w-auto max-w-full object-contain"></a>
             </div>
             <!-- Desktop Nav -->
             <div class="hidden md:flex space-x-8 items-center font-medium text-sm">
@@ -172,7 +189,7 @@
             </div>
             
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-white mr-2 pr-2 focus:outline-none z-20 relative" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu">
+            <button id="mobile-menu-btn" class="md:hidden text-white mr-2 pr-2 focus:outline-none z-[60] relative" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu">
                 <i class="fas fa-bars text-2xl"></i>
             </button>
         </div>
@@ -181,12 +198,8 @@
         <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden opacity-0 transition-opacity duration-300"></div>
         
         <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="fixed top-0 right-0 h-full w-3/4 max-w-sm bg-brand-dark shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col">
-            <div class="p-4 flex justify-end border-b border-gray-700">
-                <button id="mobile-close-btn" class="text-white focus:outline-none p-2" aria-label="Close navigation">
-                    <i class="fas fa-times text-2xl"></i>
-                </button>
-            </div>
+        <div id="mobile-menu" style="width: 100%;" class="fixed top-0 -right-full h-full bg-brand-dark shadow-2xl z-[45] transition-all duration-300 flex flex-col pt-[73px]">
+            
             <div class="flex flex-col py-6 px-8 space-y-6 text-lg font-medium overflow-y-auto">
                 <a href="index.html" class="nav-link-index hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Home</a>
                 <a href="about.html" class="nav-link-about hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">About</a>
@@ -231,12 +244,8 @@
                 <h4 class="text-secondary font-bold uppercase tracking-widest text-sm">About Us</h4>
             </div>
             <h2 class="text-4xl md:text-5xl font-bold text-dark mb-6 leading-tight">We Are Business Consultants Dedicated To Driving Your Success</h2>
-            <p class="text-gray-600 mb-6 text-lg leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
-            </p>
-            <blockquote class="border-l-4 border-secondary pl-6 py-2 mb-8 bg-gray-50 italic text-gray-600 text-lg">
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."
-            </blockquote>
+            <p class="text-gray-600 mb-6 text-lg leading-relaxed">Our team of experts delivers actionable market analysis, empowering you to make confident decisions.</p>
+            <blockquote class="border-l-4 border-secondary pl-6 py-2 mb-8 bg-gray-50 italic text-gray-600 text-lg">Transforming complex challenges into structured opportunities is our primary focus in business consulting.</blockquote>
             
             <div class="flex items-start gap-5 mb-10" data-aos="fade-up" data-aos-delay="200">
                 <div class="text-primary mt-1">
@@ -244,7 +253,7 @@
                 </div>
                 <div>
                     <h5 class="font-bold text-dark text-xl mb-1">15 Years Of Experience</h5>
-                    <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p class="text-gray-600">Transforming complex challenges into structured opportunities is our primary focus in business consulting.</p>
                 </div>
             </div>
             
@@ -269,7 +278,7 @@
                     <h2 class="text-4xl md:text-5xl font-bold text-white leading-tight">Discover The Core Principles That Guide Us</h2>
                 </div>
                 <div class="lg:w-1/2 text-gray-300" data-aos="fade-left">
-                    <p class="text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                    <p class="text-lg">Effective leadership and organizational alignment are the cornerstones of our consulting methodology.</p>
                 </div>
             </div>
 
@@ -346,7 +355,7 @@
                     </div>
                     <div class="bg-blue-600/10 backdrop-blur p-8 text-dark text-center mt-[-40px] relative z-10 mx-6 bg-white shadow-xl border-b-4 border-secondary">
                         <i class="fas fa-quote-left text-3xl text-gray-200 mb-3 absolute top-4 left-6"></i>
-                        <p class="italic text-gray-600 relative z-10 mt-2">"Lorem ipsum dolor sit amet consectetur adipiscing elit."</p>
+                        <p class="italic text-gray-600 relative z-10 mt-2">Our tailored solutions align cross-functional teams, ensuring strategic initiatives achieve their maximum potential.</p>
                     </div>
                 </div>
                 
@@ -366,7 +375,7 @@
                     </div>
                     <div class="bg-blue-600/10 backdrop-blur p-8 text-dark text-center mt-[-40px] relative z-10 mx-6 bg-white shadow-xl border-b-4 border-secondary">
                         <i class="fas fa-quote-left text-3xl text-gray-200 mb-3 absolute top-4 left-6"></i>
-                        <p class="italic text-gray-600 relative z-10 mt-2">"Lorem ipsum dolor sit amet consectetur adipiscing elit."</p>
+                        <p class="italic text-gray-600 relative z-10 mt-2">We build robust frameworks that support continuous improvement and agile response to industry shifts.</p>
                     </div>
                 </div>
 
@@ -386,7 +395,7 @@
                     </div>
                     <div class="bg-blue-600/10 backdrop-blur p-8 text-dark text-center mt-[-40px] relative z-10 mx-6 bg-white shadow-xl border-b-4 border-secondary">
                         <i class="fas fa-quote-left text-3xl text-gray-200 mb-3 absolute top-4 left-6"></i>
-                        <p class="italic text-gray-600 relative z-10 mt-2">"Lorem ipsum dolor sit amet consectetur adipiscing elit."</p>
+                        <p class="italic text-gray-600 relative z-10 mt-2">Our tailored solutions align cross-functional teams, ensuring strategic initiatives achieve their maximum potential.</p>
                     </div>
                 </div>
             </div>
@@ -399,9 +408,7 @@
             <!-- Blue Box -->
             <div class="bg-primary text-white p-10 md:p-16 w-full md:w-1/2 lg:w-5/12 shadow-2xl border-b-4 border-secondary" data-aos="fade-right" data-aos-duration="1000">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">Interested In Becoming A Part Of Our Dynamic Team? Lets Join Us</h2>
-                <p class="text-gray-300 mb-8 text-sm md:text-base leading-relaxed">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
-                </p>
+                <p class="text-gray-300 mb-8 text-sm md:text-base leading-relaxed">Through comprehensive capability assessments, we identify growth drivers and streamline complex operations.</p>
                 
                 <!-- Progress Bars -->
                 <div class="mb-6">
@@ -437,7 +444,7 @@
         <div class="relative z-10 max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10" data-aos="fade-up">
             <div class="md:w-2/3 text-center md:text-left">
                 <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight">Let's Discuss Your Business Goals & Schedule A Free Consultation Today</h2>
-                <p class="text-gray-300 text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
+                <p class="text-gray-300 text-lg">Our tailored solutions align cross-functional teams, ensuring strategic initiatives achieve their maximum potential.</p>
             </div>
             <div class="md:w-1/3 text-center md:text-right">
                 <a href="404.html" class="inline-block bg-secondary text-white px-8 py-4 font-bold uppercase tracking-wider hover:bg-white hover:text-primary transition duration-300 shadow-xl">
@@ -501,7 +508,12 @@
 
 
 </main>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/preloader.js"></script>
+    <script src="js/animations.js"></script>
 </body>
+
 </html>
 
 

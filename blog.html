@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- AOS Animation CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
 
     <!-- Tailwind Configuration -->
     <script>
@@ -75,7 +75,7 @@
         .faq-header h4, .faq-header span { flex: 1; min-width: 0; padding-right: 1rem; }
         .faq-icon { flex-shrink: 0; }
 </style>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script src="js/main.js" defer></script>
 
 
@@ -107,8 +107,25 @@
             height: auto;
         }
     </style>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="css/preloader.css" rel="stylesheet">
 </head>
-<body class="flex flex-col min-h-screen font-sans text-gray-600 antialiased bg-gray-50 overflow-x-clip">
+
+<body class="loading flex flex-col min-h-screen font-sans text-gray-600 antialiased bg-gray-50 overflow-x-clip">
+
+<div id="preloader">
+    <div class="preloader-content">
+        <div class="preloader-ring-wrapper">
+            <div class="preloader-ring-outer"></div>
+            <div class="preloader-ring-inner"></div>
+            <img src="images/logo.webp" alt="Logo" class="preloader-logo">
+        </div>
+        <div class="preloader-percentage" id="preloader-percentage-text">0%</div>
+        <div class="preloader-text">Preparing Your Strategy</div>
+    </div>
+</div>
+
 
         <!-- Top Bar -->
     <div class="bg-gray-900 text-gray-300 text-sm py-2 hidden lg:block">
@@ -157,7 +174,7 @@
         <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden opacity-0 transition-opacity duration-300"></div>
         
         <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" style="width: min(85vw, 380px);" class="fixed top-0 -right-full h-full bg-brand-dark shadow-2xl z-[45] transition-all duration-300 flex flex-col pt-[73px]">
+        <div id="mobile-menu" style="width: 100%;" class="fixed top-0 -right-full h-full bg-brand-dark shadow-2xl z-[45] transition-all duration-300 flex flex-col pt-[73px]">
             
             <div class="flex flex-col py-6 px-8 space-y-6 text-lg font-medium overflow-y-auto">
                 <a href="index.html" class="nav-link-index hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Home</a>
@@ -205,8 +222,8 @@
                     </div>
                     <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300 flex-grow flex flex-col">
                         <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-brand-orange transition-colors"><a href="blog-single.html">The Role Of Emotional Intelligence In Leadership</a></h3>
-                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors mt-auto block w-fit">Learn more &raquo;</a>
+                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">We build robust frameworks that support continuous improvement and agile response to industry shifts.</p>
+                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors mt-auto block w-fit">Learn more </a>
                     </div>
                 </div>
                 
@@ -224,8 +241,8 @@
                     </div>
                     <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300 flex-grow flex flex-col">
                         <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-brand-orange transition-colors"><a href="blog-single.html">Building A Roadmap For Business Success</a></h3>
-                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors mt-auto block w-fit">Learn more &raquo;</a>
+                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Through comprehensive capability assessments, we identify growth drivers and streamline complex operations.</p>
+                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors mt-auto block w-fit">Learn more </a>
                     </div>
                 </div>
 
@@ -243,8 +260,8 @@
                     </div>
                     <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300 flex-grow flex flex-col">
                         <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-brand-orange transition-colors"><a href="blog-single.html">Streamlining Your Business Processes For Efficiency</a></h3>
-                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors mt-auto block w-fit">Learn more &raquo;</a>
+                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Transforming complex challenges into structured opportunities is our primary focus in business consulting.</p>
+                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors mt-auto block w-fit">Learn more </a>
                     </div>
                 </div>
 
@@ -262,8 +279,8 @@
                     </div>
                     <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300 flex-grow flex flex-col">
                         <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-brand-orange transition-colors"><a href="blog-single.html">Leveraging Analytics For Informed Business Decisions</a></h3>
-                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors mt-auto block w-fit">Learn more &raquo;</a>
+                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Our approach to digital transformation focuses on integrating technology seamlessly with your core business objectives.</p>
+                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors mt-auto block w-fit">Learn more </a>
                     </div>
                 </div>
 
@@ -281,8 +298,8 @@
                     </div>
                     <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300 flex-grow flex flex-col">
                         <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-brand-orange transition-colors"><a href="blog-single.html">Adapting To Modern Business Realities</a></h3>
-                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors mt-auto block w-fit">Learn more &raquo;</a>
+                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Transforming complex challenges into structured opportunities is our primary focus in business consulting.</p>
+                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors mt-auto block w-fit">Learn more </a>
                     </div>
                 </div>
 
@@ -300,8 +317,8 @@
                     </div>
                     <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300 flex-grow flex flex-col">
                         <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-brand-orange transition-colors"><a href="blog-single.html">Strategies For Successful Organizational Transformation</a></h3>
-                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors mt-auto block w-fit">Learn more &raquo;</a>
+                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">We build robust frameworks that support continuous improvement and agile response to industry shifts.</p>
+                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors mt-auto block w-fit">Learn more </a>
                     </div>
                 </div>
 
@@ -316,11 +333,108 @@
         </div>
     </section>
 
+    <!-- Featured Insights Section -->
+    <section class="py-24 px-4 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-brand-darker">Featured Insights</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Insight Card 1 -->
+                <div class="bg-white shadow-xl group h-full flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative overflow-hidden">
+                        <img src="images/image_12.webp" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110" alt="Building a Strategy That Scales">
+                        <div class="absolute top-4 left-4 bg-[#3b6b93] text-white text-xs font-bold px-4 py-1.5 uppercase tracking-wider shadow-md">Strategy</div>
+                        <div class="absolute -bottom-6 left-6 bg-brand-blue text-white text-center flex flex-col justify-center w-14 h-16 shadow-lg z-10">
+                            <span class="text-xl font-bold leading-none">10</span>
+                            <span class="text-xs uppercase font-medium mt-1">Oct</span>
+                        </div>
+                    </div>
+                    <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-brand-orange transition-colors"><a href="blog-single.html">Building A Strategy That Scales With Your Business</a></h3>
+                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Discover how organizations can create flexible, forward-thinking strategies that support sustainable long-term growth.</p>
+                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors mt-auto block w-fit">Read More </a>
+                    </div>
+                </div>
+                <!-- Insight Card 2 -->
+                <div class="bg-white shadow-xl group h-full flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative overflow-hidden">
+                        <img src="images/image_13.webp" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110" alt="Turning Market Insights Into Business Decisions">
+                        <div class="absolute top-4 left-4 bg-[#3b6b93] text-white text-xs font-bold px-4 py-1.5 uppercase tracking-wider shadow-md">Market Research</div>
+                        <div class="absolute -bottom-6 left-6 bg-brand-blue text-white text-center flex flex-col justify-center w-14 h-16 shadow-lg z-10">
+                            <span class="text-xl font-bold leading-none">15</span>
+                            <span class="text-xs uppercase font-medium mt-1">Nov</span>
+                        </div>
+                    </div>
+                    <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-brand-orange transition-colors"><a href="blog-single.html">Turning Market Insights Into Business Decisions</a></h3>
+                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Learn how businesses can successfully use market research and real customer insights to make better strategic decisions.</p>
+                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors mt-auto block w-fit">Read More </a>
+                    </div>
+                </div>
+                <!-- Insight Card 3 -->
+                <div class="bg-white shadow-xl group h-full flex flex-col" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative overflow-hidden">
+                        <img src="images/image_14.webp" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110" alt="Digital Transformation Beyond Technology">
+                        <div class="absolute top-4 left-4 bg-[#3b6b93] text-white text-xs font-bold px-4 py-1.5 uppercase tracking-wider shadow-md">Digital</div>
+                        <div class="absolute -bottom-6 left-6 bg-brand-blue text-white text-center flex flex-col justify-center w-14 h-16 shadow-lg z-10">
+                            <span class="text-xl font-bold leading-none">02</span>
+                            <span class="text-xs uppercase font-medium mt-1">Dec</span>
+                        </div>
+                    </div>
+                    <div class="p-8 pt-12 border-b-4 border-transparent group-hover:border-brand-orange transition-colors duration-300 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-brand-orange transition-colors"><a href="blog-single.html">Digital Transformation Beyond Technology</a></h3>
+                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Understand why successful digital transformation also requires process improvement, people alignment, and organizational change.</p>
+                        <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors mt-auto block w-fit">Read More </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategy Resources Section -->
+    <section class="py-24 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-brand-darker">Strategy Resources</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Resource Card 1 -->
+                <div class="p-8 pt-12 border bg-gray-50 shadow-xl group h-full flex flex-col border-b-4 border-transparent hover:border-brand-orange transition-colors duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-brand-orange text-4xl mb-6">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-brand-orange transition-colors">Business Growth Planning Guide</h3>
+                    <p class="text-gray-500 text-sm mb-6 leading-relaxed">Identify new growth opportunities and create measurable business goals with our comprehensive planning guide.</p>
+                    <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors mt-auto block w-fit flex items-center gap-2">Download Resource </a>
+                </div>
+                <!-- Resource Card 2 -->
+                <div class="p-8 pt-12 border bg-gray-50 shadow-xl group h-full flex flex-col border-b-4 border-transparent hover:border-brand-orange transition-colors duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-brand-orange text-4xl mb-6">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-brand-orange transition-colors">Digital Transformation Checklist</h3>
+                    <p class="text-gray-500 text-sm mb-6 leading-relaxed">A detailed checklist covering technology, processes, teams, customer experience, and implementation planning.</p>
+                    <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors mt-auto block w-fit flex items-center gap-2">Download Resource </a>
+                </div>
+                <!-- Resource Card 3 -->
+                <div class="p-8 pt-12 border bg-gray-50 shadow-xl group h-full flex flex-col border-b-4 border-transparent hover:border-brand-orange transition-colors duration-300" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-brand-orange text-4xl mb-6">
+                        <i class="fas fa-search-dollar"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-brand-orange transition-colors">Market Analysis Framework</h3>
+                    <p class="text-gray-500 text-sm mb-6 leading-relaxed">Learn how to effectively evaluate market trends, competitors, customer needs, and emerging opportunities.</p>
+                    <a href="404.html" class="text-brand-orange font-bold text-sm hover:text-brand-dark transition-colors mt-auto block w-fit flex items-center gap-2">Download Resource </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Newsletter Section -->
     <section class="newsletter-bg py-24 relative border-b-8 border-brand-dark">
         <div class="relative z-10 max-w-4xl mx-auto px-4 text-center text-white" data-aos="zoom-in" data-aos-duration="1000">
             <h2 class="text-4xl md:text-5xl font-bold mb-6">Subscribe Our Newsletter</h2>
-            <p class="text-lg text-blue-100 mb-12 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+            <p class="text-lg text-blue-100 mb-12 leading-relaxed">Our approach to digital transformation focuses on integrating technology seamlessly with your core business objectives.</p>
             
             <form novalidate class="flex flex-col gap-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -392,7 +506,12 @@
 
 
 </main>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/preloader.js"></script>
+    <script src="js/animations.js"></script>
 </body>
+
 </html>
 
 

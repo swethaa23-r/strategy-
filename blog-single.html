@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- AOS Animation CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
 
     <!-- Tailwind Configuration -->
     <script>
@@ -75,7 +75,7 @@
         .faq-header h4, .faq-header span { flex: 1; min-width: 0; padding-right: 1rem; }
         .faq-icon { flex-shrink: 0; }
 </style>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script src="js/main.js" defer></script>
 
 
@@ -107,8 +107,25 @@
             height: auto;
         }
     </style>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="css/preloader.css" rel="stylesheet">
 </head>
-<body class="flex flex-col min-h-screen font-sans text-gray-600 antialiased bg-gray-50 overflow-x-clip">
+
+<body class="loading flex flex-col min-h-screen font-sans text-gray-600 antialiased bg-gray-50 overflow-x-clip">
+
+<div id="preloader">
+    <div class="preloader-content">
+        <div class="preloader-ring-wrapper">
+            <div class="preloader-ring-outer"></div>
+            <div class="preloader-ring-inner"></div>
+            <img src="images/logo.webp" alt="Logo" class="preloader-logo">
+        </div>
+        <div class="preloader-percentage" id="preloader-percentage-text">0%</div>
+        <div class="preloader-text">Preparing Your Strategy</div>
+    </div>
+</div>
+
 
         <!-- Top Bar -->
     <div class="bg-gray-900 text-gray-300 text-sm py-2 hidden lg:block">
@@ -157,7 +174,7 @@
         <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden opacity-0 transition-opacity duration-300"></div>
         
         <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" style="width: min(85vw, 380px);" class="fixed top-0 -right-full h-full bg-brand-dark shadow-2xl z-[45] transition-all duration-300 flex flex-col pt-[73px]">
+        <div id="mobile-menu" style="width: 100%;" class="fixed top-0 -right-full h-full bg-brand-dark shadow-2xl z-[45] transition-all duration-300 flex flex-col pt-[73px]">
             
             <div class="flex flex-col py-6 px-8 space-y-6 text-lg font-medium overflow-y-auto">
                 <a href="index.html" class="nav-link-index hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Home</a>
@@ -202,7 +219,7 @@
     <section class="newsletter-bg py-24 relative border-b-8 border-brand-dark">
         <div class="relative z-10 max-w-4xl mx-auto px-4 text-center text-white" data-aos="zoom-in" data-aos-duration="1000">
             <h2 class="text-4xl md:text-5xl font-bold mb-6">Subscribe Our Newsletter</h2>
-            <p class="text-lg text-blue-100 mb-12 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+            <p class="text-lg text-blue-100 mb-12 leading-relaxed">We build robust frameworks that support continuous improvement and agile response to industry shifts.</p>
             
             <form novalidate class="flex flex-col gap-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -274,7 +291,12 @@
 
 
 </main>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/preloader.js"></script>
+    <script src="js/animations.js"></script>
 </body>
+
 </html>
 
 

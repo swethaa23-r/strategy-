@@ -6,7 +6,7 @@
     <title>404 - Not Found | STackly</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <style>
         img { width: 100%;
             max-width: 100%;
@@ -47,7 +47,7 @@
         .faq-header h4, .faq-header span { flex: 1; min-width: 0; padding-right: 1rem; }
         .faq-icon { flex-shrink: 0; }
 </style>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script src="js/main.js" defer></script>
 
 
@@ -79,8 +79,25 @@
             height: auto;
         }
     </style>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="css/preloader.css" rel="stylesheet">
 </head>
-<body class="flex flex-col min-h-screen flex items-center justify-center h-screen text-white relative overflow-x-clip">
+
+<body class="loading flex flex-col min-h-screen flex items-center justify-center h-screen text-white relative overflow-x-clip">
+
+<div id="preloader">
+    <div class="preloader-content">
+        <div class="preloader-ring-wrapper">
+            <div class="preloader-ring-outer"></div>
+            <div class="preloader-ring-inner"></div>
+            <img src="images/logo.webp" alt="Logo" class="preloader-logo">
+        </div>
+        <div class="preloader-percentage" id="preloader-percentage-text">0%</div>
+        <div class="preloader-text">Preparing Your Strategy</div>
+    </div>
+</div>
+
     <!-- Animated background glowing shapes -->
     <div class="bg-shapes bg-blue-500 w-96 h-96 rounded-full top-[-10%] left-[-10%]"></div>
     <div class="bg-shapes bg-orange-500 w-96 h-96 rounded-full bottom-[-10%] right-[-10%]" style="animation-duration: 12s; animation-direction: alternate-reverse;"></div>
@@ -107,9 +124,14 @@
     </div>
 
     
-    <script>AOS.init({ once: true });</script>
+    <script></script>
 
-    </body>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/preloader.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+
 </html>
 
 

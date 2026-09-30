@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- AOS Animation CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
 
     <!-- Tailwind Configuration -->
     <script>
@@ -69,7 +69,7 @@
         .faq-header h4, .faq-header span { flex: 1; min-width: 0; padding-right: 1rem; }
         .faq-icon { flex-shrink: 0; }
 </style>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script src="js/main.js" defer></script>
 
 
@@ -101,8 +101,25 @@
             height: auto;
         }
     </style>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="css/preloader.css" rel="stylesheet">
 </head>
-<body class="flex flex-col min-h-screen font-sans text-gray-600 antialiased bg-white overflow-x-clip">
+
+<body class="loading flex flex-col min-h-screen font-sans text-gray-600 antialiased bg-white overflow-x-clip">
+
+<div id="preloader">
+    <div class="preloader-content">
+        <div class="preloader-ring-wrapper">
+            <div class="preloader-ring-outer"></div>
+            <div class="preloader-ring-inner"></div>
+            <img src="images/logo.webp" alt="Logo" class="preloader-logo">
+        </div>
+        <div class="preloader-percentage" id="preloader-percentage-text">0%</div>
+        <div class="preloader-text">Preparing Your Strategy</div>
+    </div>
+</div>
+
 
         <!-- Top Bar -->
     <div class="bg-gray-900 text-gray-300 text-sm py-2 hidden lg:block">
@@ -151,7 +168,7 @@
         <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden opacity-0 transition-opacity duration-300"></div>
         
         <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" style="width: min(85vw, 380px);" class="fixed top-0 -right-full h-full bg-brand-dark shadow-2xl z-[45] transition-all duration-300 flex flex-col pt-[73px]">
+        <div id="mobile-menu" style="width: 100%;" class="fixed top-0 -right-full h-full bg-brand-dark shadow-2xl z-[45] transition-all duration-300 flex flex-col pt-[73px]">
             
             <div class="flex flex-col py-6 px-8 space-y-6 text-lg font-medium overflow-y-auto">
                 <a href="index.html" class="nav-link-index hover:text-brand-orange border-b-2 border-transparent pb-1 transition inline-block">Home</a>
@@ -196,16 +213,16 @@
                 <span class="w-12 h-0.5 bg-brand-orange"></span>
             </div>
             <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">Discover Some Of Our Standout Projects That Showcase Our Expertise</h2>
-            <p class="text-gray-500 mb-10 text-lg leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+            <p class="text-gray-500 mb-10 text-lg leading-relaxed">Our tailored solutions align cross-functional teams, ensuring strategic initiatives achieve their maximum potential.</p>
             
             <div class="border-l-4 border-brand-orange pl-6 py-2 mb-10 bg-gray-50 rounded-r-md">
                 <h4 class="font-bold text-gray-900 text-lg mb-2">Delivering Exceptional Results</h4>
-                <p class="text-gray-500 text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
+                <p class="text-gray-500 text-sm leading-relaxed">Empower your workforce with technology strategies designed to scale seamlessly as your market share expands.</p>
             </div>
             
             <ul class="space-y-4 mb-10">
-                <li class="flex items-center text-gray-700 font-medium"><i class="fas fa-check text-brand-blue mr-4 text-xl"></i> Lorem ipsum dolor sit amet consectetur adipiscing</li>
-                <li class="flex items-center text-gray-700 font-medium"><i class="fas fa-check text-brand-blue mr-4 text-xl"></i> Lorem ipsum dolor sit amet consectetur adipiscing</li>
+                <li class="flex items-center text-gray-700 font-medium"><i class="fas fa-check text-brand-blue mr-4 text-xl"></i>Leverage data-driven insights to optimize your operational efficiency and stay ahead of market trends.</li>
+                <li class="flex items-center text-gray-700 font-medium"><i class="fas fa-check text-brand-blue mr-4 text-xl"></i>Our approach to digital transformation focuses on integrating technology seamlessly with your core business objectives.</li>
             </ul>
             
             <a href="404.html" class="inline-block bg-brand-orange text-white px-8 py-4 font-bold tracking-wider hover:bg-brand-blue transition duration-300 shadow-md">
@@ -236,7 +253,7 @@
                 <h2 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">Our Methodology For Delivering Solutions</h2>
             </div>
             <div data-aos="fade-left" class="flex flex-col justify-center text-gray-500 space-y-5 text-lg leading-relaxed">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>Leverage data-driven insights to optimize your operational efficiency and stay ahead of market trends.</p>
                 <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
         </div>
@@ -247,19 +264,19 @@
             <div class="bg-brand-blue text-white p-10 shadow-lg border-b-4 border-brand-orange transform hover:-translate-y-2 transition-transform duration-300">
                 <i class="far fa-building text-4xl mb-6 text-white opacity-90"></i>
                 <h3 class="text-2xl font-bold mb-4">Industry Insights</h3>
-                <p class="text-blue-100 text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus.</p>
+                <p class="text-blue-100 text-sm leading-relaxed">Our team of experts delivers actionable market analysis, empowering you to make confident decisions.</p>
             </div>
             <!-- White Card 1 -->
             <div class="bg-white text-gray-900 p-10 shadow-lg border-b-4 border-brand-orange transform hover:-translate-y-2 transition-transform duration-300">
                 <i class="fas fa-chart-pie text-4xl mb-6 text-brand-orange"></i>
                 <h3 class="text-2xl font-bold mb-4">Innovative Strategies</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus.</p>
+                <p class="text-gray-500 text-sm leading-relaxed">Our approach to digital transformation focuses on integrating technology seamlessly with your core business objectives.</p>
             </div>
             <!-- White Card 2 -->
             <div class="bg-white text-gray-900 p-10 shadow-lg border-b-4 border-brand-orange transform hover:-translate-y-2 transition-transform duration-300">
                 <i class="far fa-gem text-4xl mb-6 text-brand-orange"></i>
                 <h3 class="text-2xl font-bold mb-4">Drive Sustainable Success</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus.</p>
+                <p class="text-gray-500 text-sm leading-relaxed">Empower your workforce with technology strategies designed to scale seamlessly as your market share expands.</p>
             </div>
         </div>
     </section>
@@ -284,7 +301,7 @@
                 </div>
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">Overview Provides Insights Into The Challenges & Strategies</h2>
                 
-                <p class="text-gray-500 mb-6 text-lg leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p class="text-gray-500 mb-6 text-lg leading-relaxed">Empower your workforce with technology strategies designed to scale seamlessly as your market share expands.</p>
                 <p class="text-gray-500 mb-10 text-lg leading-relaxed">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 border-t border-gray-200 pt-10">
@@ -308,7 +325,7 @@
                 <!-- Client Background Box -->
                 <div class="bg-brand-blue text-white p-10 shadow-xl rounded-sm border-t-4 border-brand-orange">
                     <h3 class="text-2xl font-bold mb-4">Client Background</h3>
-                    <p class="text-blue-100 text-sm mb-8 leading-relaxed italic">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p class="text-blue-100 text-sm mb-8 leading-relaxed italic">Through comprehensive capability assessments, we identify growth drivers and streamline complex operations.</p>
                     <ul class="space-y-4">
                         <li class="flex items-center border-b border-blue-700 pb-4 text-sm font-medium"><span class="w-3 h-0.5 bg-white mr-3"></span> Goals : Market Insight</li>
                         <li class="flex items-center border-b border-blue-700 pb-4 text-sm font-medium"><span class="w-3 h-0.5 bg-white mr-3"></span> Industry : Marketing</li>
@@ -322,7 +339,7 @@
                     <div class="absolute inset-0 bg-brand-dark/75"></div>
                     <div class="absolute inset-0 p-10 flex flex-col justify-end">
                         <h3 class="text-2xl font-bold text-white mb-4 leading-tight">Have Projects Like This Work Challenges?</h3>
-                        <p class="text-blue-100 text-sm mb-8 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p class="text-blue-100 text-sm mb-8 leading-relaxed">Leverage data-driven insights to optimize your operational efficiency and stay ahead of market trends.</p>
                         <a href="contact.html" class="inline-block bg-brand-orange text-white px-6 py-3 font-bold text-sm tracking-wider hover:bg-white hover:text-brand-blue transition duration-300 self-start shadow-md">
                             Get a Quote 
                         </a>
@@ -355,8 +372,8 @@
                     </div>
                     <div class="bg-white p-8 shadow-xl mx-6 -mt-16 relative z-20 text-center border-b-4 border-transparent group-hover:border-brand-orange transition-all duration-300">
                         <h3 class="text-xl font-bold text-gray-900 mb-3">Strategic Growth Initiative</h3>
-                        <p class="text-gray-500 text-sm mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <a href="contact.html" class="text-brand-orange font-semibold text-sm hover:text-brand-dark transition-colors">Learn more &rarr;</a>
+                        <p class="text-gray-500 text-sm mb-5">We build robust frameworks that support continuous improvement and agile response to industry shifts.</p>
+                        <a href="404.html" class="text-brand-orange font-semibold text-sm hover:text-brand-dark transition-colors">Learn more </a>
                     </div>
                 </div>
 
@@ -370,8 +387,8 @@
                     </div>
                     <div class="bg-white p-8 shadow-xl mx-6 -mt-16 relative z-20 text-center border-b-4 border-transparent group-hover:border-brand-orange transition-all duration-300">
                         <h3 class="text-xl font-bold text-gray-900 mb-3">Operational Efficiency</h3>
-                        <p class="text-gray-500 text-sm mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <a href="contact.html" class="text-brand-orange font-semibold text-sm hover:text-brand-dark transition-colors">Learn more &rarr;</a>
+                        <p class="text-gray-500 text-sm mb-5">Leverage data-driven insights to optimize your operational efficiency and stay ahead of market trends.</p>
+                        <a href="404.html" class="text-brand-orange font-semibold text-sm hover:text-brand-dark transition-colors">Learn more </a>
                     </div>
                 </div>
 
@@ -385,8 +402,8 @@
                     </div>
                     <div class="bg-white p-8 shadow-xl mx-6 -mt-16 relative z-20 text-center border-b-4 border-transparent group-hover:border-brand-orange transition-all duration-300">
                         <h3 class="text-xl font-bold text-gray-900 mb-3">Expansion Strategy</h3>
-                        <p class="text-gray-500 text-sm mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <a href="contact.html" class="text-brand-orange font-semibold text-sm hover:text-brand-dark transition-colors">Learn more &rarr;</a>
+                        <p class="text-gray-500 text-sm mb-5">Our team of experts delivers actionable market analysis, empowering you to make confident decisions.</p>
+                        <a href="404.html" class="text-brand-orange font-semibold text-sm hover:text-brand-dark transition-colors">Learn more </a>
                     </div>
                 </div>
 
@@ -400,8 +417,8 @@
                     </div>
                     <div class="bg-white p-8 shadow-xl mx-6 -mt-16 relative z-20 text-center border-b-4 border-transparent group-hover:border-brand-orange transition-all duration-300">
                         <h3 class="text-xl font-bold text-gray-900 mb-3">Change Management</h3>
-                        <p class="text-gray-500 text-sm mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <a href="contact.html" class="text-brand-orange font-semibold text-sm hover:text-brand-dark transition-colors">Learn more &rarr;</a>
+                        <p class="text-gray-500 text-sm mb-5">We build robust frameworks that support continuous improvement and agile response to industry shifts.</p>
+                        <a href="404.html" class="text-brand-orange font-semibold text-sm hover:text-brand-dark transition-colors">Learn more </a>
                     </div>
                 </div>
 
@@ -415,8 +432,8 @@
                     </div>
                     <div class="bg-white p-8 shadow-xl mx-6 -mt-16 relative z-20 text-center border-b-4 border-transparent group-hover:border-brand-orange transition-all duration-300">
                         <h3 class="text-xl font-bold text-gray-900 mb-3">Development Program</h3>
-                        <p class="text-gray-500 text-sm mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <a href="contact.html" class="text-brand-orange font-semibold text-sm hover:text-brand-dark transition-colors">Learn more &rarr;</a>
+                        <p class="text-gray-500 text-sm mb-5">Effective leadership and organizational alignment are the cornerstones of our consulting methodology.</p>
+                        <a href="404.html" class="text-brand-orange font-semibold text-sm hover:text-brand-dark transition-colors">Learn more </a>
                     </div>
                 </div>
 
@@ -430,8 +447,8 @@
                     </div>
                     <div class="bg-white p-8 shadow-xl mx-6 -mt-16 relative z-20 text-center border-b-4 border-transparent group-hover:border-brand-orange transition-all duration-300">
                         <h3 class="text-xl font-bold text-gray-900 mb-3">Customer Experience</h3>
-                        <p class="text-gray-500 text-sm mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <a href="contact.html" class="text-brand-orange font-semibold text-sm hover:text-brand-dark transition-colors">Learn more &rarr;</a>
+                        <p class="text-gray-500 text-sm mb-5">Transforming complex challenges into structured opportunities is our primary focus in business consulting.</p>
+                        <a href="404.html" class="text-brand-orange font-semibold text-sm hover:text-brand-dark transition-colors">Learn more </a>
                     </div>
                 </div>
             </div>
@@ -448,7 +465,7 @@
             <!-- Left Text -->
             <div class="lg:col-span-1 text-white" data-aos="fade-right">
                 <h2 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">See How Others Have Benefited</h2>
-                <p class="text-gray-300 mb-8 text-lg leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut elit tellus.</p>
+                <p class="text-gray-300 mb-8 text-lg leading-relaxed">Transforming complex challenges into structured opportunities is our primary focus in business consulting.</p>
                 <a href="404.html" class="inline-block bg-brand-orange text-white px-8 py-4 font-bold tracking-wider hover:bg-white hover:text-brand-blue transition duration-300 shadow-md">
                     See More 
                 </a>
@@ -465,7 +482,7 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <p class="text-blue-100 italic mb-8 leading-relaxed font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                    <p class="text-blue-100 italic mb-8 leading-relaxed font-medium">Our approach to digital transformation focuses on integrating technology seamlessly with your core business objectives.</p>
                     <div class="flex items-center gap-4">
                         <img src="images/image_07.webp" class="w-14 h-14 rounded-full border-2 border-white object-cover shadow-sm" alt="Profile picture of Mr. John Doe, Director of Operations">
                         <div>
@@ -484,12 +501,12 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <p class="text-blue-100 italic mb-8 leading-relaxed font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                    <p class="text-blue-100 italic mb-8 leading-relaxed font-medium">Empower your workforce with technology strategies designed to scale seamlessly as your market share expands.</p>
                     <div class="flex items-center gap-4">
-                        <img src="images/image_08.webp" class="w-14 h-14 rounded-full border-2 border-white object-cover shadow-sm" alt="Profile picture of Mr. John Doe, Director of Operations">
+                        <img src="images/image_08.webp" class="w-14 h-14 rounded-full border-2 border-white object-cover shadow-sm" alt="Profile picture of Ms. Jane Smith, CEO">
                         <div>
-                            <h4 class="text-white font-bold text-lg leading-tight">Mr. John Doe</h4>
-                            <span class="text-brand-orange text-xs font-bold tracking-widest uppercase">Director</span>
+                            <h4 class="text-white font-bold text-lg leading-tight">Ms. Jane Smith</h4>
+                            <span class="text-brand-orange text-xs font-bold tracking-widest uppercase">CEO</span>
                         </div>
                     </div>
                 </div>
@@ -551,7 +568,12 @@
 
 
 </main>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/preloader.js"></script>
+    <script src="js/animations.js"></script>
 </body>
+
 </html>
 
 
